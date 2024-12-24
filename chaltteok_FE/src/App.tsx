@@ -176,7 +176,7 @@ function App(): React.JSX.Element {
           <View style={styles.sectionHeader}>
             <Text style={styles.recentTitle}>최근 본 사진가 & 스튜디오</Text>
             <TouchableOpacity
-              onPress={() => navigation.navigate('AllRecent')}
+              //onPress={() => navigation.navigate('AllRecent')}
               style={{ marginLeft: 'auto' }}
             >
               <Text style={styles.allRecentStudios}>전체보기</Text>
@@ -230,7 +230,7 @@ function App(): React.JSX.Element {
           <View style={styles.sectionHeader}>
             <Text style={styles.recentTitle}>영상 찰떡으로 찍어드립니다!</Text>
             <TouchableOpacity
-              onPress={() => navigation.navigate('AllVideo')}
+              //onPress={() => navigation.navigate('AllVideo')}
               style={{ marginLeft: 'auto' }}
             >
               <Text style={styles.allRecentStudios}>전체보기</Text>
