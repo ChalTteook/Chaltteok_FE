@@ -162,7 +162,7 @@ function App(): React.JSX.Element {
           {categories.map((category) => (
             <TouchableOpacity key={category.id} style={styles.categoryItem}>
               <Image
-                source={require('./assets/image.png')}
+                //source={require('./assets/logo.png')}
                 style={styles.categoryImage}
               />
               <Text style={styles.categoryText}>{category.title}</Text>
@@ -280,19 +280,19 @@ function App(): React.JSX.Element {
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
         <TouchableOpacity style={styles.navItem}>
-          <HomeIcon name="home" size={30} />
+          <HomeIcon name="home" size={24} />
           <Text style={[styles.navText, styles.navTextActive]}>찰떡홈</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
-          <MapIcon name="map" size={30} />
+          <MapIcon name="map" size={24} />
           <Text style={styles.navText}>주변</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
-          <FavoriteIcon name="favorite-outline" size={32} />
+          <FavoriteIcon name="favorite-outline" size={26} />
           <Text style={styles.navText}>찜</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
-          <UserIcon name="user-o" size={30} />
+          <UserIcon name="user-o" size={26} />
           <Text style={styles.navText}>내정보</Text>
         </TouchableOpacity>
       </View>
