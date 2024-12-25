@@ -1,10 +1,8 @@
 name: "Build Android app"
-
 on:
   workflow_dispatch:
     branches: [main-page]
     # can add push and pull_request here 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,11 +28,13 @@ jobs:
       - name: Run Yarn Install
         run: |
              npm i -g corepack
-             yarn install             
+             yarn install
+
       - name: Build application
         run: |
              cd ./android
-             ./gradlew assembleDebug             
+             ./gradlew assembleDebug
+
       - name: Upload application
         uses: actions/upload-artifact@v3
         with:
