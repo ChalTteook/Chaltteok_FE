@@ -2,14 +2,16 @@ name: "Build Android app"
 
 on:
   workflow_dispatch:
-    branches: [main-page]
-
+  push:
+    branches:
+      - main-page
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        
       - name: Setup Node  
         uses: actions/setup-node@v3
         with:
