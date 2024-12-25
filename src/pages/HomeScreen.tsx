@@ -3,14 +3,14 @@ import { ScrollView, View, StyleSheet } from 'react-native';
 import Header from '../components/Header';
 import Banner from '../components/Banner';
 import Category from '../components/Category';
-
+import AllRecentScreen from '../components/AllRecentScreen';
 const HomeScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <Header />
       <Banner />
       <Category />
-      {/* Add other sections here */}
+      <AllRecentScreen />
     </ScrollView>
   );
 };

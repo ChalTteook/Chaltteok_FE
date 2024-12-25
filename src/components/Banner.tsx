@@ -7,19 +7,16 @@ const { width } = Dimensions.get('window');
 const banners = [
   {
     id: 1,
-    image: require('../assets/image.png'),
     title: '배너 타이틀 1',
     subtitle: '메인 배너 서브타이틀\n최대 00자, 두줄',
   },
   {
     id: 2,
-    image: require('../assets/image.png'),
     title: '배너 타이틀 2',
     subtitle: '메인 배너 서브타이틀\n최대 00자, 두줄',
   },
   {
     id: 3,
-    image: require('../assets/image.png'),
     title: '배너 타이틀 3',
     subtitle: '메인 배너 서브타이틀\n최대 00자, 두줄',
   },
@@ -46,7 +43,7 @@ const Banner = () => {
       >
         {banners.map((banner, index) => (
           <View key={banner.id} style={styles.bannerItem}>
-            <Image source={{ uri: banner.image }} style={styles.bannerImage} />
+            <Image source={require('../assets/logo.png')} style={styles.bannerImage} />
             <View style={styles.bannerOverlay}>
               <View style={styles.bannerContent}>
                 <Text style={styles.bannerTitle}>{banner.title}</Text>
