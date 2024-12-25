@@ -45,7 +45,7 @@ with_node \
   --no-warnings \
   --eval "require(require.resolve('expo-modules-autolinking', { paths: [require.resolve('expo/package.json')] }))(process.argv.slice(1))" \
   generate-modules-provider  \
-  --target "/Users/idong-won/Documents/PROJECT/Chaltteok_FE/chaltteok_FE/ios/Pods/Target Support Files/Pods-chaltteokFE/ExpoModulesProvider.swift" \
+  --target "/Users/idong-won/Documents/PROJECT/Chaltteok_FE/ios/Pods/Target Support Files/Pods-chaltteokFE/ExpoModulesProvider.swift" \
    \
   --platform "apple" \
   --packages "expo" "expo-asset" "expo-constants" "expo-file-system" "expo-font" "expo-keep-awake"
