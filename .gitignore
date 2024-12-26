@@ -1,2 +1,4 @@
 node_modules
-*.so
+node_modules/expo-modules-core/android/build/intermediates/cxx/Debug/1d1u4tc2/obj/arm64-v8a/libreactnative.so
+
+android/app/build/outputs/apk/debug/app-debug.apk
