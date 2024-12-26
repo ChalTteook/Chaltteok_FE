@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { View, StyleSheet, Animated } from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import { View, StyleSheet, Animated, Text } from 'react-native';
 import AppNavigator from './navigation/AppNavigator';
 import Header from './components/Header';
 
@@ -12,6 +12,12 @@ const App = () => {
     extrapolate: 'clamp',
   });
 
+  useEffect(() => {
+    // Text 기본 폰트 설정
+    if (Text.defaultProps == null) Text.defaultProps = {};
+    Text.defaultProps.style = { fontFamily: 'PretendardJP-Regular' };
+  }, []);
+
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.headerContainer, { transform: [{ translateY: headerTranslateY }] }]}>
@@ -21,7 +27,7 @@ const App = () => {
         contentContainerStyle={styles.navigatorContainer}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-          { useNativeDriver: true }
+          { useNativeDriver: false } // useNativeDriver는 false로 설정
         )}
         scrollEventThrottle={16}
       >
@@ -42,6 +48,7 @@ const styles = StyleSheet.create({
     right: 0,
     zIndex: 1,
     backgroundColor: '#fff',
+    height: 60,
   },
   navigatorContainer: {
     flexGrow: 1,

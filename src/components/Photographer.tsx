@@ -74,19 +74,22 @@ const Photographer = () => {
                   {formatPrice(photographer.price)}
                 </Text>
               </View>
-              <View style={styles.instagramContainer}>
-                <Icon name="logo-instagram" size={16} color="#666" />
-                <Text style={styles.instagram}>@{photographer.instagram}</Text>
-              </View>
               <View style={styles.ratingContainer}>
-                <Icon name="star" size={16} color="#FFB800" />
+                <Icon name="star" size={16} color="#202123" />
                 <Text style={styles.rating}>{photographer.rating}</Text>
                 <Text style={styles.reviews}>({photographer.reviews})</Text>
               </View>
             </View>
+            <View style={styles.instagramContainer}>
+              <Icon name="logo-instagram" size={16} color="#000000" />
+            </View>
           </TouchableOpacity>
         ))}
       </ScrollView>
+      { /* 앱 사용 가이드 */ }
+      <View style={styles.imageContainer}>
+        <Image source={require("../assets/user_guide.png")} />
+      </View>
     </View>
   );
 };
@@ -119,13 +122,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5F5F5",
     borderRadius: 8,
   },
+  imageContainer: {
+    alignItems: 'center', // 좌우 가운데 정렬
+    marginTop: 20, // 필요에 따라 여백 추가
+    marginBottom: 10
+  },
   cardContent: {
     marginTop: 16,
   },
   photographerName: {
     fontSize: 12,
     fontWeight: "400",
-    lineHeight: 16,
+    marginTop: -7,
     marginBottom: 6,
   },
   priceContainer: {
@@ -137,7 +145,7 @@ const styles = StyleSheet.create({
     color: "#FF4081",
     fontSize: 14,
     fontWeight: "700",
-    marginRight: 8,
+    marginRight: 4,
   },
   price: {
     fontSize: 14,
@@ -146,7 +154,8 @@ const styles = StyleSheet.create({
   instagramContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 8,
+    marginBottom: 12,
+    marginTop: 4,
   },
   instagram: {
     fontSize: 14,
@@ -155,6 +164,7 @@ const styles = StyleSheet.create({
   ratingContainer: {
     flexDirection: "row",
     alignItems: "center",
+    marginTop: -4,
   },
   rating: {
     fontSize: 14,
@@ -170,12 +180,12 @@ const styles = StyleSheet.create({
     paddingTop: 24,
   },
   recentTitle: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "700",
     marginBottom: 8,
     marginLeft: 18,
     lineHeight: 24,
-    color: "#000",
+    color: "#202123",
   },
   sectionHeader: {
     flexDirection: "row",

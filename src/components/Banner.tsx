@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from "react";
+import React, { useRef } from "react";
 import {
   View,
   Image,
@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Dimensions,
 } from "react-native";
+import Swiper from "react-native-swiper";
 import Icon from "react-native-vector-icons/Ionicons";
 
 const { width } = Dimensions.get("window");
@@ -31,48 +32,24 @@ const banners = [
 ];
 
 const Banner = () => {
-  const [currentBanner, setCurrentBanner] = React.useState(0);
-  const scrollViewRef = useRef(null);
+  const swiperRef = useRef(null);
 
-  const handleScroll = (event) => {
-    const contentOffset = event.nativeEvent.contentOffset;
-    const viewSize = event.nativeEvent.layoutMeasurement;
-    const pageNum = Math.round(contentOffset.x / viewSize.width);
-    setCurrentBanner(pageNum);
+  const goNext = () => {
+    swiperRef.current?.scrollBy(1);
   };
 
-  const scrollToBanner = (index) => {
-    if (scrollViewRef.current) {
-      scrollViewRef.current.scrollTo({ x: index * width, animated: true });
-    }
+  const goPrev = () => {
+    swiperRef.current?.scrollBy(-1);
   };
-
-  const handlePrevBanner = () => {
-    const prevBanner = (currentBanner - 1 + banners.length) % banners.length;
-    scrollToBanner(prevBanner);
-  };
-
-  const handleNextBanner = () => {
-    const nextBanner = (currentBanner + 1) % banners.length;
-    scrollToBanner(nextBanner);
-  };
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      handleNextBanner();
-    }, 3000);
-
-    return () => clearInterval(timer);
-  }, [currentBanner]);
-
   return (
     <View style={styles.bannerContainer}>
-      <ScrollView
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        onScroll={handleScroll}
-        scrollEventThrottle={200}
+      <Swiper
+        ref={swiperRef}
+        autoplay
+        showsPagination={false}
+        width={500}
+        height={500}
+        autoplayTimeout={5}
       >
         {banners.map((banner, index) => (
           <View key={banner.id} style={styles.bannerItem}>
@@ -86,18 +63,6 @@ const Banner = () => {
                 <Text style={styles.bannerSubtitle}>{banner.subtitle}</Text>
               </View>
             </View>
-            <TouchableOpacity
-              style={[styles.bannerArrow, styles.bannerArrowLeft]}
-              onPress={handlePrevBanner}
-            >
-              <Icon name="chevron-back" size={24} color="#fff" />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.bannerArrow, styles.bannerArrowRight]}
-              onPress={handleNextBanner}
-            >
-              <Icon name="chevron-forward" size={24} color="#fff" />
-            </TouchableOpacity>
             <View style={styles.bannerNumberContainer}>
               <Text style={styles.bannerNumber}>
                 {index + 1 < 10 ? `0${index + 1}` : index + 1}
@@ -107,14 +72,28 @@ const Banner = () => {
             </View>
           </View>
         ))}
-      </ScrollView>
+      </Swiper>
+      {/* 좌우 버튼 추가 */}
+      <TouchableOpacity
+        style={[styles.arrowButton, styles.leftButton]}
+        onPress={goPrev}
+      >
+        <Icon name="chevron-back" size={21} color="#FFFFFF" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.arrowButton, styles.rightButton]}
+        onPress={goNext}
+      >
+        <Icon name="chevron-forward" size={21} color="#FFFFFF" />
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  bannerContainer: {
+    bannerContainer: {
     position: "relative",
+    marginBottom: -85,
   },
   bannerItem: {
     width: width,
@@ -157,12 +136,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  bannerArrowLeft: {
-    left: 20,
-  },
-  bannerArrowRight: {
-    right: 20,
-  },
   bannerNumberContainer: {
     position: "absolute",
     bottom: 10,
@@ -181,6 +154,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: "100%",
+  },
+  arrowButton: {
+    position: "absolute",
+    top: "38%",
+    backgroundColor: "rgba(0,0,0,0.4)",
+    borderRadius: 30,
+    padding: 7,
+  },
+  leftButton: {
+    left: 10,
+  },
+  rightButton: {
+    right: 10,
   },
 });
 
