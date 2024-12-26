@@ -1,15 +1,32 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, { useRef } from 'react';
+import { View, StyleSheet, Animated } from 'react-native';
 import AppNavigator from './navigation/AppNavigator';
-import BottomNavigation from './components/BottomNavigation';
+import Header from './components/Header';
 
 const App = () => {
+  const scrollY = useRef(new Animated.Value(0)).current;
+
+  const headerTranslateY = scrollY.interpolate({
+    inputRange: [0, 50],
+    outputRange: [0, -60],
+    extrapolate: 'clamp',
+  });
+
   return (
     <View style={styles.container}>
-      <View style={styles.navigatorContainer}>
+      <Animated.View style={[styles.headerContainer, { transform: [{ translateY: headerTranslateY }] }]}>
+        <Header />
+      </Animated.View>
+      <Animated.ScrollView
+        contentContainerStyle={styles.navigatorContainer}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+          { useNativeDriver: true }
+        )}
+        scrollEventThrottle={16}
+      >
         <AppNavigator />
-      </View>
-      <BottomNavigation />
+      </Animated.ScrollView>
     </View>
   );
 };
@@ -18,9 +35,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  headerContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1,
+    backgroundColor: '#fff',
+  },
   navigatorContainer: {
-    flex: 1,
-    marginBottom: 56, // BottomNavigation 높이만큼 여백 추가
+    flexGrow: 1,
+    paddingTop: 60, // Header 높이만큼 여백 추가
   },
 });
 

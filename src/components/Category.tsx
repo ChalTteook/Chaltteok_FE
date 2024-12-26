@@ -14,7 +14,7 @@ const Category = () => {
     <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categoriesContainer}>
       {categories.map((category) => (
         <TouchableOpacity key={category.id} style={styles.categoryItem}>
-          <Image source={require('../assets/image.png')} style={styles.categoryImage} />
+          <Image source={require('../assets/category_image.png')} style={styles.categoryImage} />
           <Text style={styles.categoryText}>{category.title}</Text>
         </TouchableOpacity>
       ))}
@@ -29,21 +29,20 @@ const styles = StyleSheet.create({
   },
   categoryItem: {
     alignItems: 'center',
-    marginRight: 8,
-    width: 80,
+    width: 77,
   },
   categoryImage: {
-    width: 48,
-    height: 48,
+    width: 54,
+    height: 54,
     backgroundColor: '#F5F5F5',
     borderRadius: 16,
     marginBottom: 8,
   },
   categoryText: {
-    fontSize: 13,
+    fontSize: 11,
     color: '#000',
     textAlign: 'center',
-    lineHeight: 18,
+    lineHeight: 15,
   },
 });
 

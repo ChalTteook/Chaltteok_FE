@@ -6,7 +6,7 @@ import NotificationIcon from 'react-native-vector-icons/Ionicons';
 const Header = () => {
   return (
     <View style={styles.headerContainer}>
-      <Image source={require('../assets/logo.png')} style={styles.logo} />
+      <Image source={require('../assets/main_logo.png')} style={styles.logo} />
       <View style={styles.headerRight}>
         <TouchableOpacity style={styles.searchContainer}>
           <SearchIcon name="search" size={20} />
