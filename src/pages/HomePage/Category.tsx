@@ -14,7 +14,7 @@ const Category = () => {
     <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categoriesContainer}>
       {categories.map((category) => (
         <TouchableOpacity key={category.id} style={styles.categoryItem}>
-          <Image source={require('../assets/category_image.png')} style={styles.categoryImage} />
+          <Image source={require('../../assets/category_image.png')} style={styles.categoryImage} />
           <Text style={styles.categoryText}>{category.title}</Text>
         </TouchableOpacity>
       ))}

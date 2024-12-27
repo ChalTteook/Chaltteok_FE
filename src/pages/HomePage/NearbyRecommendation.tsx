@@ -47,7 +47,7 @@ const Photographer = () => {
   return (
     <View style={styles.recentSection}>
       <View style={styles.sectionHeader}>
-        <Text style={styles.recentTitle}>찰떡으로 영상 찍어드립니다!</Text>
+        <Text style={styles.recentTitle}>지금 가까운 곳으로 추천해드려요!</Text>
         <TouchableOpacity
           onPress={() => navigation.navigate("AllRecent")}
           style={{ marginLeft: "auto" }}
@@ -63,7 +63,7 @@ const Photographer = () => {
         {photographers.map((photographer) => (
           <TouchableOpacity key={photographer.id} style={styles.card}>
             <Image
-              source={require("../assets/photographer.png")}
+              source={require("../../assets/photographer.png")}
               style={styles.image}
             />
             <View style={styles.cardContent}>
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingHorizontal: 16,
     gap: 8,
-    paddingBottom: 16,
+    paddingBottom: 12,
   },
 });
 

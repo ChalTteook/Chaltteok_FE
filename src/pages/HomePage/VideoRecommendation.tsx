@@ -47,7 +47,7 @@ const Photographer = () => {
   return (
     <View style={styles.recentSection}>
       <View style={styles.sectionHeader}>
-        <Text style={styles.recentTitle}>최근 본 사진가 & 스튜디오</Text>
+        <Text style={styles.recentTitle}>찰떡으로 영상 찍어드립니다!</Text>
         <TouchableOpacity
           onPress={() => navigation.navigate("AllRecent")}
           style={{ marginLeft: "auto" }}
@@ -63,7 +63,7 @@ const Photographer = () => {
         {photographers.map((photographer) => (
           <TouchableOpacity key={photographer.id} style={styles.card}>
             <Image
-              source={require("../assets/photographer.png")}
+              source={require("../../assets/photographer.png")}
               style={styles.image}
             />
             <View style={styles.cardContent}>
@@ -86,10 +86,6 @@ const Photographer = () => {
           </TouchableOpacity>
         ))}
       </ScrollView>
-      { /* 앱 사용 가이드 */ }
-      <View style={styles.imageContainer}>
-        <Image source={require("../assets/user_guide.png")} />
-      </View>
     </View>
   );
 };
@@ -121,11 +117,6 @@ const styles = StyleSheet.create({
     height: 140,
     backgroundColor: "#F5F5F5",
     borderRadius: 8,
-  },
-  imageContainer: {
-    alignItems: 'center', // 좌우 가운데 정렬
-    marginTop: 20, // 필요에 따라 여백 추가
-    marginBottom: 10
   },
   cardContent: {
     marginTop: 16,

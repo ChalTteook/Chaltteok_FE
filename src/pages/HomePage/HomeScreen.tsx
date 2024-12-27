@@ -1,10 +1,10 @@
 import React from 'react';
 import { ScrollView, View, StyleSheet } from 'react-native';
-import Banner from '../components/Banner';
-import Category from '../components/Category';
-import Photographer from '../components/Photographer';
-import NearbyRecommendation from '../components/NearbyRecommendation';
-import VideoRecommendation from '../components/VideoRecommendation';
+import Banner from './Banner';
+import Category from './Category';
+import Photographer from './Photographer';
+import NearbyRecommendation from './NearbyRecommendation';
+import VideoRecommendation from './VideoRecommendation';
 const HomeScreen = () => {
   return (
     <ScrollView style={styles.container}>

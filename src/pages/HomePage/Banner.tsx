@@ -54,7 +54,7 @@ const Banner = () => {
         {banners.map((banner, index) => (
           <View key={banner.id} style={styles.bannerItem}>
             <Image
-              source={require("../assets/banner_image.png")}
+              source={require("../../assets/banner_image.png")}
               style={styles.bannerImage}
             />
             <View style={styles.bannerOverlay}>

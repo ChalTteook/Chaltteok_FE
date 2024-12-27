@@ -2,10 +2,10 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../pages/HomeScreen';
-import NearbyScreen from '../pages/NearbyScreen';
-import FavoriteScreen from '../pages/FavoriteScreen';
-import ProfileScreen from '../pages/ProfileScreen';
+import HomeScreen from '../pages/HomePage/HomeScreen';
+import NearbyScreen from '../pages/HomePage/NearbyScreen';
+import FavoriteScreen from '../pages/HomePage/FavoriteScreen';
+import ProfileScreen from '../pages/HomePage/ProfileScreen';
 import HomeIcon from 'react-native-vector-icons/Octicons';
 import MapIcon from 'react-native-vector-icons/Feather';
 import FavoriteIcon from 'react-native-vector-icons/MaterialIcons';
@@ -13,7 +13,7 @@ import UserIcon from 'react-native-vector-icons/FontAwesome';
 
 const Tab = createBottomTabNavigator();
 
-const AppNavigator = () => {
+const AppNavigator = () => {4
   return (
     <NavigationContainer>
       <Tab.Navigator
