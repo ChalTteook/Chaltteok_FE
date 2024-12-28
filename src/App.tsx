@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { View, StyleSheet, Animated, Text } from 'react-native';
 import AppNavigator from './navigation/AppNavigator';
-import Header from './components/Header';
+import { NavigationContainer } from '@react-navigation/native';
 
 const App = () => {
   const scrollY = useRef(new Animated.Value(0)).current;
@@ -21,17 +21,18 @@ const App = () => {
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.headerContainer, { transform: [{ translateY: headerTranslateY }] }]}>
-        <Header />
       </Animated.View>
       <Animated.ScrollView
         contentContainerStyle={styles.navigatorContainer}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-          { useNativeDriver: false } // useNativeDriver는 false로 설정
+          { useNativeDriver: false }
         )}
         scrollEventThrottle={16}
       >
-        <AppNavigator />
+        <NavigationContainer>
+          <AppNavigator />
+        </NavigationContainer>
       </Animated.ScrollView>
     </View>
   );
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   },
   navigatorContainer: {
     flexGrow: 1,
-    paddingTop: 60, // Header 높이만큼 여백 추가
+    // paddingTop: 60,
   },
 });
 
