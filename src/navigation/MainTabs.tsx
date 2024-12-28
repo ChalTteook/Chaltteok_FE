@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../pages/HomePage/HomeScreen';
-import NearbyScreen from '../pages/HomePage/NearbyScreen';
+import NearbyScreen from '../pages/NearbyPage/NearbyScreen';
 import FavoriteScreen from '../pages/HomePage/FavoriteScreen';
 import ProfileScreen from '../pages/HomePage/ProfileScreen';
 import HomeIcon from 'react-native-vector-icons/Octicons';
@@ -45,21 +45,7 @@ const MainTabs = () => {
               </View>
             );
           },
-          tabBarActiveTintColor: '#FF4081',
-          tabBarInactiveTintColor: 'gray',
-          tabBarStyle: {
-            height: 90,
-          },
-          tabBarLabelStyle: {
-            marginTop: 15,
-            marginBottom: 10, // 텍스트의 위치를 조정
-            fontSize: 12,
-          },
-          tabBarIconStyle: {
-            marginTop: 10,
-            marginBottom: -10,
-          },
-          headerShown: false, // 화면 상단에 route.name이 나타나지 않도록 설정
+          ...tabBarOptions,
         })}
       >
         <Tab.Screen name="찰떡홈" component={HomeScreen} />
@@ -69,6 +55,24 @@ const MainTabs = () => {
       </Tab.Navigator>
     </>
   );
+};
+
+const tabBarOptions = {
+  tabBarActiveTintColor: '#FF4081',
+  tabBarInactiveTintColor: 'gray',
+  tabBarStyle: {
+    height: 90,
+  },
+  tabBarLabelStyle: {
+    marginTop: 15,
+    marginBottom: 10, // 텍스트의 위치를 조정
+    fontSize: 12,
+  },
+  tabBarIconStyle: {
+    marginTop: 10,
+    marginBottom: -10,
+  },
+  headerShown: false, // 화면 상단에 route.name이 나타나지 않도록 설정
 };
 
 const styles = StyleSheet.create({

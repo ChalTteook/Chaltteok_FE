@@ -8,6 +8,7 @@ import {
   Image,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
 
 const photographers = [
   {
@@ -44,6 +45,7 @@ const formatPrice = (price: number) => {
 };
 
 const Photographer = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.recentSection}>
       <View style={styles.sectionHeader}>
@@ -61,7 +63,13 @@ const Photographer = () => {
         contentContainerStyle={styles.scrollContent}
       >
         {photographers.map((photographer) => (
-          <TouchableOpacity key={photographer.id} style={styles.card}>
+          <TouchableOpacity
+            key={photographer.id}
+            style={styles.card}
+            onPress={() =>
+              navigation.navigate("StudioPage")
+            }
+          >
             <Image
               source={require("../../assets/photographer.png")}
               style={styles.image}
@@ -86,7 +94,7 @@ const Photographer = () => {
           </TouchableOpacity>
         ))}
       </ScrollView>
-      { /* 앱 사용 가이드 */ }
+      {/* 앱 사용 가이드 */}
       <View style={styles.imageContainer}>
         <Image source={require("../../assets/user_guide.png")} />
       </View>
@@ -123,9 +131,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   imageContainer: {
-    alignItems: 'center', // 좌우 가운데 정렬
+    alignItems: "center", // 좌우 가운데 정렬
     marginTop: 20, // 필요에 따라 여백 추가
-    marginBottom: 10
+    marginBottom: 10,
   },
   cardContent: {
     marginTop: 16,

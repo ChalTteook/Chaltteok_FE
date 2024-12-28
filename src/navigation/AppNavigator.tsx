@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import MainTabs from './MainTabs';
 import NotificationScreen from '../pages/NotificationPage/Notification';
+import StudioPage from '../pages/StudioPage/StudioPage';
 
 const Stack = createStackNavigator();
 
@@ -10,6 +11,7 @@ const AppNavigator = () => {
       <Stack.Navigator>
         <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
         <Stack.Screen name="Notification" component={NotificationScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="StudioPage" component={StudioPage} options={{ headerShown: false }} />
       </Stack.Navigator>
   );
 };
