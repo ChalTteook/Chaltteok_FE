@@ -1,6 +1,4 @@
 #import "AppDelegate.h"
-
-#import <KakaoSDKCommon/KakaoSDKCommon.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTLinkingManager.h>
 
@@ -60,6 +58,9 @@
   return [super application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
 }
 
+<<<<<<< HEAD
 [KakaoSDKCommon initSDKWithAppKey:@"0f63e2af878567f097dc17fbbd118b25"];
 
+=======
+>>>>>>> cfa7fd12155626f7cdd36cdbc3060acf714d33ca
 @end

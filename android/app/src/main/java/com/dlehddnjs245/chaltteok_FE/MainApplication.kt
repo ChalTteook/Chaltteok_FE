@@ -1,8 +1,4 @@
 package com.dlehddnjs245.chaltteok_FE
-
-import com.kakao.sdk.common.KakaoSdk
-
-
 import android.app.Application
 import android.content.res.Configuration
 
@@ -45,7 +41,10 @@ class MainApplication : Application(), ReactApplication {
 
   override fun onCreate() {
     super.onCreate()
+<<<<<<< HEAD
     KakaoSdk.init(this, "0f63e2af878567f097dc17fbbd118b25")
+=======
+>>>>>>> cfa7fd12155626f7cdd36cdbc3060acf714d33ca
     SoLoader.init(this, OpenSourceMergedSoMapping)
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
