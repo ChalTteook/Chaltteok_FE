@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">chaltteok_FE</string>
+    <string name="kakao_app_key">0f63e2af878567f097dc17fbbd118b25</string>
 </resources>
