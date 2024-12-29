@@ -41,15 +41,17 @@ const Banner = () => {
   const goPrev = () => {
     swiperRef.current?.scrollBy(-1);
   };
+
   return (
     <View style={styles.bannerContainer}>
       <Swiper
         ref={swiperRef}
         autoplay
-        showsPagination={false}
-        width={500}
-        height={500}
+        width={width}
+        height={width}
         autoplayTimeout={5}
+        showsPagination={false}
+        loop={true}
       >
         {banners.map((banner, index) => (
           <View key={banner.id} style={styles.bannerItem}>
@@ -73,7 +75,6 @@ const Banner = () => {
           </View>
         ))}
       </Swiper>
-      {/* 좌우 버튼 추가 */}
       <TouchableOpacity
         style={[styles.arrowButton, styles.leftButton]}
         onPress={goPrev}
@@ -91,9 +92,9 @@ const Banner = () => {
 };
 
 const styles = StyleSheet.create({
-    bannerContainer: {
+  bannerContainer: {
     position: "relative",
-    marginBottom: -85,
+    marginBottom: 20,
   },
   bannerItem: {
     width: width,
@@ -171,3 +172,4 @@ const styles = StyleSheet.create({
 });
 
 export default Banner;
+

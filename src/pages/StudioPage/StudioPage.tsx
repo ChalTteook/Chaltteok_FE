@@ -170,7 +170,8 @@ export default function StudioDetailScreen({ navigation }) {
               자기소개 최대 000자 최대 2줄
             </Text>
             <Text style={styles.photographerDetail}>길어지면 말줄임</Text>
-            <TouchableOpacity style={styles.reserveButton}>
+            <TouchableOpacity style={styles.reserveButton}
+            onPress={() => navigation.navigate('ReservationPage')}>
               <Text style={styles.reserveButtonText}>예약</Text>
             </TouchableOpacity>
           </View>

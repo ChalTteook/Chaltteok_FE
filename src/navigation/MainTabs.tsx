@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../pages/HomePage/HomeScreen';
 import NearbyScreen from '../pages/NearbyPage/NearbyScreen';
 import FavoriteScreen from '../pages/HomePage/FavoriteScreen';
-import ProfileScreen from '../pages/HomePage/ProfileScreen';
+import ProfileScreen from '../pages/ProfilePage/ProfileScreen';
 import HomeIcon from 'react-native-vector-icons/Octicons';
 import MapIcon from 'react-native-vector-icons/Feather';
 import FavoriteIcon from 'react-native-vector-icons/MaterialIcons';
