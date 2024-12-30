@@ -39,7 +39,7 @@ const KakaoLogin = () => {
         console.log('액세스 토큰:', data.access_token);
         setShowWebView(false);
         setIsLoading(false);
-        // 액세스 토큰
+        // 액세스 토큰 사용 로직 추가
       } else {
         console.error('액세스 토큰을 받을 수 없습니다.');
         setIsLoading(false);
@@ -64,7 +64,6 @@ const KakaoLogin = () => {
       getAccessToken(authorize_code);
       navigation.navigate('PhoneAuth', { code: authorize_code });
     } else {
-      //setShowWebView(false);
       setIsLoading(false);
     }
   };

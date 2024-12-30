@@ -12,6 +12,7 @@ import PhoneAuth from './pages/PhoneAuth';
 import WelcomeJoin from './pages/WelcomeJoin';
 import ProfileEdit from './pages/ProfileEdit';
 import KakaoLogin from './services/KakaoLogin';
+import NaverLogin from './services/NaverLogin';
 
 const Stack = createStackNavigator();
 
@@ -60,6 +61,11 @@ export default function App() {
             <Stack.Screen
               name="KakaoLogin"
               component={KakaoLogin}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="NaverLogin"
+              component={NaverLogin}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
