@@ -21,10 +21,9 @@ const CloseHeader: React.FC<HeaderProps> = ({ title }) => {
 
   return (
     <View style={styles.header}>
-        <TouchableOpacity onPress={handleClose}>
-          <Image source={require('../assets/close.png')} style={styles.closeIcon} />
-        </TouchableOpacity>
-      )
+      <TouchableOpacity onPress={handleClose}>
+        <Image source={require('../assets/close.png')} style={styles.closeIcon} />
+      </TouchableOpacity>
       <Text style={styles.title}>{title}</Text>
     </View>
   );
