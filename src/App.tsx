@@ -10,6 +10,7 @@ import EmailLogin from './pages/EmailLogin';
 import Join from './pages/Join';
 import PhoneAuth from './pages/PhoneAuth';
 import WelcomeJoin from './pages/WelcomeJoin';
+import ProfileEdit from './pages/ProfileEdit';
 import KakaoLogin from './services/KakaoLogin';
 
 const Stack = createStackNavigator();
@@ -29,6 +30,11 @@ export default function App() {
             <Stack.Screen
               name="Login"
               component={SocialLogin}
+              options={{ headerShown: false }} 
+            />
+            <Stack.Screen
+              name="ProfileEdit"
+              component={ProfileEdit}
               options={{ headerShown: false }} 
             />
             <Stack.Screen

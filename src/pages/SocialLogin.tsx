@@ -56,7 +56,7 @@ export default function LoginScreen() {
   };
 
   const handleEmailLogin = () => {
-    navigation.navigate('EmailLogin');
+    navigation.navigate('ProfileEdit');
   };
 
   return (
