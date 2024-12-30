@@ -61,7 +61,7 @@ const KakaoLogin = () => {
 
       setShowWebView(false);
       setIsLoading(true); 
-      getAccessToken(authorize_code); // 액세스 토큰 요청
+      getAccessToken(authorize_code);
       navigation.navigate('PhoneAuth', { code: authorize_code });
     } else {
       //setShowWebView(false);

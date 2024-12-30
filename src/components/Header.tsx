@@ -1,17 +1,24 @@
-import React from 'react';
-import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import SearchIcon from 'react-native-vector-icons/Fontisto';
-import NotificationIcon from 'react-native-vector-icons/Ionicons';
+import React from "react";
+import { View, Image, TouchableOpacity, StyleSheet } from "react-native";
+import SearchIcon from "react-native-vector-icons/Fontisto";
+import NotificationIcon from "react-native-vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
 
 const Header = () => {
+  const navigation = useNavigation();
+  const [hasUnreadNotifications] = React.useState(true);
+
   return (
     <View style={styles.headerContainer}>
-      <Image source={require('../assets/main_logo.png')} style={styles.logo} />
+      <Image source={require("../assets/main_logo.png")} style={styles.logo} />
       <View style={styles.headerRight}>
         <TouchableOpacity style={styles.searchContainer}>
           <SearchIcon name="search" size={20} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.notificationContainer}>
+        <TouchableOpacity
+          style={styles.notificationContainer}
+          onPress={() => navigation.navigate("Notification")}
+        >
           <NotificationIcon name="notifications-outline" size={24} />
           <View style={styles.notificationDot} />
         </TouchableOpacity>
@@ -22,38 +29,38 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     marginTop: 5,
   },
   logo: {
     width: 100,
     height: 60,
-    resizeMode: 'contain',
+    resizeMode: "contain",
     marginLeft: 16,
   },
   headerRight: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 16,
   },
   searchContainer: {
-    position: 'relative',
+    position: "relative",
   },
   notificationContainer: {
-    position: 'relative',
+    position: "relative",
     marginLeft: 8,
     marginRight: 16,
   },
   notificationDot: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     right: 0,
     width: 5,
     height: 5,
     borderRadius: 4,
-    backgroundColor: '#FF4081',
+    backgroundColor: "#FF4081",
   },
 });
 
