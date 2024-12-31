@@ -1,4 +1,11 @@
 package com.chaltteok.chaltteok.user.service;
 
-public class UserService {
+import com.chaltteok.chaltteok.user.model.User;
+import org.springframework.stereotype.Service;
+
+public interface UserService {
+
+    User register(User user);
+
+    User findUserByEmail(String email);
 }
