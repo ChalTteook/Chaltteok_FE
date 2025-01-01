@@ -3,6 +3,7 @@ import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useNavigation } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
+import { sendTokenToBackend } from '../api/KakaoAuth';
 
 type RootStackParamList = {
   PhoneAuth: { code: string }; 
@@ -10,7 +11,7 @@ type RootStackParamList = {
 };
 
 const REST_API_KEY = 'c23206b22df9ce1d40d85f2aaa021980';
-const REDIRECT_URI = 'http://172.141.218.227:8081/Home'; 
+const REDIRECT_URI = 'http://192.168.0.102:8081/Home'; 
 const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage(window.location.href)`; 
 
 const KakaoLogin = () => {
@@ -39,14 +40,16 @@ const KakaoLogin = () => {
         console.log('액세스 토큰:', data.access_token);
         setShowWebView(false);
         setIsLoading(false);
-        // 액세스 토큰 사용 로직 추가
+
+        await sendTokenToBackend(data.access_token, authorize_code);
+
       } else {
         console.error('액세스 토큰을 받을 수 없습니다.');
-        setIsLoading(false);
+        setShowWebView(false);
       }
     } catch (error) {
       console.error('액세스 토큰 요청 오류:', error);
-      setIsLoading(false);
+      setShowWebView(false);
     }
   };
 
@@ -55,12 +58,10 @@ const KakaoLogin = () => {
     const condition = data.indexOf(exp);
 
     if (condition !== -1) {
-      // 인가 코드 추출
       const authorize_code = data.substring(condition + exp.length);
       console.log('로그인 성공, 인가 코드:', authorize_code);
 
       setShowWebView(false);
-      setIsLoading(true); 
       getAccessToken(authorize_code);
       navigation.navigate('PhoneAuth', { code: authorize_code });
     } else {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, Image, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Header from '../components/CloseHeader';
@@ -18,7 +17,7 @@ export default function LoginScreen() {
   };
 
   const handleEmailLogin = () => {
-    navigation.navigate('EmailLogin');
+    navigation.navigate('WelcomeJoin');
   };
 
   return (

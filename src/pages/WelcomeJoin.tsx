@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Alert, ActivityIndicator, TouchableOpacity, Text, Image, Dimensions, PixelRatio, Button, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, Dimensions} from 'react-native';
 import Header from '../components/LeftHeader';
 import { useNavigation } from '@react-navigation/native';
 
