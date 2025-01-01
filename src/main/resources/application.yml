@@ -23,3 +23,23 @@ spring:
       platform: postgres
       schema-locations: classpath:init-schema.sql
       mode: always
+
+social:
+  client:
+#    kakao:
+#      rest-api-key: c23206b22df9ce1d40d85f2aaa021980
+#      secret-key:
+#      redirect-uri: http://127.0.0.1:8080/kakao-login
+#      grant_type: authorization_code
+
+    naver:
+      rest-api-key: Fu0jy9r1JgUxld5djIaM
+      secret-key: 4EoJ1dQ_DA
+      redirect-uri: http://localhost:8080/naver-login
+      grant_type: authorization_code
+
+#    google:
+#      rest-api-key:
+#      secret-key:
+#      redirect-uri: http://localhost:8080/google-login
+#      grant_type: authorization_code

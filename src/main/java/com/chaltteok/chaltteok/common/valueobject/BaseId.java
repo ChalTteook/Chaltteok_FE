@@ -1,7 +1,10 @@
 package com.chaltteok.chaltteok.common.valueobject;
 
+import lombok.Getter;
+
 import java.util.Objects;
 
+@Getter
 public abstract class BaseId<T> {
     private T value;
 

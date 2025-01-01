@@ -1,14 +1,18 @@
 package com.chaltteok.chaltteok.user.dto;
 
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class CreateUserCommand {
+public class UserJoinRequest {
     @NotBlank
     @Size(max = 30)
     private String userId;

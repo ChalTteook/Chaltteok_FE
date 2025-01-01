@@ -2,13 +2,14 @@ package com.chaltteok.chaltteok.user.model;
 
 import com.chaltteok.chaltteok.common.entity.BaseEntity;
 import com.chaltteok.chaltteok.common.valueobject.UserId;
+import lombok.Data;
 import lombok.Getter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Date;
 
-@Getter
+@Data
 public class User extends BaseEntity<UserId> {
 
     private final Long authId;
@@ -40,15 +41,6 @@ public class User extends BaseEntity<UserId> {
         couponUsage = builder.couponUsage;
     }
 
-
-    public static Builder builder() {
-        return new Builder()
-                .enrollDate(new Date())
-                .lastUpdate(new Date())
-                .memberStatus("Y")
-                .couponUsage("Y");
-    }
-
     public void updatePassword(String newPassword) {
         password = hashPassword(newPassword);
     }
@@ -58,8 +50,21 @@ public class User extends BaseEntity<UserId> {
     }
 
     public static String hashPassword(String password) {
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
         return passwordEncoder.encode(password);
+    }
+
+    public static boolean verifyPassword(String plainPassword, String hashedPassword) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.matches(plainPassword, hashedPassword);
+    }
+
+    public static Builder builder() {
+        return new Builder()
+                .enrollDate(new Date())
+                .lastUpdate(new Date())
+                .memberStatus("Y")
+                .couponUsage("Y");
     }
 
     public static final class Builder {
