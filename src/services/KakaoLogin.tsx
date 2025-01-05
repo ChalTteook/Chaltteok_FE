@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useNavigation } from '@react-navigation/native';

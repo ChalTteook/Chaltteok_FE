@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Alert, ActivityIndicator, TouchableOpacity, Text, Image, Dimensions, PixelRatio, Button, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
+import { useState } from 'react';
+import { View, StyleSheet, TouchableOpacity, Text, Image, Dimensions, PixelRatio, Button, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import Header from '../components/LeftHeader';
 import { useNavigation } from '@react-navigation/native';
 
@@ -21,9 +21,9 @@ export default function LoginScreen() {
   };
   
     return (
+      <View style={styles.screenContainer}>
+      <Header style={styles.headerContainer} />
       <View style={styles.container}>
-
-      <Header/>
         
         <TextInput
           style={[styles.inputId, { paddingLeft: 16 }]}
@@ -50,30 +50,41 @@ export default function LoginScreen() {
           <TouchableOpacity onPress={handleJoinNavigation}>
             <Text style={styles.footerText}>이메일 회원가입</Text>
           </TouchableOpacity>
-          <Text style={styles.footerText}> | </Text>
+          <Text style={styles.footerText}>|</Text>
           <TouchableOpacity>
             <Text style={styles.footerText}>이메일 찾기</Text>
           </TouchableOpacity>
-          <Text style={styles.footerText}> | </Text>
+          <Text style={styles.footerText}>|</Text>
           <TouchableOpacity>
             <Text style={styles.footerText}>비밀번호 찾기</Text>
           </TouchableOpacity>
         </View>
       </View>
+      </View>
     );
   }
   
   const styles = StyleSheet.create({
+    screenContainer: {
+      flex: 1,
+      backgroundColor: '#fff',
+    },
+    headerContainer: {
+      position: 'absolute',
+      top: 0,
+      width: '100%',
+    },
     container: {
         flex: 1,
         backgroundColor: '#fff',
+        paddingHorizontal: 16 * scaleWidth,
+        marginTop: 85 * scaleHeight,
       },
     inputId: {
+      marginTop: 114 * scaleHeight,
       width: 343,
       height: 48,
-      position: 'absolute',
       alignSelf: 'center',
-      top: 199 * scaleHeight,
       borderColor: '#D5D5D5',
       borderWidth: 1,
       borderRadius: 10,
@@ -81,22 +92,20 @@ export default function LoginScreen() {
     inputPass: {
         width: 343,
         height: 48,
-        position: 'absolute',
+        marginTop: 16 * scaleHeight,
         alignSelf: 'center',
-        top: 263 * scaleHeight,
         borderColor: '#D5D5D5',
         borderWidth: 1,
         borderRadius: 10,
       },
     loginButton: {
+      marginTop: 40 * scaleHeight,
       width: 343,
       height: 48,
       backgroundColor: '#F71D6A',
       alignItems: 'center',
       borderRadius: 10,
-      position: 'absolute',
       alignSelf: 'center',
-      top: 351 * scaleHeight,
       justifyContent: 'center',
     },
     loginButtonText: {
@@ -108,11 +117,10 @@ export default function LoginScreen() {
       textAlign: 'center',
     },
     footer: {
-      position: 'absolute',
-      left: 68 * scaleWidth,
-      top: 431 * scaleHeight,
+      marginTop: 32 * scaleHeight,
       flexDirection: 'row',
-      justifyContent: 'center',
+      alignSelf: 'center',
+      gap: 8,
     },
     footerText: {
       fontFamily: 'PretendardJP-Regular',

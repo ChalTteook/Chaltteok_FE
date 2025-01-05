@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Alert, ActivityIndicator, TouchableOpacity, Text, Image, Dimensions, PixelRatio, Button, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
+import { useState } from 'react';
+import { View, StyleSheet, Alert, TouchableOpacity, Text, Dimensions, TextInput } from 'react-native';
 import Header from '../components/LeftHeader';
+import BottomButton from '../components/BottomButton';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 
@@ -66,8 +67,9 @@ export default function SignUpScreen() {
   
     return (
       
+      <View style={styles.screenContainer}>
+      <Header style={styles.headerContainer} />
       <View style={styles.container}>
-          <Header/>
             <Text style={styles.headerText}>회원 가입</Text>
 
             <Text style={styles.emailText}>이메일 주소</Text>
@@ -78,7 +80,7 @@ export default function SignUpScreen() {
                 value={email}
                 onChangeText={setEmail}
             />
-            {emailError ? <Text style={[styles.errorMsg, { top: 241 * scaleHeight }]}>{emailError}</Text> : null}
+            {emailError ? <Text style={[styles.errorMsg, { marginTop: 4 * scaleHeight }]}>{emailError}</Text> : null}
 
             <Text style={styles.passText}>비밀번호</Text>
             <TextInput
@@ -89,7 +91,7 @@ export default function SignUpScreen() {
                 onChangeText={setPassword}
                 secureTextEntry
             />
-            {passwordError ? <Text style={[styles.errorMsg, { top: 345 * scaleHeight }]}>{passwordError}</Text> : null}
+            {passwordError ? <Text style={[styles.errorMsg, { marginTop: 4 * scaleHeight }]}>{passwordError}</Text> : null}
 
             <Text style={styles.passCText}>비밀번호 확인</Text>
             <TextInput
@@ -100,25 +102,32 @@ export default function SignUpScreen() {
                 onChangeText={setConfirmPassword}
                 secureTextEntry
             />
-            {confirmPasswordError ? <Text style={[styles.errorMsg, { top: 449 * scaleHeight }]}>{confirmPasswordError}</Text> : null}
+            {confirmPasswordError ? <Text style={[styles.errorMsg, { marginTop: 4 * scaleHeight }]}>{confirmPasswordError}</Text> : null}
 
-            <TouchableOpacity style={styles.nextButton} onPress={handleSignUp}>
-                <Text style={styles.nextButtonText}>다음</Text>
-            </TouchableOpacity>
+            <BottomButton onPress={handleSignUp} text="다음" />
+            </View>
             </View>
             );
             }
   
   
 const styles = StyleSheet.create({
+  screenContainer: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  headerContainer: {
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+  },
   container: {
       flex: 1,
       backgroundColor: '#fff',
-  },
+      paddingHorizontal: 16 * scaleWidth,
+      marginTop: 85 * scaleHeight,
+    },
   headerText: {
-      position: 'absolute',
-      left: 16 * scaleWidth,
-      top: 117 * scaleHeight,
       fontFamily: 'PretendardJP-Bold',
       color: '#202123',
       fontWeight: 'bold',
@@ -126,89 +135,54 @@ const styles = StyleSheet.create({
       lineHeight: 32,
   },
   emailText: {
-      position: 'absolute',
-      left: 16 * scaleWidth,
-      top: 165 * scaleHeight,
+      marginTop: 16 * scaleHeight,
       fontFamily: 'PretendardJP-Regular',
       color: '#202123',
       fontWeight: '400',
       fontSize: 12,
       lineHeight: 16,
-      textAlign: 'center',
   },
   inputEmail: {
-      width: 343 * scaleWidth,
+      width: 343,
       height: 48,
-      position: 'absolute',
-      left: 16 * scaleWidth,
-      top: 189 * scaleHeight,
+      marginTop: 8 * scaleHeight,
       borderColor: '#D5D5D5',
       borderWidth: 1,
       borderRadius: 10,
   },
   passText: {
-      position: 'absolute',
-      left: 16 * scaleWidth,
-      top: 269 * scaleHeight,
+      marginTop: 12 * scaleHeight,
       fontFamily: 'PretendardJP-Regular',
       color: '#202123',
       fontWeight: '400',
       fontSize: 12,
       lineHeight: 16,
-      textAlign: 'center',
   },
   inputPass: {
-      width: 343 * scaleWidth,
+      width: 343,
       height: 48,
-      position: 'absolute',
-      left: 16 * scaleWidth,
-      top: 293 * scaleHeight,
+      marginTop: 8 * scaleHeight,
       borderColor: '#D5D5D5',
       borderWidth: 1,
       borderRadius: 10,
   },
   passCText: {
-      position: 'absolute',
-      left: 16 * scaleWidth,
-      top: 373 * scaleHeight,
+      marginTop: 12 * scaleHeight,
       fontFamily: 'PretendardJP-Regular',
       color: '#202123',
       fontWeight: '400',
       fontSize: 12,
       lineHeight: 16,
-      textAlign: 'center',
   },
   inputPassC: {
-      width: 343 * scaleWidth,
+      width: 343,
       height: 48,
-      position: 'absolute',
-      left: 16 * scaleWidth,
-      top: 397 * scaleHeight,
+      marginTop: 8 * scaleHeight,
       borderColor: '#D5D5D5',
       borderWidth: 1,
       borderRadius: 10,
   },
-  nextButton: {
-      width: 343,
-      height: 48,
-      backgroundColor: '#F71D6A',
-      alignSelf: 'center',
-      borderRadius: 10,
-      position: 'absolute',
-      bottom: 48 * scaleHeight,
-      justifyContent: 'center',
-  },
-  nextButtonText: {
-      fontFamily: 'PretendardJP-Regular',
-      color: '#FFFFFF',
-      fontWeight: '600',
-      fontSize: 16,
-      lineHeight: 19.2,
-      textAlign: 'center',
-  },
   errorMsg: {
-      position: 'absolute',
-      left: 16 * scaleWidth,
       fontFamily: 'PretendardJP-Regular',
       color: '#FF4438', 
       fontSize: 12,

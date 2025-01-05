@@ -11,6 +11,7 @@ import {
   Dimensions,
 } from 'react-native';
 import Header from '../components/LeftHeader';
+import BottomButton from '../components/BottomButton';
 import { useNavigation, useRoute  } from '@react-navigation/native';
 import axios from 'axios';
 
@@ -22,6 +23,7 @@ export default function LoginScreen() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [verificationCode, setVerificationCode] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+ 
   const navigation = useNavigation();
   const route = useRoute();
   const { email } = route.params || {};
@@ -90,9 +92,11 @@ export default function LoginScreen() {
       style={{ flex: 1 }}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
+      <View style={styles.screenContainer}>
+      <Header style={styles.headerContainer} />
       <View style={styles.container}>
-        <Header/>
         <Text style={styles.title}>휴대폰 번호를 인증해 주세요.</Text>
+        <View style={styles.inputRow}>
         <TextInput
           style={[styles.inputnum, { paddingLeft: 16 }]}
           value={phoneNumber}
@@ -105,6 +109,7 @@ export default function LoginScreen() {
         <TouchableOpacity style={styles.button} onPress={handleSendVerificationCode}>
           <Text style={styles.buttonText}>인증번호 발송</Text>
         </TouchableOpacity>
+        </View>
         <TextInput
           style={[styles.input, { paddingLeft: 16 }]}
           value={verificationCode}
@@ -114,31 +119,44 @@ export default function LoginScreen() {
           placeholderTextColor="#D5D5D5"
           maxLength={5} 
         />
-        <TouchableOpacity style={styles.verifyButton} onPress={handleVerifyCode}>
-          <Text style={styles.verifyText}>인증하기</Text>
-        </TouchableOpacity>
+<BottomButton onPress={handleVerifyCode} text="인증하기기" />
         <Text style={styles.retryText}>
           인증번호가 도착하지 않았을 경우 인증번호 발송 버튼을 다시 눌러 주세요.
         </Text>
+      </View>
       </View>
     </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  screenContainer: {
     flex: 1,
     backgroundColor: '#fff',
   },
+  headerContainer: {
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+  },
+  container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      paddingHorizontal: 16 * scaleWidth,
+      marginTop: 85 * scaleHeight,
+    },
   title: {
     fontFamily: 'PretendardJP-Bold',
-    position: 'absolute',
-    top: 164 * scaleHeight,
-    left: 16 * scaleWidth,
+    marginTop: 32 * scaleHeight,
     fontSize: 24,
     lineHeight: 32,
     color: '#202123',
     fontWeight: 'bold',
+  },
+  inputRow: {
+    flexDirection: 'row',      
+    gap: 16,
+    marginTop: 16 * scaleHeight,
   },
   inputnum: {
     width: 202,
@@ -146,42 +164,13 @@ const styles = StyleSheet.create({
     borderColor: '#D5D5D5',
     borderWidth: 1,
     fontSize: 14,
-    marginBottom: 16,
     borderRadius: 10,
-    position: 'absolute',
-    top: 214 * scaleHeight,
-    left: 16 * scaleWidth,
-  },
-  input: {
-    width: 343,
-    height: 48,
-    borderColor: '#D5D5D5',
-    borderWidth: 1,
-    fontSize: 14,
-    marginBottom: 20,
-    borderRadius: 10,
-    position: 'absolute',
-    top: 284 * scaleHeight,
-    left: 16 * scaleWidth,
   },
   button: {
     backgroundColor: '#202123',
     borderRadius: 8,
     width: 123,
     height: 48,
-    position: 'absolute',
-    top: 214 * scaleHeight,
-    left: 215 * scaleWidth,
-    justifyContent: 'center',
-  },
-  verifyButton: {
-    width: 343,
-    height: 48,
-    backgroundColor: '#F71D6A',
-    alignSelf: 'center',
-    borderRadius: 10,
-    position: 'absolute',
-    bottom: 48 * scaleHeight,
     justifyContent: 'center',
   },
   buttonText: {
@@ -191,21 +180,22 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  verifyText: {
-    fontFamily: 'PretendardJP-Regular',
-    color: '#FFFFFF',
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '600',
+  input: {
+    width: 343,
+    height: 48,
+    borderColor: '#D5D5D5',
+    borderWidth: 1,
+    fontSize: 14,
+    borderRadius: 10,
+    marginTop: 16 * scaleHeight,
   },
   retryText: {
+    marginTop: 16 * scaleHeight,
     fontFamily: 'PretendardJP-Regular',
     color: '#000000',
     fontSize: 12,
     lineHeight: 16,
     fontWeight: '400',
-    position: 'absolute',
-    top: 344 * scaleHeight,
     alignSelf: 'center',
   },
 });

@@ -17,7 +17,7 @@ export default function LoginScreen() {
   };
 
   const handleEmailLogin = () => {
-    navigation.navigate('WelcomeJoin');
+    navigation.navigate('Join');
   };
 
   return (
@@ -47,31 +47,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
+    alignItems: 'center',
   },
   kakaoButton: {
     width: 300,
     height: 45,
     borderRadius: 2,
-    position: 'absolute',
-    top: 325 * scaleHeight,
-    alignSelf: 'center',
+    marginTop: 281 * scaleHeight
   },
   naverButton: {
     width: 300,
     height: 45,
     borderRadius: 2,
-    position: 'absolute',
-    top: 386 * scaleHeight,
-    alignSelf: 'center',
+    marginTop: 16,
   },
   emailButton: {
     backgroundColor: '#F71D6A',
     width: 300,
     height: 44,
     borderRadius: 2,
-    position: 'absolute',
-    top: 447 * scaleHeight,
-    alignSelf: 'center',
+    marginTop: 16, 
     justifyContent: 'center',
   },
   buttonImage: {
@@ -91,9 +86,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     textAlign: 'center',
     color: '#202123',
-    position: 'absolute',
-    top: 523 * scaleHeight,
-    alignSelf: 'center',
+    marginTop: 32, 
     width: 246,
   },
 });
