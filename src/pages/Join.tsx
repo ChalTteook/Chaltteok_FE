@@ -44,9 +44,9 @@ export default function SignUpScreen() {
     
         if (isValid) {
           try {
-            const response = await joinAuth(email, password); // API 호출
+            const response = await joinAuth(email, password, confirmPassword);
     
-            if (response.success) {
+            if (response.data.verified == 'N') {
               navigation.navigate('PhoneAuth'); 
             } else {
               Alert.alert('회원 가입 실패', response.message);

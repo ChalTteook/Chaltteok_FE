@@ -3,7 +3,7 @@ import axios from 'axios';
 export const sendTokenToBackend = async (authorizecode: string) => {
   try {
     const quotedAuthorizeCode = `"${authorizecode}"`;
-    const response = await axios.post('p/auth/social-login', {
+    const response = await axios.post('https://39a9-112-218-106-221.ngrok-free.app/auth/social-login', {
       socialLoginType: "KAKAO",
       code: quotedAuthorizeCode
     });

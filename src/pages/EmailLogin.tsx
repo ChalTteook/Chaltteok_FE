@@ -17,6 +17,7 @@ export default function LoginScreen() {
       try {
         console.log('로그인 시도:', email, password);
         const response = await loginUser(email, password);
+
         const verified = response.data.verified;
         const userEmail = response.data.email;
         

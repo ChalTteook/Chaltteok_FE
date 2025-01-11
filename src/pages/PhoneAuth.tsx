@@ -4,14 +4,14 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import Header from '../components/LeftHeader';
 import BottomButton from '../components/BottomButton';
-import { sendVerificationCode, verifyPhoneNumber } from '../api/VerifyPhone';
+import { sendVerificationCode } from '../api/VerifyPhone';
 
 const { width, height } = Dimensions.get('window');
 const scaleWidth = width / 375;
 const scaleHeight = height / 812;
 
 type RootStackParamList = {
-  WelcomeJoin: { any }; 
+  WelcomeJoin: { username: string; nickname: string; phone: string; }; 
 };
 
 export default function PhoneVerificationScreen() {
@@ -31,6 +31,12 @@ export default function PhoneVerificationScreen() {
     setVerificationCode(cleaned);
   };
 
+  const getPhoneNumberForServer = () => {
+    return phoneNumber.replace(/-/g, '');
+  };
+
+  const formattedPhoneNumber = getPhoneNumberForServer();
+
   const handleSendVerificationCode = async () => {
     if (phoneNumber === '') {
       setErrorMessage('전화번호를 입력해주세요.');
@@ -38,13 +44,16 @@ export default function PhoneVerificationScreen() {
     }
 
     setErrorMessage('');
-    const response = await sendVerificationCode(phoneNumber);
-    const sendCode = response.data
-    if (sendCode == 'Y') {
+    const codeToSend = null;
+    const response = await sendVerificationCode(formattedPhoneNumber, codeToSend);
+
+    if (response.error.message == 'success') {
+      console.log('인증번호 발송 성공');
       Alert.alert('인증번호 발송 성공', '인증번호가 발송되었습니다.');
     } else {
-      Alert.alert('인증번호 발송 실패', response.message);
+      Alert.alert('인증번호 발송 실패');
     }
+
   };
 
   const handleVerifyCode = async () => {
@@ -59,13 +68,16 @@ export default function PhoneVerificationScreen() {
     }
 
     setErrorMessage('');
-    const response = await verifyPhoneNumber(phoneNumber, verificationCode);
-    const recptionCode = response.data
-    if (recptionCode == verificationCode) {
+    const response = await sendVerificationCode(formattedPhoneNumber, verificationCode);
+    
+    if (response.data.verified == 'Y') 
+    {
       Alert.alert('인증 성공');
+
       navigation.navigate('WelcomeJoin', { 
-        userName: response.data.userName, 
-        nickname: response.data.nickname 
+        username: response.data.userName, 
+        nickname: response.data.nickname,
+        phone: response.data.phone
        });
     } else {
       Alert.alert('인증 실패', response.message);

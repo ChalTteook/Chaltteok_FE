@@ -8,12 +8,12 @@ const scaleWidth = width / 375;
 const scaleHeight = height / 812; 
 
 type RootStackParamList = {
-  WelcomeJoin: { successData: any };
+  WelcomeJoin: { username: string; nickname: string; phone: string; };
 };
 
 export default function WelcomeScreen() {
   const route = useRoute<RouteProp<RootStackParamList, 'WelcomeJoin'>>();
-  const { successData } = route.params;
+  const { username, nickname, phone } = route.params;
   const navigation = useNavigation();
   const handleStart = () => {
     navigation.navigate(''); // 수정 필요
@@ -25,17 +25,17 @@ export default function WelcomeScreen() {
       <Header style={styles.headerContainer} />
       <View style={styles.container}>
 
-        <Text style={styles.headerText}>XXX님의{'\n'}찰떡스러운 세계가 시작됩니다.</Text>
+        <Text style={styles.headerText}>{username}님의{'\n'}찰떡스러운 세계가 시작됩니다.</Text>
         <Text style={styles.subHeader}>휴대폰 번호와 닉네임 모두 로그인 시 아이디로{'\n'}사용 가능합니다.</Text>
   
         <View style={styles.infoContainer}>
         <View style={styles.rowContainer}>
           <Text style={styles.infoLabelNum}>휴대폰 번호</Text>
-          <Text style={styles.infoTextNum}>01000000000</Text>
+          <Text style={styles.infoTextNum}>{phone}</Text>
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.infoLabel}>닉네임</Text>
-          <Text style={styles.infoText}>찰떡_00001</Text>
+          <Text style={styles.infoText}>{nickname}</Text>
         </View>
         </View>
   

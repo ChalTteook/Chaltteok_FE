@@ -3,9 +3,9 @@ import axios from 'axios';
 export const sendTokenToBackend = async (authorizecode: string) => {
   try {
     const quotedAuthorizeCode = `"${authorizecode}"`;
-    const response = await axios.post('https://ac25-112-218-106-221.ngrok-free.app/auth/social-login',
+    const response = await axios.post('https://39a9-112-218-106-221.ngrok-free.app/auth/social-login',
     {
-      "socialLoginType":"Naver",
+      "socialLoginType":"NAVER",
       "code":quotedAuthorizeCode
     });
     console.log('백엔드 응답:', response.data);

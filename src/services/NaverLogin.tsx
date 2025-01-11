@@ -7,9 +7,9 @@ import { v4 as uuidv4 } from 'uuid'; // 고유한 state 값을 생성하기 위�
 import 'react-native-get-random-values';
 import { sendTokenToBackend } from '../api/NaverAuth';
 
-const CLIENT_ID = 'Fu0jy9r1JgUxld5djIaM'; // 네이버 클라이언트 아이디
-const NAVER_CLIENT_SECRET = 'x2PhRQmHb7'; // 네이버 클라이언트 시크릿 (보안상 실제 서비스에서는 코드에 포함시키지 말 것)
-const REDIRECT_URI = 'http://192.168.0.93:8081/Home'; // 리다이렉트 URI (백엔드에서 수신할 URI)
+const CLIENT_ID = 'Fu0jy9r1JgUxld5djIaM'; 
+const NAVER_CLIENT_SECRET = 'x2PhRQmHb7'; 
+const REDIRECT_URI = 'http://192.168.0.93:8081/Home'; 
 const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage(window.location.href)`; // WebView가 현재 URL을 React Native로 전달하는 코드
 
 type RootStackParamList = {
@@ -61,7 +61,7 @@ const NaverLoginScreen = () => {
           originWhitelist={['*']}
           scalesPageToFit={false}
           source={{
-            uri: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&state=${state}`, // 네이버 로그인 URL
+            uri: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&state=${state}`, 
           }}
           injectedJavaScript={INJECTED_JAVASCRIPT} // JavaScript를 삽입하여 URL을 React Native로 전달
           javaScriptEnabled={true}
