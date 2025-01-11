@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { View, StyleSheet, Alert, TouchableOpacity, Text, Dimensions, TextInput } from 'react-native';
 import Header from '../components/LeftHeader';
 import BottomButton from '../components/BottomButton';
+import { joinAuth } from '../api/JoinAuth';
 import { useNavigation } from '@react-navigation/native';
-import axios from 'axios';
 
 const { width, height } = Dimensions.get('window'); 
 const scaleWidth = width / 375; 
@@ -18,10 +18,9 @@ export default function SignUpScreen() {
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
     const navigation = useNavigation();
   
-    const handleSignUp = () => {
+    const handleSignUp = async () => {
       let isValid = true;
     
-      // 유효성 검사
       if (!email.includes('@')) {
         setEmailError('유효한 이메일 주소를 입력하세요');
         isValid = false;
@@ -43,27 +42,21 @@ export default function SignUpScreen() {
         setConfirmPasswordError('');
       }
     
-      if (isValid) {
-        const userData = {
-          email: email,
-          password: password,
-        };
+        if (isValid) {
+          try {
+            const response = await joinAuth(email, password); // API 호출
     
-        axios.post('https://your-backend-url.com/signup', userData)
-          .then((response) => {
-            if (response.data.success) {
-              navigation.navigate('PhoneAuth');
+            if (response.success) {
+              navigation.navigate('PhoneAuth'); 
             } else {
-              Alert.alert('회원 가입 실패', response.data.message);
-              navigation.navigate('PhoneAuth'); // 테스트용
+              Alert.alert('회원 가입 실패', response.message);
             }
-          })
-          .catch((error) => {
-            console.error('Error:', error);
+          } catch (error) {
+            console.error('회원 가입 중 오류 발생:', error);
             Alert.alert('에러 발생', '서버에 문제가 발생했습니다.');
-          });
-      }
-    };
+          }
+        }
+      };
   
     return (
       

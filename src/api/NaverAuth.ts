@@ -1,21 +1,17 @@
 import axios from 'axios';
 
-export const sendNaverTokensToBackend = async (
-  accessToken: string,
-  refreshToken: string,
-  authorizeCode: string
-) => {
+export const sendTokenToBackend = async (authorizecode: string) => {
   try {
-    const response = await axios.post('http://your-backend-url.com/api/auth/naver', {
-      access_token: accessToken,
-      refresh_token: refreshToken,
-      authorize_code: authorizeCode,
+    const quotedAuthorizeCode = `"${authorizecode}"`;
+    const response = await axios.post('https://ac25-112-218-106-221.ngrok-free.app/auth/social-login',
+    {
+      "socialLoginType":"Naver",
+      "code":quotedAuthorizeCode
     });
-
     console.log('백엔드 응답:', response.data);
-    return response.data; 
+    return response.data;
   } catch (error) {
-    console.error('백엔드 전송 실패:', error);
-    throw error; 
+    console.error('백엔드 요청 실패:', error);
+    throw error;
   }
 };

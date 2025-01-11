@@ -1,17 +1,22 @@
 import { View, StyleSheet, TouchableOpacity, Text, Dimensions} from 'react-native';
 import Header from '../components/LeftHeader';
 import BottomButton from '../components/BottomButton';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('window'); 
 const scaleWidth = width / 375; 
 const scaleHeight = height / 812; 
 
-export default function WelcomeScreen() {
+type RootStackParamList = {
+  WelcomeJoin: { successData: any };
+};
 
+export default function WelcomeScreen() {
+  const route = useRoute<RouteProp<RootStackParamList, 'WelcomeJoin'>>();
+  const { successData } = route.params;
   const navigation = useNavigation();
   const handleStart = () => {
-    navigation.navigate('Login');
+    navigation.navigate(''); // 수정 필요
   };
 
     return (

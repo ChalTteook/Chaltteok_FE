@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, Image, Dimensions, PixelRatio, Button, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, Alert, Image, Dimensions, PixelRatio, Button, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import Header from '../components/LeftHeader';
 import { useNavigation } from '@react-navigation/native';
+import { loginUser } from '../api/LoginAuth';
 
 const { width, height } = Dimensions.get('window'); 
 const scaleWidth = width / 375; 
@@ -12,12 +13,31 @@ export default function LoginScreen() {
     const [password, setPassword] = useState('');
     const navigation = useNavigation();
   
-    const handleLogin = () => {
-      console.log('로그인 시도:', email, password);
+    const handleLogin = async () => {
+      try {
+        console.log('로그인 시도:', email, password);
+        const response = await loginUser(email, password);
+        const verified = response.data.verified;
+        const userEmail = response.data.email;
+        
+        if (verified === 'Y') {
+          Alert.alert('로그인 성공');
+          navigation.navigate('WelcomeJoin');
+        } 
+        if (userEmail == email) {
+          Alert.alert('로그인 실패', '아이디나 비밀번호가 틀렸습니다.');
+        } 
+        else {
+          Alert.alert('로그인 실패', '아이디가 존재하지 않습니다');
+          navigation.navigate('Join');
+        }
+      } catch (error) {
+        Alert.alert('오류', '로그인 중 문제가 발생했습니다.');
+      }
     };
 
     const handleJoinNavigation = () => {
-      navigation.navigate('Join'); // Join 화면으로 이동
+      navigation.navigate('Join');
   };
   
     return (

@@ -1,18 +1,10 @@
-
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Text } from 'react-native';
+import { RecoilRoot } from 'recoil';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { RecoilRoot } from 'recoil';
-
-import SocialLogin from './pages/SocialLogin';
-import EmailLogin from './pages/EmailLogin';
-import Join from './pages/Join';
-import PhoneAuth from './pages/PhoneAuth';
-import WelcomeJoin from './pages/WelcomeJoin';
-import ProfileEdit from './pages/ProfileEdit';
-import KakaoLogin from './services/KakaoLogin';
-import NaverLogin from './services/NaverLogin';
+import LoginNavigator from './navigation/LoginNavigator';
+import AppNavigator from './navigation/AppNavigator';
 
 const Stack = createStackNavigator();
 
@@ -24,53 +16,14 @@ export default function App() {
     };
   }, []);
 
-    return (
-      <RecoilRoot>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Login">
-            <Stack.Screen
-              name="Login"
-              component={SocialLogin}
-              options={{ headerShown: false }} 
-            />
-            <Stack.Screen
-              name="ProfileEdit"
-              component={ProfileEdit}
-              options={{ headerShown: false }} 
-            />
-            <Stack.Screen
-              name="EmailLogin"
-              component={EmailLogin}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Join"
-              component={Join}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="PhoneAuth"
-              component={PhoneAuth}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="WelcomeJoin"
-              component={WelcomeJoin}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="KakaoLogin"
-              component={KakaoLogin}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="NaverLogin"
-              component={NaverLogin}
-              options={{ headerShown: false }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </RecoilRoot>
-    );
-  }
-
+  return (
+    <RecoilRoot>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Login" component={LoginNavigator} />
+          <Stack.Screen name="Main" component={AppNavigator} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </RecoilRoot>
+  );
+}

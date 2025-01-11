@@ -1,96 +1,55 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, ActivityIndicator, Alert } from 'react-native';
+import { useState } from 'react';
+import { View, StyleSheet, Alert } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useNavigation } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'; // 고유한 state 값을 생성하기 위해 uuid 사용
 import 'react-native-get-random-values';
-import { sendNaverTokensToBackend } from '../api/NaverAuth';
+import { sendTokenToBackend } from '../api/NaverAuth';
+
+const CLIENT_ID = 'Fu0jy9r1JgUxld5djIaM'; // 네이버 클라이언트 아이디
+const NAVER_CLIENT_SECRET = 'x2PhRQmHb7'; // 네이버 클라이언트 시크릿 (보안상 실제 서비스에서는 코드에 포함시키지 말 것)
+const REDIRECT_URI = 'http://192.168.0.93:8081/Home'; // 리다이렉트 URI (백엔드에서 수신할 URI)
+const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage(window.location.href)`; // WebView가 현재 URL을 React Native로 전달하는 코드
 
 type RootStackParamList = {
-  Login: undefined;
+  PhoneAuth: undefined;
+  WelcomeJoin: undefined;
+  SocialLogin: undefined;
 };
 
-const CLIENT_ID = 'Fu0jy9r1JgUxld5djIaM';
-const NAVER_CLIENT_SECRET = 'WP2lkTDz_q';
-const REDIRECT_URI = 'http://192.168.0.102:8081/Home';
-const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage(window.location.href)`; 
-
 const NaverLoginScreen = () => {
-  const [showWebView, setShowWebView] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-  const [state, setState] = useState(uuidv4());
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'Login'>>();
+  const [showWebView, setShowWebView] = useState(true); // WebView 표시 여부 상태
+  const [state] = useState(uuidv4()); // 고유한 state 값 생성
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
-  const getAccessToken = async (authorizeCode: string, stateFromWebView: string) => {
-    if (stateFromWebView !== state) { 
-      Alert.alert('오류', '잘못된 요청입니다.');
-      setShowWebView(false);
-      navigation.navigate('Login');
-      return;
-    }
-
-    const url = 'https://nid.naver.com/oauth2.0/token';
-    const params = new URLSearchParams();
-    params.append('grant_type', 'authorization_code');
-    params.append('client_id', CLIENT_ID);
-    params.append('client_secret', NAVER_CLIENT_SECRET);
-    params.append('code', authorizeCode);
-    params.append('state', state);
-
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: params.toString(),
-      });
-
-      const responseText = await response.text();
-      const data = JSON.parse(responseText);
-      
-      if (data.access_token) {
-        console.log('네이버 액세스 토큰:', data.access_token);
-        console.log('네이버 리프레시 토큰:', data.refresh_token);
-
-        setShowWebView(false);
-        setIsLoading(false);
-        await sendNaverTokensToBackend(data.access_token, data.refresh_token, authorizeCode);
-        navigation.navigate('PhoneAuth');
-      } else {
-        console.error('네이버 액세스 토큰 요청 실패:', data);
-        Alert.alert('오류', '로그인에 실패했습니다.');
-        setShowWebView(false);
-        navigation.navigate('Login');
-      }
-    } catch (error) {
-      console.error('네이버 액세스 토큰 요청 오류:', error);
-      Alert.alert('오류', '네트워크 요청 중 문제가 발생했습니다.');
-      setShowWebView(false);
-      navigation.navigate('Login');
-    }
-  };
-
-  const handleWebViewMessage = (data: string) => {
-    const exp = 'code=';
-    const condition = data.indexOf(exp);
+  // WebView에서 메시지를 받을 때 실행되는 함수
+  const handleWebViewMessage = async (data: string) => {
+    const exp = 'code='; // URL에서 code 파라미터 찾기
+    const condition = data.indexOf(exp); // 'code='가 포함된 위치 확인
 
     if (condition !== -1) {
-      const endIndex = data.indexOf('&', condition);
+      const endIndex = data.indexOf('&', condition); // '&'가 있다면, 그 위치까지 추출
       const authorizeCode =
         endIndex === -1 ? data.substring(condition + exp.length) : data.substring(condition + exp.length, endIndex);
 
-      const stateFromWebView = data.substring(data.indexOf('state=') + 6); // WebView에서 전달된 state 값 추출
+      console.log('네이버 로그인 성공, 인가 코드:', authorizeCode); // 인가 코드를 콘솔에 출력
 
-      console.log('네이버 인가 코드:', authorizeCode);
-      console.log('WebView에서 받은 state:', stateFromWebView);
+      setShowWebView(false); 
 
-      setShowWebView(false);
-      setIsLoading(true);
-      getAccessToken(authorizeCode, stateFromWebView);
-    } else {
-      setIsLoading(false);
+      try {
+        const response = await sendTokenToBackend(authorizeCode);
+        const verified = response.data.verified;
+
+        if (verified === 'N') {
+          navigation.navigate('PhoneAuth');
+        } else {
+          navigation.navigate('WelcomeJoin');
+        }
+      } catch (error) {
+        Alert.alert('로그인 실패', '인증에 실패했습니다. 다시 시도해주세요.');
+        navigation.navigate('SocialLogin');
+      }
     }
   };
 
@@ -102,16 +61,13 @@ const NaverLoginScreen = () => {
           originWhitelist={['*']}
           scalesPageToFit={false}
           source={{
-            uri: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&state=${state}`,
+            uri: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&state=${state}`, // 네이버 로그인 URL
           }}
-          injectedJavaScript={INJECTED_JAVASCRIPT}
+          injectedJavaScript={INJECTED_JAVASCRIPT} // JavaScript를 삽입하여 URL을 React Native로 전달
           javaScriptEnabled={true}
-          onMessage={(event) => handleWebViewMessage(event.nativeEvent.data)}
+          onMessage={(event) => handleWebViewMessage(event.nativeEvent.data)} // WebView에서 메시지를 받을 때 처리
         />
-      ) : (
-        <ActivityIndicator size="large" color="#0000ff" style={styles.loader} />
-      )}
-      {isLoading && <ActivityIndicator size="large" color="#0000ff" style={styles.loader} />}
+      ) : null}
     </View>
   );
 };
@@ -120,12 +76,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  },
-  loader: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: [{ translateX: -25 }, { translateY: -25 }],
   },
 });
 

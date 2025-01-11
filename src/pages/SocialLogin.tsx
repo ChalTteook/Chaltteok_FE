@@ -17,7 +17,7 @@ export default function LoginScreen() {
   };
 
   const handleEmailLogin = () => {
-    navigation.navigate('Join');
+    navigation.navigate('EmailLogin');
   };
 
   return (
