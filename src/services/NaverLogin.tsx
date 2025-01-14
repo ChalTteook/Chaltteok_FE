@@ -3,15 +3,14 @@ import { View, StyleSheet, Alert } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useNavigation } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
-import { v4 as uuidv4 } from 'uuid'; // 고유한 state 값을 생성하기 위해 uuid 사용
+import { v4 as uuidv4 } from 'uuid'; 
 import 'react-native-get-random-values';
 import { sendTokenToBackend } from '../api/NaverAuth';
 
 const CLIENT_ID = 'Fu0jy9r1JgUxld5djIaM'; 
 const NAVER_CLIENT_SECRET = 'x2PhRQmHb7'; 
 const REDIRECT_URI = 'http://192.168.0.93:8081/Home'; 
-const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage(window.location.href)`; // WebView가 현재 URL을 React Native로 전달하는 코드
-
+const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage(window.location.href)`; 
 type RootStackParamList = {
   PhoneAuth: undefined;
   WelcomeJoin: undefined;
@@ -19,21 +18,20 @@ type RootStackParamList = {
 };
 
 const NaverLoginScreen = () => {
-  const [showWebView, setShowWebView] = useState(true); // WebView 표시 여부 상태
-  const [state] = useState(uuidv4()); // 고유한 state 값 생성
+  const [showWebView, setShowWebView] = useState(true); 
+  const [state] = useState(uuidv4()); 
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
-  // WebView에서 메시지를 받을 때 실행되는 함수
   const handleWebViewMessage = async (data: string) => {
-    const exp = 'code='; // URL에서 code 파라미터 찾기
-    const condition = data.indexOf(exp); // 'code='가 포함된 위치 확인
+    const exp = 'code='; 
+    const condition = data.indexOf(exp); 
 
     if (condition !== -1) {
-      const endIndex = data.indexOf('&', condition); // '&'가 있다면, 그 위치까지 추출
+      const endIndex = data.indexOf('&', condition); 
       const authorizeCode =
         endIndex === -1 ? data.substring(condition + exp.length) : data.substring(condition + exp.length, endIndex);
 
-      console.log('네이버 로그인 성공, 인가 코드:', authorizeCode); // 인가 코드를 콘솔에 출력
+      console.log('네이버 로그인 성공, 인가 코드:', authorizeCode); 
 
       setShowWebView(false); 
 
@@ -63,9 +61,9 @@ const NaverLoginScreen = () => {
           source={{
             uri: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&state=${state}`, 
           }}
-          injectedJavaScript={INJECTED_JAVASCRIPT} // JavaScript를 삽입하여 URL을 React Native로 전달
+          injectedJavaScript={INJECTED_JAVASCRIPT}
           javaScriptEnabled={true}
-          onMessage={(event) => handleWebViewMessage(event.nativeEvent.data)} // WebView에서 메시지를 받을 때 처리
+          onMessage={(event) => handleWebViewMessage(event.nativeEvent.data)} 
         />
       ) : null}
     </View>

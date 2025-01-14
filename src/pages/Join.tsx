@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, StyleSheet, Alert, TouchableOpacity, Text, Dimensions, TextInput } from 'react-native';
+import { View, StyleSheet, Alert, Text, Dimensions, TextInput } from 'react-native';
 import Header from '../components/LeftHeader';
 import BottomButton from '../components/BottomButton';
 import { joinAuth } from '../api/JoinAuth';

@@ -1,4 +1,4 @@
-import { View, StyleSheet, TouchableOpacity, Text, Dimensions} from 'react-native';
+import { View, StyleSheet, Text, Dimensions} from 'react-native';
 import Header from '../components/LeftHeader';
 import BottomButton from '../components/BottomButton';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';

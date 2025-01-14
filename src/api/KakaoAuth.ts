@@ -7,7 +7,7 @@ export const sendTokenToBackend = async (authorizecode: string) => {
       socialLoginType: "KAKAO",
       code: quotedAuthorizeCode
     });
-    console.log('백엔드 응답:', response.data);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('백엔드 요청 실패:', error);

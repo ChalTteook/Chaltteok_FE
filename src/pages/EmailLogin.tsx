@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, Alert, Image, Dimensions, PixelRatio, Button, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, Alert, Dimensions, TextInput } from 'react-native';
 import Header from '../components/LeftHeader';
 import { useNavigation } from '@react-navigation/native';
 import { loginUser } from '../api/LoginAuth';
+import { useRecoilState } from 'recoil';
+import { authState } from '../state/authState';
 
 const { width, height } = Dimensions.get('window'); 
 const scaleWidth = width / 375; 
@@ -12,7 +14,8 @@ export default function LoginScreen() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigation = useNavigation();
-  
+    const [auth, setAuth] = useRecoilState(authState);
+
     const handleLogin = async () => {
       try {
         console.log('로그인 시도:', email, password);
@@ -22,6 +25,12 @@ export default function LoginScreen() {
         const userEmail = response.data.email;
         
         if (verified === 'Y') {
+
+          setAuth({
+            userEmail: userEmail,
+            isLoggedIn: true,
+          });
+
           Alert.alert('로그인 성공');
           navigation.navigate('WelcomeJoin');
         } 
