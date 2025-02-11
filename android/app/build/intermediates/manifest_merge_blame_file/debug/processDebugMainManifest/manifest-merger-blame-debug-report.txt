@@ -1,0 +1,758 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
+3    package="com.chaltteok.chaltteok_FE"
+=======
+3    package="com.dlehddnjs245.chaltteok_FE"
+>>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+11-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:5:3-75
+11-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:5:20-73
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:3:3-64
+12-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:3:20-62
+13    <uses-permission android:name="android.permission.VIBRATE" /> <!-- These require runtime permissions on M -->
+13-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:6:3-63
+13-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:6:20-61
+14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+14-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:8:3-77
+14-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:8:20-75
+15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- END OPTIONAL PERMISSIONS -->
+15-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:9:3-78
+15-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:9:20-76
+<<<<<<< HEAD
+16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+16-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:11:3-77
+16-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:11:20-74
+17    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+17-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:12:3-79
+17-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:12:20-76
+18    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+18-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:13:3-83
+18-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:13:20-80
+19
+20    <queries>
+20-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:16:3-23:13
+21
+22        <!-- Support checking for http(s) links via the Linking API -->
+23        <intent>
+23-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:18:5-22:14
+24            <action android:name="android.intent.action.VIEW" />
+24-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:19:7-59
+24-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:19:15-56
+25
+26            <category android:name="android.intent.category.BROWSABLE" />
+26-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:20:7-68
+26-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:20:17-65
+27
+28            <data android:scheme="https" />
+28-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:21:7-38
+28-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:21:13-35
+29        </intent>
+30        <!-- Query open documents -->
+31        <intent>
+31-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:15:9-17:18
+32            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE" />
+32-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:16:13-79
+32-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:16:21-76
+33        </intent> <!-- Needs to be explicitly declared on Android R+ -->
+34        <package android:name="com.google.android.apps.maps" />
+34-->[com.google.android.gms:play-services-maps:18.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/5f0829231489a7a34d5652e63ca08cfe/transformed/play-services-maps-18.2.0/AndroidManifest.xml:33:9-64
+34-->[com.google.android.gms:play-services-maps:18.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/5f0829231489a7a34d5652e63ca08cfe/transformed/play-services-maps-18.2.0/AndroidManifest.xml:33:18-61
+35        <package android:name="com.kakao.talk" />
+35-->[com.kakao.sdk:v2-common:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/412dd53502a041b4d10c57376863a79a/transformed/v2-common-2.8.6/AndroidManifest.xml:12:9-50
+35-->[com.kakao.sdk:v2-common:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/412dd53502a041b4d10c57376863a79a/transformed/v2-common-2.8.6/AndroidManifest.xml:12:18-47
+36        <package android:name="com.kakao.talk.alpha" />
+36-->[com.kakao.sdk:v2-common:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/412dd53502a041b4d10c57376863a79a/transformed/v2-common-2.8.6/AndroidManifest.xml:13:9-56
+36-->[com.kakao.sdk:v2-common:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/412dd53502a041b4d10c57376863a79a/transformed/v2-common-2.8.6/AndroidManifest.xml:13:18-53
+37        <package android:name="com.kakao.talk.sandbox" />
+37-->[com.kakao.sdk:v2-common:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/412dd53502a041b4d10c57376863a79a/transformed/v2-common-2.8.6/AndroidManifest.xml:14:9-58
+37-->[com.kakao.sdk:v2-common:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/412dd53502a041b4d10c57376863a79a/transformed/v2-common-2.8.6/AndroidManifest.xml:14:18-55
+38        <package android:name="com.kakao.onetalk" />
+38-->[com.kakao.sdk:v2-common:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/412dd53502a041b4d10c57376863a79a/transformed/v2-common-2.8.6/AndroidManifest.xml:15:9-53
+38-->[com.kakao.sdk:v2-common:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/412dd53502a041b4d10c57376863a79a/transformed/v2-common-2.8.6/AndroidManifest.xml:15:18-50
+39    </queries> <!-- Include required permissions for Google Maps API to run. -->
+40    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+40-->[com.google.android.gms:play-services-maps:18.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/5f0829231489a7a34d5652e63ca08cfe/transformed/play-services-maps-18.2.0/AndroidManifest.xml:23:5-79
+40-->[com.google.android.gms:play-services-maps:18.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/5f0829231489a7a34d5652e63ca08cfe/transformed/play-services-maps-18.2.0/AndroidManifest.xml:23:22-76
+41
+42    <uses-feature
+42-->[com.google.android.gms:play-services-maps:18.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/5f0829231489a7a34d5652e63ca08cfe/transformed/play-services-maps-18.2.0/AndroidManifest.xml:26:5-28:35
+43        android:glEsVersion="0x00020000"
+43-->[com.google.android.gms:play-services-maps:18.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/5f0829231489a7a34d5652e63ca08cfe/transformed/play-services-maps-18.2.0/AndroidManifest.xml:27:9-41
+44        android:required="true" />
+44-->[com.google.android.gms:play-services-maps:18.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/5f0829231489a7a34d5652e63ca08cfe/transformed/play-services-maps-18.2.0/AndroidManifest.xml:28:9-32
+45    <uses-feature
+45-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:10:5-12:36
+46        android:name="android.hardware.wifi"
+46-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:11:9-45
+47        android:required="false" />
+47-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:12:9-33
+48
+49    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+49-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:16:5-76
+49-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:16:22-73
+50    <uses-permission android:name="android.permission.WAKE_LOCK" />
+50-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:25:5-68
+50-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:25:22-65
+51    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+51-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:27:5-81
+51-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:27:22-78
+52    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+52-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:28:5-77
+52-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:28:22-74
+53
+54    <permission
+54-->[androidx.core:core:1.13.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/275972b32a83e4f2805ae07f38088e4e/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+55        android:name="com.chaltteok.chaltteok_FE.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+55-->[androidx.core:core:1.13.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/275972b32a83e4f2805ae07f38088e4e/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+56        android:protectionLevel="signature" />
+56-->[androidx.core:core:1.13.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/275972b32a83e4f2805ae07f38088e4e/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+57
+58    <uses-permission android:name="com.chaltteok.chaltteok_FE.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+58-->[androidx.core:core:1.13.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/275972b32a83e4f2805ae07f38088e4e/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+58-->[androidx.core:core:1.13.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/275972b32a83e4f2805ae07f38088e4e/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+59
+60    <application
+60-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:25:3-35:17
+61        android:name="com.chaltteok.chaltteok_FE.MainApplication"
+61-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:25:16-47
+62        android:allowBackup="false"
+62-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:25:162-189
+63        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+63-->[androidx.core:core:1.13.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/275972b32a83e4f2805ae07f38088e4e/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+64        android:debuggable="true"
+65        android:extractNativeLibs="false"
+66        android:icon="@mipmap/ic_launcher"
+66-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:25:81-115
+67        android:label="@string/app_name"
+67-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:25:48-80
+68        android:roundIcon="@mipmap/ic_launcher_round"
+68-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:25:116-161
+69        android:supportsRtl="true"
+69-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:25:222-248
+70        android:theme="@style/AppTheme"
+70-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:25:190-221
+71        android:usesCleartextTraffic="true" >
+71-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/debug/AndroidManifest.xml:6:18-53
+72        <activity
+72-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:26:5-31:16
+73            android:name="com.chaltteok.chaltteok_FE.MainActivity"
+73-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:26:15-43
+74            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode"
+74-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:26:44-134
+75            android:exported="true"
+75-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:26:256-279
+76            android:launchMode="singleTask"
+76-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:26:135-166
+77            android:theme="@style/Theme.App.SplashScreen"
+77-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:26:210-255
+78            android:windowSoftInputMode="adjustResize" >
+78-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:26:167-209
+79            <intent-filter>
+79-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:27:7-30:23
+80                <action android:name="android.intent.action.MAIN" />
+80-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:28:9-60
+80-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:28:17-58
+81
+82                <category android:name="android.intent.category.LAUNCHER" />
+82-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:29:9-68
+82-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:29:19-66
+83            </intent-filter>
+84        </activity>
+85
+86        <meta-data
+86-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:32:5-34:36
+87            android:name="com.naver.maps.map.CLIENT_ID"
+87-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:33:7-50
+88            android:value="5k42851vyz" />
+88-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:34:7-33
+89
+90        <provider
+90-->[:react-native-webview] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:8:9-16:20
+91            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
+91-->[:react-native-webview] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:13-83
+92            android:authorities="com.chaltteok.chaltteok_FE.fileprovider"
+92-->[:react-native-webview] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:10:13-64
+93            android:exported="false"
+93-->[:react-native-webview] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:13-37
+94            android:grantUriPermissions="true" >
+94-->[:react-native-webview] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:12:13-47
+95            <meta-data
+95-->[:react-native-webview] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:13:13-15:63
+96                android:name="android.support.FILE_PROVIDER_PATHS"
+96-->[:react-native-webview] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:14:17-67
+97                android:resource="@xml/file_provider_paths" />
+97-->[:react-native-webview] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:15:17-60
+98        </provider>
+99        <provider
+99-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:21:9-30:20
+100            android:name="expo.modules.filesystem.FileSystemFileProvider"
+100-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:22:13-74
+101            android:authorities="com.chaltteok.chaltteok_FE.FileSystemFileProvider"
+101-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:23:13-74
+102            android:exported="false"
+102-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:24:13-37
+103            android:grantUriPermissions="true" >
+103-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:25:13-47
+104            <meta-data
+104-->[:react-native-webview] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:13:13-15:63
+105                android:name="android.support.FILE_PROVIDER_PATHS"
+105-->[:react-native-webview] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:14:17-67
+106                android:resource="@xml/file_system_provider_paths" />
+106-->[:react-native-webview] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:15:17-60
+107        </provider>
+108
+109        <meta-data
+109-->[:expo-modules-core] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:9-11:89
+110            android:name="org.unimodules.core.AppLoader#react-native-headless"
+110-->[:expo-modules-core] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:10:13-79
+111            android:value="expo.modules.adapters.react.apploader.RNHeadlessAppLoader" />
+111-->[:expo-modules-core] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:13-86
+112        <meta-data
+112-->[:expo-modules-core] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:12:9-15:45
+113            android:name="com.facebook.soloader.enabled"
+113-->[:expo-modules-core] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:13:13-57
+114            android:value="true" />
+114-->[:expo-modules-core] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:14:13-33
+115
+116        <activity
+116-->[com.facebook.react:react-android:0.76.5] /Users/idong-won/.gradle/caches/8.10.2/transforms/09e99889bdbc3a72b28a5d49d1ebcf4c/transformed/react-android-0.76.5-debug/AndroidManifest.xml:19:9-21:40
+117            android:name="com.facebook.react.devsupport.DevSettingsActivity"
+117-->[com.facebook.react:react-android:0.76.5] /Users/idong-won/.gradle/caches/8.10.2/transforms/09e99889bdbc3a72b28a5d49d1ebcf4c/transformed/react-android-0.76.5-debug/AndroidManifest.xml:20:13-77
+118            android:exported="false" />
+118-->[com.facebook.react:react-android:0.76.5] /Users/idong-won/.gradle/caches/8.10.2/transforms/09e99889bdbc3a72b28a5d49d1ebcf4c/transformed/react-android-0.76.5-debug/AndroidManifest.xml:21:13-37
+119
+120        <meta-data
+120-->[com.google.maps.android:android-maps-utils:3.8.2] /Users/idong-won/.gradle/caches/8.10.2/transforms/800269d35b9a7e885ae2cb882e65fbc3/transformed/android-maps-utils-3.8.2/AndroidManifest.xml:8:9-10:69
+121            android:name="com.google.android.gms.version"
+121-->[com.google.maps.android:android-maps-utils:3.8.2] /Users/idong-won/.gradle/caches/8.10.2/transforms/800269d35b9a7e885ae2cb882e65fbc3/transformed/android-maps-utils-3.8.2/AndroidManifest.xml:9:13-58
+122            android:value="@integer/google_play_services_version" /> <!-- Needs to be explicitly declared on P+ -->
+122-->[com.google.maps.android:android-maps-utils:3.8.2] /Users/idong-won/.gradle/caches/8.10.2/transforms/800269d35b9a7e885ae2cb882e65fbc3/transformed/android-maps-utils-3.8.2/AndroidManifest.xml:10:13-66
+123        <uses-library
+123-->[com.google.android.gms:play-services-maps:18.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/5f0829231489a7a34d5652e63ca08cfe/transformed/play-services-maps-18.2.0/AndroidManifest.xml:39:9-41:40
+124            android:name="org.apache.http.legacy"
+124-->[com.google.android.gms:play-services-maps:18.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/5f0829231489a7a34d5652e63ca08cfe/transformed/play-services-maps-18.2.0/AndroidManifest.xml:40:13-50
+125            android:required="false" />
+125-->[com.google.android.gms:play-services-maps:18.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/5f0829231489a7a34d5652e63ca08cfe/transformed/play-services-maps-18.2.0/AndroidManifest.xml:41:13-37
+126
+127        <activity
+127-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:19:9-23:51
+128            android:name="com.naver.maps.map.app.LegendActivity"
+128-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:20:13-65
+129            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+129-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:21:13-91
+130            android:label="@string/navermap_legend"
+130-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:22:13-52
+131            android:theme="@style/navermap_app" />
+131-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:23:13-48
+132        <activity
+132-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:24:9-28:51
+133            android:name="com.naver.maps.map.app.LegalNoticeActivity"
+133-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:25:13-70
+134            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+134-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:26:13-91
+135            android:label="@string/navermap_legal_notice"
+135-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:27:13-58
+136            android:theme="@style/navermap_app" />
+136-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:28:13-48
+137        <activity
+137-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:29:9-33:51
+138            android:name="com.naver.maps.map.app.OpenSourceLicenseActivity"
+138-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:30:13-76
+139            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+139-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:31:13-91
+140            android:label="@string/navermap_open_source_license"
+140-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:32:13-65
+141            android:theme="@style/navermap_app" />
+141-->[com.naver.maps:map-sdk:3.20.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/42beb0f930fc6974e5aa5ebaa2b4c55b/transformed/map-sdk-3.20.0/AndroidManifest.xml:33:13-48
+142        <activity
+142-->[com.kakao.sdk:v2-auth:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/cd753fc0f5cef25cf73eb09de91f89e6/transformed/v2-auth-2.8.6/AndroidManifest.xml:12:9-16:56
+143            android:name="com.kakao.sdk.auth.TalkAuthCodeActivity"
+143-->[com.kakao.sdk:v2-auth:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/cd753fc0f5cef25cf73eb09de91f89e6/transformed/v2-auth-2.8.6/AndroidManifest.xml:13:13-67
+144            android:exported="false"
+144-->[com.kakao.sdk:v2-auth:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/cd753fc0f5cef25cf73eb09de91f89e6/transformed/v2-auth-2.8.6/AndroidManifest.xml:14:13-37
+145            android:launchMode="singleTask"
+145-->[com.kakao.sdk:v2-auth:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/cd753fc0f5cef25cf73eb09de91f89e6/transformed/v2-auth-2.8.6/AndroidManifest.xml:15:13-44
+146            android:theme="@style/TransparentCompat" />
+146-->[com.kakao.sdk:v2-auth:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/cd753fc0f5cef25cf73eb09de91f89e6/transformed/v2-auth-2.8.6/AndroidManifest.xml:16:13-53
+147        <activity
+147-->[com.kakao.sdk:v2-auth:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/cd753fc0f5cef25cf73eb09de91f89e6/transformed/v2-auth-2.8.6/AndroidManifest.xml:17:9-20:56
+148            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+148-->[com.kakao.sdk:v2-auth:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/cd753fc0f5cef25cf73eb09de91f89e6/transformed/v2-auth-2.8.6/AndroidManifest.xml:18:13-70
+149            android:launchMode="singleTask"
+149-->[com.kakao.sdk:v2-auth:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/cd753fc0f5cef25cf73eb09de91f89e6/transformed/v2-auth-2.8.6/AndroidManifest.xml:19:13-44
+150            android:theme="@style/TransparentCompat" />
+150-->[com.kakao.sdk:v2-auth:2.8.6] /Users/idong-won/.gradle/caches/8.10.2/transforms/cd753fc0f5cef25cf73eb09de91f89e6/transformed/v2-auth-2.8.6/AndroidManifest.xml:20:13-53
+151        <activity
+151-->[com.google.android.gms:play-services-base:18.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/4ffc3ec40f0bcc68b475dae6eb09d0bb/transformed/play-services-base-18.3.0/AndroidManifest.xml:20:9-22:45
+152            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+152-->[com.google.android.gms:play-services-base:18.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/4ffc3ec40f0bcc68b475dae6eb09d0bb/transformed/play-services-base-18.3.0/AndroidManifest.xml:20:19-85
+153            android:exported="false"
+153-->[com.google.android.gms:play-services-base:18.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/4ffc3ec40f0bcc68b475dae6eb09d0bb/transformed/play-services-base-18.3.0/AndroidManifest.xml:22:19-43
+154            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+154-->[com.google.android.gms:play-services-base:18.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/4ffc3ec40f0bcc68b475dae6eb09d0bb/transformed/play-services-base-18.3.0/AndroidManifest.xml:21:19-78
+155
+156        <provider
+156-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:31:9-39:20
+157            android:name="androidx.startup.InitializationProvider"
+157-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:32:13-67
+158            android:authorities="com.chaltteok.chaltteok_FE.androidx-startup"
+158-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:33:13-68
+159            android:exported="false" >
+159-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:34:13-37
+160            <meta-data
+160-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:36:13-38:52
+161                android:name="androidx.work.WorkManagerInitializer"
+161-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:37:17-68
+162                android:value="androidx.startup" />
+162-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:38:17-49
+163            <meta-data
+163-->[androidx.emoji2:emoji2:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/c933bca58589e8cc7ec297b85897b771/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+164                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+164-->[androidx.emoji2:emoji2:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/c933bca58589e8cc7ec297b85897b771/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
+165                android:value="androidx.startup" />
+165-->[androidx.emoji2:emoji2:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/c933bca58589e8cc7ec297b85897b771/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+166            <meta-data
+166-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/idong-won/.gradle/caches/8.10.2/transforms/309f81eae8cf3271af237227a4d809bd/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
+167                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+167-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/idong-won/.gradle/caches/8.10.2/transforms/309f81eae8cf3271af237227a4d809bd/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
+168                android:value="androidx.startup" />
+168-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/idong-won/.gradle/caches/8.10.2/transforms/309f81eae8cf3271af237227a4d809bd/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
+169            <meta-data
+169-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+170                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+170-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+171                android:value="androidx.startup" />
+171-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+172        </provider>
+173
+174        <service
+174-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:41:9-46:35
+175            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+175-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:42:13-88
+176            android:directBootAware="false"
+176-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:43:13-44
+177            android:enabled="@bool/enable_system_alarm_service_default"
+177-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:44:13-72
+178            android:exported="false" />
+178-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:45:13-37
+179        <service
+179-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:47:9-53:35
+180            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+180-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:48:13-84
+181            android:directBootAware="false"
+181-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:49:13-44
+182            android:enabled="@bool/enable_system_job_service_default"
+182-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:50:13-70
+183            android:exported="true"
+183-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:51:13-36
+184            android:permission="android.permission.BIND_JOB_SERVICE" />
+184-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:52:13-69
+185        <service
+185-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:54:9-59:35
+186            android:name="androidx.work.impl.foreground.SystemForegroundService"
+186-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:55:13-81
+187            android:directBootAware="false"
+187-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:56:13-44
+188            android:enabled="@bool/enable_system_foreground_service_default"
+188-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:57:13-77
+189            android:exported="false" />
+189-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:58:13-37
+190
+191        <receiver
+191-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:61:9-66:35
+192            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+192-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:62:13-88
+193            android:directBootAware="false"
+193-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:63:13-44
+194            android:enabled="true"
+194-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:64:13-35
+195            android:exported="false" />
+195-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:65:13-37
+196        <receiver
+196-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:67:9-77:20
+197            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+197-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:68:13-106
+198            android:directBootAware="false"
+198-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:69:13-44
+199            android:enabled="false"
+199-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:70:13-36
+200            android:exported="false" >
+200-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:71:13-37
+201            <intent-filter>
+201-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:73:13-76:29
+202                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+202-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:74:17-87
+202-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:74:25-84
+203                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+203-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:75:17-90
+203-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:75:25-87
+204            </intent-filter>
+205        </receiver>
+206        <receiver
+206-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:78:9-88:20
+207            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+207-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:79:13-104
+208            android:directBootAware="false"
+208-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:80:13-44
+209            android:enabled="false"
+209-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:81:13-36
+210            android:exported="false" >
+210-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:82:13-37
+211            <intent-filter>
+211-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:84:13-87:29
+212                <action android:name="android.intent.action.BATTERY_OKAY" />
+212-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:85:17-77
+212-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:85:25-74
+213                <action android:name="android.intent.action.BATTERY_LOW" />
+213-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:86:17-76
+213-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:86:25-73
+214            </intent-filter>
+215        </receiver>
+216        <receiver
+216-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:89:9-99:20
+217            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+217-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:90:13-104
+218            android:directBootAware="false"
+218-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:91:13-44
+219            android:enabled="false"
+219-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:92:13-36
+220            android:exported="false" >
+220-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:93:13-37
+221            <intent-filter>
+221-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:95:13-98:29
+222                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+222-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:96:17-83
+222-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:96:25-80
+223                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+223-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:97:17-82
+223-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:97:25-79
+224            </intent-filter>
+225        </receiver>
+226        <receiver
+226-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:100:9-109:20
+227            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+227-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:101:13-103
+228            android:directBootAware="false"
+228-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:102:13-44
+229            android:enabled="false"
+229-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:103:13-36
+230            android:exported="false" >
+230-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:104:13-37
+231            <intent-filter>
+231-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:106:13-108:29
+232                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+232-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:107:17-79
+232-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:107:25-76
+233            </intent-filter>
+234        </receiver>
+235        <receiver
+235-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:110:9-121:20
+236            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+236-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:111:13-88
+237            android:directBootAware="false"
+237-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:112:13-44
+238            android:enabled="false"
+238-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:113:13-36
+239            android:exported="false" >
+239-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:114:13-37
+240            <intent-filter>
+240-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:116:13-120:29
+241                <action android:name="android.intent.action.BOOT_COMPLETED" />
+241-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:117:17-79
+241-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:117:25-76
+242                <action android:name="android.intent.action.TIME_SET" />
+242-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:118:17-73
+242-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:118:25-70
+243                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+243-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:119:17-81
+243-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:119:25-78
+244            </intent-filter>
+245        </receiver>
+246        <receiver
+246-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:122:9-131:20
+247            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+247-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:123:13-99
+248            android:directBootAware="false"
+248-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:124:13-44
+249            android:enabled="@bool/enable_system_alarm_service_default"
+249-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:125:13-72
+250            android:exported="false" >
+250-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:126:13-37
+251            <intent-filter>
+251-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:128:13-130:29
+252                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+252-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:129:17-98
+252-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:129:25-95
+253            </intent-filter>
+254        </receiver>
+255        <receiver
+255-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:132:9-142:20
+256            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+256-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:133:13-78
+257            android:directBootAware="false"
+257-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:134:13-44
+258            android:enabled="true"
+258-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:135:13-35
+259            android:exported="true"
+259-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:136:13-36
+260            android:permission="android.permission.DUMP" >
+260-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:137:13-57
+261            <intent-filter>
+261-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:139:13-141:29
+262                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+262-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:140:17-88
+262-->[androidx.work:work-runtime:2.7.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/b5ffe2c6f4aa85b3fca00025e7aba2d3/transformed/work-runtime-2.7.1/AndroidManifest.xml:140:25-85
+263            </intent-filter>
+264        </receiver>
+265        <receiver
+265-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+266            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+266-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+267            android:directBootAware="false"
+267-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+268            android:enabled="true"
+268-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+269            android:exported="true"
+269-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+270            android:permission="android.permission.DUMP" >
+270-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+271            <intent-filter>
+271-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+272                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+272-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+272-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+273            </intent-filter>
+274            <intent-filter>
+274-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+275                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+275-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+275-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+276            </intent-filter>
+277            <intent-filter>
+277-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+278                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+278-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+278-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+279            </intent-filter>
+280            <intent-filter>
+280-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+281                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+281-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+281-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/38618f0efbf35910e6bb27e7c9a4b9b4/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+282            </intent-filter>
+283        </receiver>
+284
+285        <service
+285-->[androidx.room:room-runtime:2.2.5] /Users/idong-won/.gradle/caches/8.10.2/transforms/5499299d463c23efbbcaa2717536fa77/transformed/room-runtime-2.2.5/AndroidManifest.xml:25:9-28:40
+286            android:name="androidx.room.MultiInstanceInvalidationService"
+286-->[androidx.room:room-runtime:2.2.5] /Users/idong-won/.gradle/caches/8.10.2/transforms/5499299d463c23efbbcaa2717536fa77/transformed/room-runtime-2.2.5/AndroidManifest.xml:26:13-74
+287            android:directBootAware="true"
+287-->[androidx.room:room-runtime:2.2.5] /Users/idong-won/.gradle/caches/8.10.2/transforms/5499299d463c23efbbcaa2717536fa77/transformed/room-runtime-2.2.5/AndroidManifest.xml:27:13-43
+288            android:exported="false" />
+288-->[androidx.room:room-runtime:2.2.5] /Users/idong-won/.gradle/caches/8.10.2/transforms/5499299d463c23efbbcaa2717536fa77/transformed/room-runtime-2.2.5/AndroidManifest.xml:28:13-37
+289    </application>
+290
+291</manifest>
+=======
+16    <queries>
+16-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:12:3-19:13
+17
+18        <!-- Support checking for http(s) links via the Linking API -->
+19        <intent>
+19-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:14:5-18:14
+20            <action android:name="android.intent.action.VIEW" />
+20-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:15:7-59
+20-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:15:15-56
+21
+22            <category android:name="android.intent.category.BROWSABLE" />
+22-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:16:7-68
+22-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:16:17-65
+23
+24            <data android:scheme="https" />
+24-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:17:7-38
+24-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:17:13-35
+25        </intent>
+26        <!-- Query open documents -->
+27        <intent>
+27-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:15:9-17:18
+28            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE" />
+28-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:16:13-79
+28-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:16:21-76
+29        </intent>
+30    </queries>
+31
+32    <permission
+32-->[androidx.core:core:1.13.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/275972b32a83e4f2805ae07f38088e4e/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+33        android:name="com.dlehddnjs245.chaltteok_FE.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+33-->[androidx.core:core:1.13.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/275972b32a83e4f2805ae07f38088e4e/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+34        android:protectionLevel="signature" />
+34-->[androidx.core:core:1.13.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/275972b32a83e4f2805ae07f38088e4e/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+35
+36    <uses-permission android:name="com.dlehddnjs245.chaltteok_FE.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+36-->[androidx.core:core:1.13.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/275972b32a83e4f2805ae07f38088e4e/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+36-->[androidx.core:core:1.13.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/275972b32a83e4f2805ae07f38088e4e/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+37
+38    <application
+38-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:21:3-28:17
+39        android:name="com.dlehddnjs245.chaltteok_FE.MainApplication"
+39-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:21:16-47
+40        android:allowBackup="false"
+40-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:21:162-189
+41        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+41-->[androidx.core:core:1.13.1] /Users/idong-won/.gradle/caches/8.10.2/transforms/275972b32a83e4f2805ae07f38088e4e/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+42        android:debuggable="true"
+43        android:extractNativeLibs="false"
+44        android:icon="@mipmap/ic_launcher"
+44-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:21:81-115
+45        android:label="@string/app_name"
+45-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:21:48-80
+46        android:roundIcon="@mipmap/ic_launcher_round"
+46-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:21:116-161
+47        android:supportsRtl="true"
+47-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:21:222-248
+48        android:theme="@style/AppTheme"
+48-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:21:190-221
+49        android:usesCleartextTraffic="true" >
+49-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/debug/AndroidManifest.xml:6:18-53
+50        <activity
+50-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:22:5-27:16
+51            android:name="com.dlehddnjs245.chaltteok_FE.MainActivity"
+51-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:22:15-43
+52            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode"
+52-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:22:44-134
+53            android:exported="true"
+53-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:22:256-279
+54            android:launchMode="singleTask"
+54-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:22:135-166
+55            android:theme="@style/Theme.App.SplashScreen"
+55-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:22:210-255
+56            android:windowSoftInputMode="adjustResize" >
+56-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:22:167-209
+57            <intent-filter>
+57-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:23:7-26:23
+58                <action android:name="android.intent.action.MAIN" />
+58-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:24:9-60
+58-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:24:17-58
+59
+60                <category android:name="android.intent.category.LAUNCHER" />
+60-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:25:9-68
+60-->/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/src/main/AndroidManifest.xml:25:19-66
+61            </intent-filter>
+62        </activity>
+63
+64        <provider
+64-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:21:9-30:20
+65            android:name="expo.modules.filesystem.FileSystemFileProvider"
+65-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:22:13-74
+66            android:authorities="com.dlehddnjs245.chaltteok_FE.FileSystemFileProvider"
+66-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:23:13-74
+67            android:exported="false"
+67-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:24:13-37
+68            android:grantUriPermissions="true" >
+68-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:25:13-47
+69            <meta-data
+69-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:27:13-29:70
+70                android:name="android.support.FILE_PROVIDER_PATHS"
+70-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:28:17-67
+71                android:resource="@xml/file_system_provider_paths" />
+71-->[:expo-file-system] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-file-system/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:29:17-67
+72        </provider>
+73
+74        <meta-data
+74-->[:expo-modules-core] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:9-11:89
+75            android:name="org.unimodules.core.AppLoader#react-native-headless"
+75-->[:expo-modules-core] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:10:13-79
+76            android:value="expo.modules.adapters.react.apploader.RNHeadlessAppLoader" />
+76-->[:expo-modules-core] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:13-86
+77        <meta-data
+77-->[:expo-modules-core] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:12:9-15:45
+78            android:name="com.facebook.soloader.enabled"
+78-->[:expo-modules-core] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:13:13-57
+79            android:value="true" />
+79-->[:expo-modules-core] /Users/idong-won/Documents/PROJECT/Chaltteok_FE/node_modules/expo-modules-core/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:14:13-33
+80
+81        <activity
+81-->[com.facebook.react:react-android:0.76.2] /Users/idong-won/.gradle/caches/8.10.2/transforms/ae9035e639324b26f54fdda29ec52c26/transformed/react-android-0.76.2-debug/AndroidManifest.xml:19:9-21:40
+82            android:name="com.facebook.react.devsupport.DevSettingsActivity"
+82-->[com.facebook.react:react-android:0.76.2] /Users/idong-won/.gradle/caches/8.10.2/transforms/ae9035e639324b26f54fdda29ec52c26/transformed/react-android-0.76.2-debug/AndroidManifest.xml:20:13-77
+83            android:exported="false" />
+83-->[com.facebook.react:react-android:0.76.2] /Users/idong-won/.gradle/caches/8.10.2/transforms/ae9035e639324b26f54fdda29ec52c26/transformed/react-android-0.76.2-debug/AndroidManifest.xml:21:13-37
+84
+85        <provider
+85-->[androidx.emoji2:emoji2:1.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/56994a96a546fe2a976b23b5ff417d63/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+86            android:name="androidx.startup.InitializationProvider"
+86-->[androidx.emoji2:emoji2:1.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/56994a96a546fe2a976b23b5ff417d63/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+87            android:authorities="com.dlehddnjs245.chaltteok_FE.androidx-startup"
+87-->[androidx.emoji2:emoji2:1.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/56994a96a546fe2a976b23b5ff417d63/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+88            android:exported="false" >
+88-->[androidx.emoji2:emoji2:1.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/56994a96a546fe2a976b23b5ff417d63/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+89            <meta-data
+89-->[androidx.emoji2:emoji2:1.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/56994a96a546fe2a976b23b5ff417d63/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+90                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+90-->[androidx.emoji2:emoji2:1.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/56994a96a546fe2a976b23b5ff417d63/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+91                android:value="androidx.startup" />
+91-->[androidx.emoji2:emoji2:1.2.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/56994a96a546fe2a976b23b5ff417d63/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+92            <meta-data
+92-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/idong-won/.gradle/caches/8.10.2/transforms/309f81eae8cf3271af237227a4d809bd/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
+93                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+93-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/idong-won/.gradle/caches/8.10.2/transforms/309f81eae8cf3271af237227a4d809bd/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
+94                android:value="androidx.startup" />
+94-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/idong-won/.gradle/caches/8.10.2/transforms/309f81eae8cf3271af237227a4d809bd/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
+95            <meta-data
+95-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+96                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+96-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+97                android:value="androidx.startup" />
+97-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+98        </provider>
+99
+100        <receiver
+100-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+101            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+101-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+102            android:directBootAware="false"
+102-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+103            android:enabled="true"
+103-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+104            android:exported="true"
+104-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+105            android:permission="android.permission.DUMP" >
+105-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+106            <intent-filter>
+106-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+107                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+107-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+107-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+108            </intent-filter>
+109            <intent-filter>
+109-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+110                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+110-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+110-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+111            </intent-filter>
+112            <intent-filter>
+112-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+113                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+113-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+113-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+114            </intent-filter>
+115            <intent-filter>
+115-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+116                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+116-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+116-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/idong-won/.gradle/caches/8.10.2/transforms/0ed6e923df982bca42deace9a2069562/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+117            </intent-filter>
+118        </receiver>
+119    </application>
+120
+121</manifest>
+>>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1

@@ -1,21 +1,10 @@
+// prettier-ignore
 {
+  "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "nodenext",
-    "strict": true,                        
-    "target": "esnext",                    
-    "module": "NodeNext",                    
-    "jsx": "react-jsx",                    
-    "declaration": true,                   
-    "removeComments": true,                
-    "noImplicitAny": true,                 
-    "strictNullChecks": true,              
-    "strictFunctionTypes": true,           
-    "strictPropertyInitialization": true,  
-    "noImplicitThis": true,                
-    "noUnusedLocals": true,                
-    "noUnusedParameters": true,            
-    "noImplicitReturns": true,             
-    "noFallthroughCasesInSwitch": true     
-  }                      
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+    /* Completeness */
+    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+  }
 }
