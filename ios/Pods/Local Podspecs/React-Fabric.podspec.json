@@ -1,10 +1,6 @@
 {
   "name": "React-Fabric",
-<<<<<<< HEAD
   "version": "0.76.5",
-=======
-  "version": "0.76.2",
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   "summary": "Fabric for React Native.",
   "homepage": "https://reactnative.dev/",
   "license": "MIT",
@@ -14,11 +10,7 @@
   },
   "source": {
     "git": "https://github.com/facebook/react-native.git",
-<<<<<<< HEAD
     "tag": "v0.76.5"
-=======
-    "tag": "v0.76.2"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   },
   "source_files": "dummyFile.cpp",
   "pod_target_xcconfig": {

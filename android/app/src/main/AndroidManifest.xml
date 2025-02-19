@@ -8,13 +8,10 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
   <!-- END OPTIONAL PERMISSIONS -->
-<<<<<<< HEAD
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 
   <queries>
     <!-- Support checking for http(s) links via the Linking API -->
@@ -32,11 +29,8 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
-<<<<<<< HEAD
     <meta-data
       android:name="com.naver.maps.map.CLIENT_ID"
       android:value="5k42851vyz" />
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   </application>
 </manifest>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import {
   View,
@@ -167,23 +166,12 @@ const NearbyScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
     </SafeAreaView>
-=======
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-
-const NearbyScreen = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>주변 화면</Text>
-    </View>
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-<<<<<<< HEAD
     backgroundColor: '#fff',
   },
   header: {
@@ -366,15 +354,3 @@ const styles = StyleSheet.create({
 
 export default NearbyScreen;
 
-=======
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-});
-
-export default NearbyScreen;
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1

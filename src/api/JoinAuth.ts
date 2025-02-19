@@ -1,35 +1,39 @@
 // filepath: /Users/idong-won/Documents/PROJECT/Chaltteok_FE/src/api/JoinAuth.ts
 import axios from 'axios';
+import Constants from 'expo-constants';
 
-export const joinAuth = async (email: string, password: string, confirmPassword: string) => {
+const BASE_URL = Constants.expoConfig?.extra?.baseURL;
+
+export const joinAuth = async (email: string, password: string, username: string) => {
   try {
-    const response = await axios.post('http://192.168.219.187:9801/auth/register', {
-      email: email,
-      password: password,
-      passwordConfirm: confirmPassword
+    console.log('회원가입 시도:', { email, password });
+    console.log('BASE_URL:', BASE_URL);
+    
+    const response = await axios.post(`${BASE_URL}api/v1/auth/register`, {
+      email,
+      password
     });
-    console.log('백엔드 응답:', response.data);
+    
+    console.log('회원가입 응답:', {
+      status: response.status,
+      statusText: response.statusText,
+      data: response.data,
+      headers: response.headers
+    });
+    
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      console.error('회원가입 실패:', error.message);
-      if (error.response) {
-        // 서버가 응답을 반환한 경우 (2xx 외의 상태 코드)
-        console.error('응답 데이터:', error.response.data);
-        console.error('응답 상태:', error.response.status);
-        console.error('응답 헤더:', error.response.headers);
-      } else if (error.request) {
-        // 요청이 만들어졌으나 응답을 받지 못한 경우
-        console.error('요청 데이터:', error.request);
-      } else {
-        // 요청을 설정하는 중에 오류가 발생한 경우
-        console.error('오류 메시지:', error.message);
-      }
-    } else {
-      console.error('예상치 못한 오류:', error);
+      console.error('회원가입 실패:', {
+        status: error.response?.status,
+        statusText: error.response?.statusText,
+        data: error.response?.data,
+        headers: error.response?.headers,
+        requestURL: error.config?.url,
+        requestMethod: error.config?.method,
+        requestData: error.config?.data
+      });
     }
     throw error;
-  } finally {
-    console.log('요청이 완료되었습니다.');
   }
 };

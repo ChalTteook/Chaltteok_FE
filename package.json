@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-<<<<<<< HEAD
     "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
@@ -19,22 +18,12 @@
     "@react-native-community/cli": "latest",
     "@react-native-community/datetimepicker": "^8.2.0",
     "@react-native-cookies/cookies": "^6.2.1",
-=======
-    "start": "expo start",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web"
-  },
-  "dependencies": {
-    "@react-native-community/cli": "latest",
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
     "@react-navigation/stack": "^7.1.1",
     "@tanstack/react-query": "^5.61.0",
     "@types/styled-components-react-native": "^5.2.5",
     "axios": "^1.7.7",
-<<<<<<< HEAD
     "axios-mock-adapter": "^2.1.0",
     "dotenv": "^16.4.7",
     "expo": "^52.0.23",
@@ -42,15 +31,10 @@
     "hoist-non-react-statics": "^3.3.2",
     "is-directory": "^0.3.1",
     "json-parse-better-errors": "^1.0.2",
-=======
-    "expo": "^52.0.23",
-    "expo-status-bar": "~2.0.0",
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
     "lucide-react-native": "^0.469.0",
     "react": "18",
     "react-dom": "^18.3.1",
     "react-native": "0.76.5",
-<<<<<<< HEAD
     "react-native-gesture-handler": "~2.20.2",
     "react-native-get-random-values": "^1.11.0",
     "react-native-maps": "^1.20.1",
@@ -67,28 +51,12 @@
     "styled-components": "^6.1.13",
     "swiper": "^11.1.15",
     "uuid": "^11.0.3"
-=======
-    "react-native-dotenv": "^3.4.11",
-    "react-native-gesture-handler": "~2.20.2",
-    "react-native-get-random-values": "^1.11.0",
-    "react-native-safe-area-context": "4.12.0",
-    "react-native-screens": "^4.4.0",
-    "react-native-svg": "^15.10.1",
-    "react-native-swiper": "^1.6.0",
-    "react-native-vector-icons": "^10.2.0",
-    "recoil": "^0.7.7",
-    "styled-components": "^6.1.13",
-    "swiper": "^11.1.15"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@eslint/js": "^9.15.0",
     "@types/react": "~18.3.12",
-<<<<<<< HEAD
     "@types/react-native-dotenv": "^0.2.2",
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
     "@types/react-native-vector-icons": "^6.4.18",
     "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
@@ -96,10 +64,7 @@
     "eslint-plugin-react": "^7.37.2",
     "globals": "^15.12.0",
     "prettier": "^3.3.3",
-<<<<<<< HEAD
     "react-native-dotenv": "^3.4.11",
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
     "typescript": "^5.3.3",
     "typescript-eslint": "^8.15.0"
   },
@@ -107,10 +72,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-<<<<<<< HEAD
   "description": "",
   "proxy": "http://localhost:9801"
-=======
-  "description": ""
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 }

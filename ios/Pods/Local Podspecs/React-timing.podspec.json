@@ -1,10 +1,6 @@
 {
   "name": "React-timing",
-<<<<<<< HEAD
   "version": "0.76.5",
-=======
-  "version": "0.76.2",
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   "summary": "React Native timing primitives",
   "homepage": "https://reactnative.dev/",
   "license": "MIT",
@@ -14,11 +10,7 @@
   },
   "source": {
     "git": "https://github.com/facebook/react-native.git",
-<<<<<<< HEAD
     "tag": "v0.76.5"
-=======
-    "tag": "v0.76.2"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   },
   "source_files": "*.{cpp,h}",
   "header_dir": "react/timing",

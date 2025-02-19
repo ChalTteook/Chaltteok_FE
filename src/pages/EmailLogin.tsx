@@ -20,29 +20,38 @@ export default function LoginScreen() {
       try {
         console.log('로그인 시도:', email, password);
         const response = await loginUser(email, password);
+        console.log("로그인 성공: ", response.data);
+        // const verified = response.data.verified;
+        const userEmail = response.data.user.email;
+        console.log("email:", userEmail);
 
-        const verified = response.data.verified;
-        const userEmail = response.data.email;
+        setAuth({
+          userEmail: userEmail,
+          isLoggedIn: true,
+        });
+        Alert.alert('로그인 성공');
+        navigation.navigate('Main');
         
-        if (verified === 'Y') {
+      //   if (verified === 'Y') {
 
-          setAuth({
-            userEmail: userEmail,
-            isLoggedIn: true,
-          });
+      //     setAuth({
+      //       userEmail: userEmail,
+      //       isLoggedIn: true,
+      //     });
 
-          Alert.alert('로그인 성공');
-          navigation.navigate('WelcomeJoin');
-        } 
-        if (userEmail == email) {
-          Alert.alert('로그인 실패', '아이디나 비밀번호가 틀렸습니다.');
-        } 
-        else {
-          Alert.alert('로그인 실패', '아이디가 존재하지 않습니다');
-          navigation.navigate('Join');
-        }
+      //     Alert.alert('로그인 성공');
+      //     navigation.navigate('WelcomeJoin');
+      //   } 
+      //   if (userEmail == email) {
+      //     Alert.alert('로그인 실패', '아이디나 비밀번호가 틀렸습니다.');
+      //   } 
+      //   else {
+      //     Alert.alert('로그인 실패', '아이디가 존재하지 않습니다');
+      //     navigation.navigate('Join');
+      //   }
       } catch (error) {
         Alert.alert('오류', '로그인 중 문제가 발생했습니다.');
+
       }
     };
 

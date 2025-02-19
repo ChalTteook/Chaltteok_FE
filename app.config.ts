@@ -13,11 +13,17 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     development: {
       kakaoRedirectUri: process.env.KAKAO_REDIRECT_URI,
       kakaoRestApiKey: process.env.KAKAO_REST_API_KEY,
+      naverRedirectUri: process.env.NAVER_REDIRECT_URI,
+      naverRestApiKey: process.env.NAVER_REST_API_KEY,
+      baseURL: process.env.BASE_URL,
     },
     production: {
       // Hardcode production values or load from .env.production
       kakaoRedirectUri: process.env.KAKAO_REDIRECT_URI,
       kakaoRestApiKey: process.env.KAKAO_REST_API_KEY,
+      naverRedirectUri: process.env.NAVER_REDIRECT_URI,
+      naverRestApiKey: process.env.NAVER_REST_API_KEY,
+      baseURL: process.env.BASE_URL,
     },
   };
 

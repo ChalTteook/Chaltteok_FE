@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#Tue Feb 11 13:00:20 KST 2025
-=======
-#Thu Jan 09 03:29:38 KST 2025
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
+#Thu Feb 20 00:21:41 KST 2025
 path.4=12/classes.dex
 path.3=11/classes.dex
 path.2=10/classes.dex
@@ -23,6 +19,7 @@ base.8=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/interme
 base.7=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeLibDexDebug/15/classes.dex
 base.6=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeLibDexDebug/14/classes.dex
 base.5=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeLibDexDebug/13/classes.dex
+renamed.20=classes21.dex
 renamed.18=classes19.dex
 renamed.17=classes18.dex
 renamed.9=classes10.dex
@@ -36,16 +33,13 @@ renamed.13=classes14.dex
 renamed.12=classes13.dex
 renamed.11=classes12.dex
 renamed.10=classes11.dex
-<<<<<<< HEAD
 base.17=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/10/classes.dex
-=======
-base.17=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/13/classes.dex
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 base.16=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.15=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeLibDexDebug/9/classes.dex
 base.14=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeLibDexDebug/8/classes.dex
 base.19=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
 base.18=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
+base.20=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes3.dex
 renamed.3=classes4.dex
 path.12=6/classes.dex
 renamed.2=classes3.dex
@@ -57,11 +51,7 @@ path.11=5/classes.dex
 renamed.7=classes8.dex
 path.16=0/classes.dex
 renamed.6=classes7.dex
-<<<<<<< HEAD
 path.17=10/classes.dex
-=======
-path.17=13/classes.dex
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 renamed.5=classes6.dex
 path.14=8/classes.dex
 renamed.4=classes5.dex
@@ -69,5 +59,6 @@ path.15=9/classes.dex
 renamed.19=classes20.dex
 base.13=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeLibDexDebug/7/classes.dex
 base.12=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeLibDexDebug/6/classes.dex
+path.20=classes3.dex
 base.11=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeLibDexDebug/5/classes.dex
 base.10=/Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build/intermediates/dex/debug/mergeLibDexDebug/4/classes.dex

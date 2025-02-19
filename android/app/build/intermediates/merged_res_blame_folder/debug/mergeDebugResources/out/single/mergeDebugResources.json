@@ -1,139 +1,70 @@
 [
     {
-<<<<<<< HEAD
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/drawable-xxhdpi_splashscreen_logo.png.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/drawable-xxhdpi/splashscreen_logo.png"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/drawable-mdpi_splashscreen_logo.png.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/drawable-mdpi/splashscreen_logo.png"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/drawable-xxxhdpi_splashscreen_logo.png.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/drawable-xxxhdpi/splashscreen_logo.png"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/drawable-hdpi_splashscreen_logo.png.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/drawable-hdpi/splashscreen_logo.png"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/drawable-xxxhdpi_splashscreen_logo.png.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/drawable-xxxhdpi/splashscreen_logo.png"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/drawable-xhdpi_splashscreen_logo.png.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/drawable-xhdpi/splashscreen_logo.png"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/drawable-xhdpi_splashscreen_logo.png.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/drawable-xhdpi/splashscreen_logo.png"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/drawable_rn_edit_text_material.xml.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/drawable/rn_edit_text_material.xml"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/drawable_rn_edit_text_material.xml.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/drawable/rn_edit_text_material.xml"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/drawable-mdpi_splashscreen_logo.png.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/drawable-mdpi/splashscreen_logo.png"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/drawable-xxhdpi_splashscreen_logo.png.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/drawable-xxhdpi/splashscreen_logo.png"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/drawable-hdpi_splashscreen_logo.png.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/drawable-hdpi/splashscreen_logo.png"
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.chaltteok.chaltteok_FE.app-debug-55:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.chaltteok.chaltteok_FE.app-main-57:/drawable/ic_launcher_background.xml"
-=======
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/drawable-hdpi_splashscreen_logo.png.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/drawable-hdpi/splashscreen_logo.png"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/drawable/ic_launcher_background.xml"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/mipmap-mdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/mipmap-xxhdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/mipmap-xxxhdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/mipmap-xxxhdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/mipmap-xhdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/mipmap-hdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/drawable-xxxhdpi_splashscreen_logo.png.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/drawable-xxxhdpi/splashscreen_logo.png"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/mipmap-hdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/drawable-mdpi_splashscreen_logo.png.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/drawable-mdpi/splashscreen_logo.png"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/drawable-xxhdpi_splashscreen_logo.png.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/drawable-xxhdpi/splashscreen_logo.png"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/mipmap-mdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/mipmap-xhdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/drawable-xhdpi_splashscreen_logo.png.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/drawable-xhdpi/splashscreen_logo.png"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/mipmap-xxhdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.dlehddnjs245.chaltteok_FE.app-debug-44:/drawable_rn_edit_text_material.xml.flat",
-        "source": "com.dlehddnjs245.chaltteok_FE.app-main-46:/drawable/rn_edit_text_material.xml"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
+        "merged": "com.chaltteok.chaltteok_FE.app-debug-69:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.chaltteok.chaltteok_FE.app-main-71:/mipmap-mdpi/ic_launcher.webp"
     }
 ]

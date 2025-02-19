@@ -1,10 +1,6 @@
 {
   "name": "React-jsinspector",
-<<<<<<< HEAD
   "version": "0.76.5",
-=======
-  "version": "0.76.2",
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   "summary": "-",
   "homepage": "https://reactnative.dev/",
   "license": "MIT",
@@ -14,11 +10,7 @@
   },
   "source": {
     "git": "https://github.com/facebook/react-native.git",
-<<<<<<< HEAD
     "tag": "v0.76.5"
-=======
-    "tag": "v0.76.2"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   },
   "source_files": "*.{cpp,h,def}",
   "header_dir": "jsinspector-modern",
@@ -42,21 +34,13 @@
 
     ],
     "React-runtimeexecutor": [
-<<<<<<< HEAD
       "0.76.5"
-=======
-      "0.76.2"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
     ],
     "React-jsi": [
 
     ],
     "React-perflogger": [
-<<<<<<< HEAD
       "0.76.5"
-=======
-      "0.76.2"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
     ],
     "hermes-engine": [
 

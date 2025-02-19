@@ -1,17 +1,10 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
-            "outputFile": "com.chaltteok.chaltteok_FE.app-mergeDebugResources-53:/values-es-rES/values-es-rES.xml",
+            "outputFile": "com.chaltteok.chaltteok_FE.app-mergeDebugResources-67:/values-es-rES/values-es-rES.xml",
             "map": [
                 {
                     "source": "/Users/idong-won/.gradle/caches/8.10.2/transforms/09e99889bdbc3a72b28a5d49d1ebcf4c/transformed/react-android-0.76.5-debug/res/values-es-rES/values-es-rES.xml",
-=======
-            "outputFile": "com.dlehddnjs245.chaltteok_FE.app-mergeDebugResources-42:/values-es-rES/values-es-rES.xml",
-            "map": [
-                {
-                    "source": "/Users/idong-won/.gradle/caches/8.10.2/transforms/ae9035e639324b26f54fdda29ec52c26/transformed/react-android-0.76.2-debug/res/values-es-rES/values-es-rES.xml",
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

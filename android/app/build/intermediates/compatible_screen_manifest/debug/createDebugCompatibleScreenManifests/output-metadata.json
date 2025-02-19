@@ -4,11 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-<<<<<<< HEAD
   "applicationId": "com.chaltteok.chaltteok_FE",
-=======
-  "applicationId": "com.dlehddnjs245.chaltteok_FE",
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   "variantName": "debug",
   "elements": []
 }

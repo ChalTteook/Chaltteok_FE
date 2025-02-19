@@ -1,11 +1,7 @@
 {
   "name": "ReactCommon",
   "module_name": "ReactCommon",
-<<<<<<< HEAD
   "version": "0.76.5",
-=======
-  "version": "0.76.2",
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   "summary": "-",
   "homepage": "https://reactnative.dev/",
   "license": "MIT",
@@ -15,11 +11,7 @@
   },
   "source": {
     "git": "https://github.com/facebook/react-native.git",
-<<<<<<< HEAD
     "tag": "v0.76.5"
-=======
-    "tag": "v0.76.2"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   },
   "header_dir": "ReactCommon",
   "compiler_flags": "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -DFOLLY_CFG_NO_COROUTINES=1 -DFOLLY_HAVE_CLOCK_GETTIME=1 -Wno-comma -Wno-shorten-64-to-32 -Wno-documentation",
@@ -35,7 +27,6 @@
       "name": "turbomodule",
       "dependencies": {
         "React-callinvoker": [
-<<<<<<< HEAD
           "0.76.5"
         ],
         "React-perflogger": [
@@ -46,28 +37,12 @@
         ],
         "React-jsi": [
           "0.76.5"
-=======
-          "0.76.2"
-        ],
-        "React-perflogger": [
-          "0.76.2"
-        ],
-        "React-cxxreact": [
-          "0.76.2"
-        ],
-        "React-jsi": [
-          "0.76.2"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
         ],
         "RCT-Folly": [
           "2024.01.01.00"
         ],
         "React-logger": [
-<<<<<<< HEAD
           "0.76.5"
-=======
-          "0.76.2"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
         ],
         "DoubleConversion": [
 
@@ -87,11 +62,7 @@
           "name": "bridging",
           "dependencies": {
             "React-jsi": [
-<<<<<<< HEAD
               "0.76.5"
-=======
-              "0.76.2"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
             ],
             "hermes-engine": [
 
@@ -112,7 +83,6 @@
           },
           "dependencies": {
             "React-debug": [
-<<<<<<< HEAD
               "0.76.5"
             ],
             "React-featureflags": [
@@ -120,15 +90,6 @@
             ],
             "React-utils": [
               "0.76.5"
-=======
-              "0.76.2"
-            ],
-            "React-featureflags": [
-              "0.76.2"
-            ],
-            "React-utils": [
-              "0.76.2"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
             ]
           }
         }

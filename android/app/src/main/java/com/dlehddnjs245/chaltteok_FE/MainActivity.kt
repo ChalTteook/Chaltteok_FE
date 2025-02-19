@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 package com.chaltteok.chaltteok_FE
-=======
-package com.dlehddnjs245.chaltteok_FE
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 
 import android.os.Build
 import android.os.Bundle

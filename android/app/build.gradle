@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 // filepath: /Users/idong-won/Documents/PROJECT/Chaltteok_FE/android/app/build.gradle
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
@@ -28,15 +25,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-<<<<<<< HEAD
     namespace "com.chaltteok.chaltteok_FE"
     defaultConfig {
         applicationId "com.chaltteok.chaltteok_FE"
-=======
-    namespace "com.dlehddnjs245.chaltteok_FE"
-    defaultConfig {
-        applicationId "com.dlehddnjs245.chaltteok_FE"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -108,12 +99,9 @@ dependencies {
     } else {
         implementation jscFlavor
     }
-<<<<<<< HEAD
 
     // Kakao SDK 추가
     implementation "com.kakao.sdk:v2-user:2.8.6" // 최신 버전으로 변경
     implementation("com.naver.maps:map-sdk:3.20.0")
 
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 }

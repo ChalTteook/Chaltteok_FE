@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 package com.chaltteok.chaltteok_FE
 import android.app.Application
 import android.content.res.Configuration
 import com.kakao.sdk.common.KakaoSdk
-=======
-package com.dlehddnjs245.chaltteok_FE
-
-import android.app.Application
-import android.content.res.Configuration
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
@@ -49,10 +42,7 @@ class MainApplication : Application(), ReactApplication {
 
   override fun onCreate() {
     super.onCreate()
-<<<<<<< HEAD
     KakaoSdk.init(this, "0f63e2af878567f097dc17fbbd118b25")
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
     SoLoader.init(this, OpenSourceMergedSoMapping)
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
       // If you opted-in for the New Architecture, we load the native entry point for this app.

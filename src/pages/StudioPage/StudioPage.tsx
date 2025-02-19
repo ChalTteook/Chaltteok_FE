@@ -161,11 +161,7 @@ export default function StudioDetailScreen({ navigation }) {
     },
     {
       id: 2,
-<<<<<<< HEAD
       title: "허창훈 작가",
-=======
-      title: "하정호 작가",
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
       detail: "자기소개 최대 000자 최대 2줄 길어지면 말줄임",
       isBookable: false,
     },

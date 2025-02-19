@@ -41,20 +41,24 @@ export default function SignUpScreen() {
       } else {
         setConfirmPasswordError('');
       }
+
+      const username = email.split('@')[0];
     
         if (isValid) {
-          try {
-            const response = await joinAuth(email, password, confirmPassword);
-    
-            if (response.data.verified == 'N') {
-              navigation.navigate('PhoneAuth'); 
-            } else {
-              Alert.alert('회원 가입 실패', response.message);
-            }
-          } catch (error) {
-            console.error('회원 가입 중 오류 발생:', error);
-            Alert.alert('에러 발생', '서버에 문제가 발생했습니다.');
-          }
+          // try {
+          //   const response = await joinAuth(email, password);
+          const response = await joinAuth(email, password, username);
+          console.log('백엔드 응답:', response);
+          navigation.navigate('EmailLogin');
+          //   if (response.data.verified == 'N') {
+          //     navigation.navigate('PhoneAuth'); 
+          //   } else {
+          //     Alert.alert('회원 가입 실패', response.message);
+          //   }
+          // } catch (error) {
+          //   console.error('회원 가입 중 오류 발생:', error);
+          //   Alert.alert('에러 발생', '서버에 문제가 발생했습니다.');
+          // }
         }
       };
   

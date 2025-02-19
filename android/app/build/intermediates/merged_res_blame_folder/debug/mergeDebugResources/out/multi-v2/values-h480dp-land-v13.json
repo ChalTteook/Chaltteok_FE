@@ -1,14 +1,10 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
-            "outputFile": "com.chaltteok.chaltteok_FE.app-mergeDebugResources-53:/values-h480dp-land-v13/values-h480dp-land-v13.xml",
-=======
-            "outputFile": "com.dlehddnjs245.chaltteok_FE.app-mergeDebugResources-42:/values-h480dp-land-v13/values-h480dp-land-v13.xml",
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
+            "outputFile": "com.chaltteok.chaltteok_FE.app-mergeDebugResources-67:/values-h480dp-land-v13/values-h480dp-land-v13.xml",
             "map": [
                 {
-                    "source": "/Users/idong-won/.gradle/caches/8.10.2/transforms/3995c9104dcc8b6793e851c60ff65067/transformed/material-1.6.1/res/values-h480dp-land-v13/values-h480dp-land-v13.xml",
+                    "source": "/Users/idong-won/.gradle/caches/8.10.2/transforms/d877dbe5ab13bcfe7a97efd49ac71c1c/transformed/material-1.12.0/res/values-h480dp-land-v13/values-h480dp-land-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

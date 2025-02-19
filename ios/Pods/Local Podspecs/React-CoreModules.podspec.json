@@ -1,10 +1,6 @@
 {
   "name": "React-CoreModules",
-<<<<<<< HEAD
   "version": "0.76.5",
-=======
-  "version": "0.76.2",
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   "summary": "-",
   "homepage": "https://reactnative.dev/",
   "license": "MIT",
@@ -15,11 +11,7 @@
   "compiler_flags": "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -DFOLLY_CFG_NO_COROUTINES=1 -DFOLLY_HAVE_CLOCK_GETTIME=1 -Wno-comma -Wno-shorten-64-to-32 -Wno-nullability-completeness",
   "source": {
     "git": "https://github.com/facebook/react-native.git",
-<<<<<<< HEAD
     "tag": "v0.76.5"
-=======
-    "tag": "v0.76.2"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   },
   "source_files": "**/*.{c,m,mm,cpp}",
   "header_dir": "CoreModules",
@@ -40,7 +32,6 @@
       "2024.01.01.00"
     ],
     "RCTTypeSafety": [
-<<<<<<< HEAD
       "0.76.5"
     ],
     "React-Core/CoreModulesHeaders": [
@@ -51,18 +42,6 @@
     ],
     "React-jsi": [
       "0.76.5"
-=======
-      "0.76.2"
-    ],
-    "React-Core/CoreModulesHeaders": [
-      "0.76.2"
-    ],
-    "React-RCTImage": [
-      "0.76.2"
-    ],
-    "React-jsi": [
-      "0.76.2"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
     ],
     "React-RCTBlob": [
 

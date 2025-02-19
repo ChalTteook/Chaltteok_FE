@@ -1,12 +1,7 @@
 {
   "name": "RNGestureHandler",
-<<<<<<< HEAD
   "version": "2.20.2",
   "summary": "Experimental implementation of a new declarative API for gesture handling in react-native",
-=======
-  "version": "2.21.2",
-  "summary": "Declarative API exposing native platform touch and gesture system to React Native",
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   "homepage": "https://github.com/software-mansion/react-native-gesture-handler",
   "license": "MIT",
   "authors": {
@@ -14,11 +9,7 @@
   },
   "source": {
     "git": "https://github.com/software-mansion/react-native-gesture-handler",
-<<<<<<< HEAD
     "tag": "2.20.2"
-=======
-    "tag": "2.21.2"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   },
   "source_files": "apple/**/*.{h,m,mm}",
   "requires_arc": true,
@@ -28,12 +19,6 @@
     "osx": "10.15",
     "visionos": "1.0"
   },
-<<<<<<< HEAD
-=======
-  "xcconfig": {
-    "OTHER_CFLAGS": "$(inherited) "
-  },
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
   "compiler_flags": "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -DFOLLY_CFG_NO_COROUTINES=1 -DFOLLY_HAVE_CLOCK_GETTIME=1 -Wno-comma -Wno-shorten-64-to-32",
   "dependencies": {
     "React-Core": [

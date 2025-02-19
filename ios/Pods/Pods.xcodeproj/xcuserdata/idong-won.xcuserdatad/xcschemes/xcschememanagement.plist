@@ -64,7 +64,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-<<<<<<< HEAD
 		<key>NMapsGeometry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -75,8 +74,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 		<key>Pods-chaltteokFE.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -107,20 +104,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-<<<<<<< HEAD
 		<key>RNDateTimePicker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 		<key>RNGestureHandler.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-<<<<<<< HEAD
 		<key>RNSVG-RNSVGFilters.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -131,8 +124,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 		<key>RNScreens.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -453,20 +444,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-<<<<<<< HEAD
 		<key>mj-studio-react-native-naver-map.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
+		<key>react-native-cookies.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>react-native-get-random-values.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-<<<<<<< HEAD
 		<key>react-native-maps-ReactNativeMapsPrivacy.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -477,21 +469,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 		<key>react-native-safe-area-context.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-<<<<<<< HEAD
 		<key>react-native-webview.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict/>

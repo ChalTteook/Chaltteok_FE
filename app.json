@@ -4,26 +4,17 @@
     "slug": "chaltteok_FE",
     "version": "1.0.0",
     "orientation": "portrait",
-<<<<<<< HEAD
     "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "assets": ["./src/assets/fonts/"],
     "splash": {
       "image": "./src/assets/splash-icon.png",
-=======
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/splash-icon.png",
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
       "supportsTablet": true,
-<<<<<<< HEAD
       "bundleIdentifier": "com.chaltteok.chaltteok_FE"
     },
     "android": {
@@ -35,19 +26,6 @@
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
-=======
-      "bundleIdentifier": "com.dlehddnjs245.chaltteok_FE"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.dlehddnjs245.chaltteok_FE"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
     }
   }
 }

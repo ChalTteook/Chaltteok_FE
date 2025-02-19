@@ -1,8 +1,7 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
-            "outputFile": "com.chaltteok.chaltteok_FE.app-mergeDebugResources-53:/values-sw600dp-v13/values-sw600dp-v13.xml",
+            "outputFile": "com.chaltteok.chaltteok_FE.app-mergeDebugResources-67:/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
                     "source": "/Users/idong-won/.gradle/caches/8.10.2/transforms/130b16674f2161ef74dcd6e4b2ff7398/transformed/appcompat-1.7.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
@@ -15,12 +14,7 @@
                     }
                 },
                 {
-=======
-            "outputFile": "com.dlehddnjs245.chaltteok_FE.app-mergeDebugResources-42:/values-sw600dp-v13/values-sw600dp-v13.xml",
-            "map": [
-                {
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
-                    "source": "/Users/idong-won/.gradle/caches/8.10.2/transforms/3995c9104dcc8b6793e851c60ff65067/transformed/material-1.6.1/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/Users/idong-won/.gradle/caches/8.10.2/transforms/d877dbe5ab13bcfe7a97efd49ac71c1c/transformed/material-1.12.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
@@ -37,19 +31,6 @@
                         "endColumns": "59,69,70,71,57,57,10,63,55,58,62,10",
                         "endOffsets": "666,736,807,879,937,995,1104,1168,1224,1283,1346,1518"
                     }
-<<<<<<< HEAD
-=======
-                },
-                {
-                    "source": "/Users/idong-won/.gradle/caches/8.10.2/transforms/066d0a679ecabea7c972c34a4e1b039b/transformed/appcompat-1.6.1/res/values-sw600dp-v13/values-sw600dp-v13.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,124,193,263,337,413,472,543",
-                        "endColumns": "68,68,69,73,75,58,70,67",
-                        "endOffsets": "119,188,258,332,408,467,538,606"
-                    }
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
                 }
             ]
         }

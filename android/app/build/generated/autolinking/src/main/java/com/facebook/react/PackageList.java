@@ -10,26 +10,20 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.ArrayList;
 
-<<<<<<< HEAD
 // @mj-studio/react-native-naver-map
 import com.mjstudio.reactnativenavermap.RNCNaverMapPackage;
 // @react-native-community/datetimepicker
 import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
 // @react-native-cookies/cookies
 import com.reactnativecommunity.cookies.CookieManagerPackage;
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 // expo
 import expo.modules.ExpoModulesPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.RNGestureHandlerPackage;
 // react-native-get-random-values
 import org.linusu.RNGetRandomValuesPackage;
-<<<<<<< HEAD
 // react-native-maps
 import com.rnmaps.maps.MapsPackage;
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 // react-native-safe-area-context
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 // react-native-screens
@@ -38,11 +32,8 @@ import com.swmansion.rnscreens.RNScreensPackage;
 import com.horcrux.svg.SvgPackage;
 // react-native-vector-icons
 import com.oblador.vectoricons.VectorIconsPackage;
-<<<<<<< HEAD
 // react-native-webview
 import com.reactnativecommunity.webview.RNCWebViewPackage;
-=======
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
 
 public class PackageList {
   private Application application;
@@ -88,7 +79,6 @@ public class PackageList {
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
-<<<<<<< HEAD
       new RNCNaverMapPackage(),
       new RNDateTimePickerPackage(),
       new CookieManagerPackage(),
@@ -101,15 +91,6 @@ public class PackageList {
       new SvgPackage(),
       new VectorIconsPackage(),
       new RNCWebViewPackage()
-=======
-      new ExpoModulesPackage(),
-      new RNGestureHandlerPackage(),
-      new RNGetRandomValuesPackage(),
-      new SafeAreaContextPackage(),
-      new RNScreensPackage(),
-      new SvgPackage(),
-      new VectorIconsPackage()
->>>>>>> ded217b60f603344aab12e2f7fe0edcc4d4059f1
     ));
   }
 }
