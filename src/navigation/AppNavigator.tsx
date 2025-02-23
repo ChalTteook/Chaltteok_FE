@@ -7,7 +7,6 @@ import ReservationScreen from '../pages/ReservationPage/ReservationScreen';
 import ReservationDetailScreen from '../pages/ReservationPage/ReservationDetailScreen';
 import PaymentScreen from '../pages/ReservationPage/PaymentScreen';
 import PaymentSuccessScreen from '../pages/ReservationPage/PaymentSuccessScreen';
-import ProfileScreen from '../pages/ProfilePage/ProfileScreen'; // ProfileScreen으로 수정
 
 const Stack = createStackNavigator();
 
@@ -21,7 +20,6 @@ const AppNavigator = () => {
       <Stack.Screen name="ReservationDetailPage" component={ReservationDetailScreen} options={{ headerShown: false }} />
       <Stack.Screen name="PaymentScreen" component={PaymentScreen} options={{ headerShown: false }} />
       <Stack.Screen name="PaymentSuccess" component={PaymentSuccessScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="ProfilePage" component={ProfileScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };

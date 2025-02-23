@@ -2,8 +2,8 @@ import * as React from "react";
 import Svg, { Circle, Defs, Pattern, Use, Image } from "react-native-svg";
 const CircleLogo = (props) => (
   <Svg
-    width={44}
-    height={44}
+    width={60}
+    height={60}
     viewBox="0 0 44 44"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

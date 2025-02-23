@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../pages/HomePage/HomeScreen';
 import NearbyScreen from '../pages/NearbyPage/NearbyScreen';
 import FavoriteScreen from '../pages/HomePage/FavoriteScreen';
-import ProfileScreen from '../pages/ProfilePage/ProfileScreen';
+import ProfileStackNavigator from './ProfileStakNavigator';
 import HomeIcon from '../assets/bannerIcons/HomeIcon';
 import ActiveHomeIcon from '../assets/bannerIcons/ActiveHomeIcon';
 import MapIcon from '../assets/bannerIcons/MapIcon';
@@ -20,7 +20,6 @@ const Tab = createBottomTabNavigator();
 const MainTabs = () => {
   return (
     <>
-      <Header />
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -53,7 +52,7 @@ const MainTabs = () => {
         <Tab.Screen name="찰떡홈" component={HomeScreen} />
         <Tab.Screen name="주변" component={NearbyScreen} />
         <Tab.Screen name="찜" component={FavoriteScreen} />
-        <Tab.Screen name="내정보" component={ProfileScreen} />
+        <Tab.Screen name="내정보" component={ProfileStackNavigator} />
       </Tab.Navigator>
     </>
   );

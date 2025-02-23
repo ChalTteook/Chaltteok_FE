@@ -11,7 +11,8 @@ export const joinAuth = async (email: string, password: string, username: string
     
     const response = await axios.post(`${BASE_URL}api/v1/auth/register`, {
       email,
-      password
+      password,
+      username
     });
     
     console.log('회원가입 응답:', {

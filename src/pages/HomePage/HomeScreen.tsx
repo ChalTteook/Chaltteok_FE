@@ -1,20 +1,25 @@
 import React from 'react';
 import { ScrollView, View, StyleSheet } from 'react-native';
+import Header from '../../components/Header';
 import Banner from './Banner';
 import Category from './Category';
 import Photographer from './Photographer';
 import NearbyRecommendation from './NearbyRecommendation';
 import VideoRecommendation from './VideoRecommendation';
+
 const HomeScreen = () => {
   return (
-    <ScrollView style={styles.container}>
-      <Banner />
-      <Category />
-      <View style={styles.space} />
-      <Photographer />
-      <NearbyRecommendation />
-      <VideoRecommendation />
-    </ScrollView>
+    <View style={styles.container}>
+      <Header />
+      <ScrollView>
+        <Banner />
+        <Category />
+        <View style={styles.space} />
+        <Photographer />
+        <NearbyRecommendation />
+        <VideoRecommendation />
+      </ScrollView>
+    </View>
   );
 };
 
