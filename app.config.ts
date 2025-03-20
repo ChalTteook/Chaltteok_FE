@@ -41,9 +41,13 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       [
         "expo-splash-screen",
         {
-          resizeMode: "contain",
+          resizeMode: "cover",
           backgroundColor: "#F71D6A",
           image: "./src/assets/splash_image.png",
+          imageStyles: {
+            width: '80%',  // 화면 너비의 80%
+            height: '80%', // 화면 높이의 80%
+          }
         }
       ]
     ],

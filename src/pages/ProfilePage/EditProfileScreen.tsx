@@ -154,7 +154,6 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 16,
     height: 44,
   },
   editIconContainer: {

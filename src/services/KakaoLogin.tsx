@@ -88,38 +88,9 @@ const KakaoLogin = () => {
     }
   };
 
-  const showAlert = () => {
-    Alert.alert(
-      "카카오 로그인 준비중",
-      "카카오 로그인 서비스가 준비중입니다. 이전 페이지로 돌아가시겠습니까?",
-      [
-        {
-          text: "취소",
-          style: "cancel"
-        },
-        { 
-          text: "확인", 
-          onPress: () => navigation.goBack()
-        }
-      ]
-    );
-  };
 
   if (!authUrl) {
-    return (
-      <View style={styles.container}>
-        <LeftHeader />
-        <TouchableOpacity 
-          style={styles.button}
-          onPress={showAlert}
-          disabled={isLoading}
-        >
-          <Text style={styles.buttonText}>
-            {isLoading ? "로딩중..." : "카카오로 시작하기"}
-          </Text>
-        </TouchableOpacity>
-      </View>
-    );
+    return;
   }
 
   return (

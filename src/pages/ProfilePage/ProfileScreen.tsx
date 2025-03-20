@@ -67,7 +67,10 @@ const ProfileScreen = ({ navigation }) => {
           <SectionTitle title="고객 지원" />
           <MenuItem title="공지사항" onPress={() => {}} />
           <MenuItem title="자주 묻는 질문" onPress={() => {}} />
-          <MenuItem title="서비스 약관" onPress={() => {}} />
+          <MenuItem 
+            title="서비스 약관" 
+            onPress={() => navigation.navigate('TermsOfService')} 
+          />
         </View>
 
         {/* Settings & Logout */}

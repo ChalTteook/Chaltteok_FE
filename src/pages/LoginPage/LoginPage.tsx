@@ -37,14 +37,14 @@ export default function LoginScreen() {
 
       <TouchableOpacity style={styles.kakaoButton} onPress={handleKakaoLogin}>
         <Image
-          source={require("../../assets/kakao.png")}
+          source={require("../../assets/socialLoginIcons/kakao.png")}
           style={styles.buttonImage}
         />
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.naverButton} onPress={handleNaverLogin}>
         <Image
-          source={require("../../assets/naver.png")}
+          source={require("../../assets/socialLoginIcons/naver.png")}
           style={styles.buttonImage}
         />
       </TouchableOpacity>
