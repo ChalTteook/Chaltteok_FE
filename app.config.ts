@@ -37,9 +37,22 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     ...config,
     name: config.name || "defaultName",
     slug: config.slug || "defaultSlug",
+    plugins: [
+      [
+        "expo-splash-screen",
+        {
+          resizeMode: "contain",
+          backgroundColor: "#F71D6A",
+          image: "./src/assets/splash_image.png",
+        }
+      ]
+    ],
     extra: {
       environment: env,
       ...envConfig,
+      eas: {
+        projectId: "267ee49b-7fdb-4c66-aa1b-f3397b8716d5"
+      }
     },
     // Add this to force rebuild when env changes
     version: env === "production" ? "1.0.0-prod" : "1.0.0-dev",

@@ -1,4 +1,3 @@
-// filepath: /Users/idong-won/Documents/PROJECT/Chaltteok_FE/src/navigation/LoginNavigator.tsx
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import SocialLogin from '../pages/LoginPage/LoginPage';

@@ -7,10 +7,11 @@ import { sendTokenToBackend } from '../api/KakaoAuth';
 import CookieManager from '@react-native-cookies/cookies';
 import Constants from 'expo-constants';
 import axios from 'axios';
+import LeftHeader from '../components/LeftHeader';
 
 const REST_API_KEY = Constants.expoConfig?.extra?.kakaoRestApiKey;
 const REDIRECT_URI = Constants.expoConfig?.extra?.kakaoRedirectUri  || 'http://43.201.211.39/';
-const BASE_URL = REDIRECT_URI?.replace(/\/$/, ''); // 끝의 슬래시 제거
+// const BASE_URL = REDIRECT_URI?.replace(/\/$/, ''); // 끝의 슬래시 제거
 const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage(window.location.href)`;
 
 type RootStackParamList = {
@@ -35,7 +36,8 @@ const KakaoLogin = () => {
     // 카카오 인증 URL 요청
     const getKakaoAuthUrl = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}api/v1/auth/kakao_auth`);
+        console.log('카카오 인증 URL 요청:', `${REDIRECT_URI}api/v1/auth/kakao_auth`);
+        const response = await axios.get(`${REDIRECT_URI}api/v1/auth/kakao_auth`);
         
         const receivedUrl = response.data.data;
         const urlParams = new URLSearchParams(receivedUrl.split('?')[1]);
@@ -106,6 +108,7 @@ const KakaoLogin = () => {
   if (!authUrl) {
     return (
       <View style={styles.container}>
+        <LeftHeader />
         <TouchableOpacity 
           style={styles.button}
           onPress={showAlert}
