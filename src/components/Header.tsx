@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Image, Platform, TouchableOpacity, StyleSheet } from "react-native";
 import SearchIcon from "react-native-vector-icons/Fontisto";
 import NotificationIcon from "../assets/NotificationIcon";
 import { useNavigation } from "@react-navigation/native";
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: 5,
+    marginTop: Platform.OS === 'ios' ? 40 : 30, // iOS는 상단 노치 영역 고려
   },
   logo: {
     width: 130,
