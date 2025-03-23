@@ -35,11 +35,28 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 
   const expoConfig: ExpoConfig = {
     ...config,
-    name: config.name || "defaultName",
+    name: "찰칵의 덕후",
     slug: config.slug || "defaultSlug",
+    plugins: [
+      [
+        "expo-splash-screen",
+        {
+          resizeMode: "contain",
+          backgroundColor: "#F71D6A",
+          image: "./src/assets/splash_image.png",
+          imageStyles: {
+            width: '100%',  // 화면 너비의 80%
+            height: '100%', // 화면 높이의 80%
+          }
+        }
+      ]
+    ],
     extra: {
       environment: env,
       ...envConfig,
+      eas: {
+        projectId: "267ee49b-7fdb-4c66-aa1b-f3397b8716d5"
+      }
     },
     // Add this to force rebuild when env changes
     version: env === "production" ? "1.0.0-prod" : "1.0.0-dev",

@@ -31,7 +31,7 @@ const CloseHeader: React.FC<HeaderProps> = ({ title }) => {
 
 const styles = StyleSheet.create({
   header: {
-    top:50 * scaleHeight,
+    top:60 * scaleHeight,
     height: 41,
     width: width,
   },

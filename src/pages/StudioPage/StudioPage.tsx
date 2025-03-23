@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   View,
   Text,
@@ -16,12 +16,21 @@ import ActiveLikeIcon from "../../assets/ActiveLikeIcon";
 import FavoriteIcon from "../../assets/FavoriteIcon";
 import LikeIcon from "../../assets/LikeIcon";
 import ShareIcon from "../../assets/ShareIcon";
+import { useRoute, RouteProp } from "@react-navigation/native";
+import { getStudioInfo } from "../../api/shops/shopDetailApi";
+
+// params 타입 정의
+type StudioPageParams = {
+  StudioPage: {
+    id: string;
+  };
+};
 
 const { width } = Dimensions.get("window");
 
 const tabs = ["소개", "촬영상품", "사진가", "리뷰"];
 
-const mainImages = [
+const defaultMainImages = [
   { id: 1, source: require("../../assets/studio_image.png") },
   { id: 2, source: require("../../assets/studio_image.png") },
   { id: 3, source: require("../../assets/studio_image.png") },
@@ -87,6 +96,13 @@ const ReviewCard = ({ review, onProductPress }) => (
 );
 
 export default function StudioDetailScreen({ navigation }) {
+  const route = useRoute<RouteProp<StudioPageParams, 'StudioPage'>>();
+  const { id } = route.params;
+  const [ images, setImages] = useState([]);
+  const [ isDefault, setIsDefault] = useState(true);
+
+
+  const [studios, setStudios] = useState([]);
   const [activeTab, setActiveTab] = useState("소개");
   const [isLiked, setIsLiked] = useState(false);
   const [isShareModalVisible, setIsShareModalVisible] = useState(false);
@@ -99,6 +115,24 @@ export default function StudioDetailScreen({ navigation }) {
     사진가: useRef(null),
     리뷰: useRef(null),
   };
+
+  useEffect(() => {
+    const fetchPhotographers = async () => {
+      try {
+        const response = await getStudioInfo(id);
+        const { img } = response.data.img;
+        setStudios(response.data);
+        if (img) {
+          setImages([{ id: 0, source: { uri: img } }, ...defaultMainImages]);
+          setIsDefault(false);
+        }
+      } catch (error) {
+        console.error('사진관 상세 정보를 가져오는 데 실패했습니다:', error);
+      }
+    };
+
+    fetchPhotographers();
+  }, []);
 
   const scrollToSection = (tabName) => {
     setActiveTab(tabName);
@@ -183,7 +217,7 @@ export default function StudioDetailScreen({ navigation }) {
         >
           <Icon name="chevron-back" size={24} color="#000" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>찰칵 스튜디오 연희점</Text>
+        <Text style={styles.headerTitle}>{studios.title}</Text>
       </View>
 
       {/* Tabs */}
@@ -216,20 +250,54 @@ export default function StudioDetailScreen({ navigation }) {
             loop={true}
             style={styles.swiper}
           >
-            {mainImages.map((image, index) => (
+            {/* 사진관 이미지 목록 처리 필요 */}
+            {/* {images.map((image) => (
               <View key={image.id} style={styles.slide}>
                 <Image source={image.source} style={styles.mainImage} />
                 <View style={styles.imageNumberContainer}>
                   <Text style={styles.imageNumber}>
                     {index + 1 < 10 ? `0${index + 1}` : index + 1}
                     <Text style={{ opacity: 0.5 }}> | </Text>
-                    {mainImages.length < 10
-                      ? `0${mainImages.length}`
-                      : mainImages.length}
+                    {defaultMainImages.length < 10
+                      ? `0${defaultMainImages.length}`
+                      : defaultMainImages.length}
                   </Text>
                 </View>
               </View>
-            ))}
+            ))} */}
+              {/* 임시 이미지 표시 */}
+              {studios && studios.img ? (
+                // 서버에서 가져온 이미지가 있는 경우
+                <View key="serverImage" style={styles.slide}>
+                  <Image 
+                    source={{ uri: studios.img }} 
+                    style={styles.mainImage}
+                    // 이미지 로드 오류 디버깅을 위한 코드
+                    onError={(e) => console.log('이미지 로드 에러:', e.nativeEvent.error)}
+                  />
+                  <View style={styles.imageNumberContainer}>
+                    <Text style={styles.imageNumber}>
+                      01<Text style={{ opacity: 0.5 }}> | </Text>01
+                    </Text>
+                  </View>
+                </View>
+              ) : (
+                // 기본 이미지 표시
+                defaultMainImages.map((image, idx) => (
+                  <View key={image.id} style={styles.slide}>
+                    <Image source={image.source} style={styles.mainImage} />
+                    <View style={styles.imageNumberContainer}>
+                      <Text style={styles.imageNumber}>
+                        {(idx + 1) < 10 ? `0${idx + 1}` : idx + 1}
+                        <Text style={{ opacity: 0.5 }}> | </Text>
+                        {defaultMainImages.length < 10
+                          ? `0${defaultMainImages.length}`
+                          : defaultMainImages.length}
+                      </Text>
+                    </View>
+                  </View>
+                ))
+              )}
           </Swiper>
           <TouchableOpacity
             style={[styles.arrowButton, styles.leftButton]}
@@ -248,7 +316,7 @@ export default function StudioDetailScreen({ navigation }) {
         {/* Introduction Section */}
         <View ref={sectionRefs.소개} style={styles.section}>
           <View style={styles.studioInfoContainer}>
-            <Text style={styles.studioName}>찰칵 스튜디오 연희점</Text>
+            <Text style={styles.studioName}>{studios.title}</Text>
             <View style={styles.actionButtons}>
               <TouchableOpacity
                 onPress={() => setIsShareModalVisible(true)}
@@ -492,6 +560,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    paddingTop: 50,
   },
   header: {
     flexDirection: "row",

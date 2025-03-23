@@ -1,14 +1,15 @@
 import axios from 'axios';
+import Constants from 'expo-constants';
 
-export const sendVerificationCode = async (formattedPhoneNumber: string, codeToSend: string) => {    
+const BASE_URL = Constants.expoConfig?.extra?.baseURL;
+
+export const sendVerificationCode = async (formattedPhoneNumber: string) => {    
   try {
-    const response = await axios.post('https://39a9-112-218-106-221.ngrok-free.app/user/verify-phone',
+    const response = await axios.post(`${BASE_URL}api/v1/common/send/auth`,
     {
-        "phone": formattedPhoneNumber,
-        "authcode": codeToSend
+        "phone_number": formattedPhoneNumber
     });
-    console.log('백엔드 응답:', response.data);
-    return response.data; 
+    return response; 
 
   } catch (error) {
     console.error('전송 실패:', error);

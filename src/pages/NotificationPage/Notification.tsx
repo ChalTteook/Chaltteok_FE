@@ -5,8 +5,10 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import LeftHeader from "../../components/LeftHeader";
 
 const notifications = [
   {
@@ -37,23 +39,19 @@ const notifications = [
 
 export default function NotificationsScreen({ navigation }) {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={styles.backButton}
-        >
-          <Icon name="chevron-back" size={24} color="#000" />
-        </TouchableOpacity>
-      </View>
-      <View>
+    <SafeAreaView style={styles.container}>
+      <LeftHeader />
+      <View style={styles.headerContainer}>
         <Text style={styles.headerText}>알림</Text>
       </View>
-      {/* 빈 공간 추가 */}
+      
+      {/* 구분선 */}
       <View style={styles.space} />
 
-
-      <ScrollView style={styles.content}>
+      <ScrollView 
+        style={styles.scrollView}
+        contentContainerStyle={styles.contentContainer}
+      >
         {notifications.map((notification) => (
           <TouchableOpacity
             key={notification.id}
@@ -67,7 +65,7 @@ export default function NotificationsScreen({ navigation }) {
           </TouchableOpacity>
         ))}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -76,29 +74,21 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 16,
-    height: 56,
+  headerContainer: {
+    paddingTop: 8,  // 상단 여백 줄임
+    paddingBottom: 8, // 하단 여백 줄임
   },
-  backButton: {
-    padding: 8,
-    marginLeft: -8,
-  },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: "600",
-    marginLeft: 8,
-  },
-  content: {
+  scrollView: {
     flex: 1,
+  },
+  contentContainer: {
+    paddingBottom: 16,
   },
   notificationItem: {
     padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: "#EEEEEE",
-    marginTop: 12,
+    marginTop: 8,  // 상단 마진 줄임
   },
   notificationType: {
     fontSize: 12,
@@ -107,7 +97,7 @@ const styles = StyleSheet.create({
   },
   notificationTitle: {
     fontSize: 16,
-    marginVertical: 12,
+    marginVertical: 8,  // 마진 줄임
   },
   notificationDate: {
     fontSize: 12,
@@ -121,14 +111,15 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start', 
   },
   space: {
-    height: 8,
+    height: 1,  // 높이 줄임
     backgroundColor: '#F5F5F5',
+    marginBottom: 8,  // 약간의 여백 추가
   },
   headerText: {
     fontSize: 24,
     fontWeight: '700',
     marginLeft: 16,
-    marginTop: 32,
-    marginBottom: 16,
+    marginTop: 12,  // 상단 여백 줄임
+    marginBottom: 8,  // 하단 여백 줄임
   },
 });

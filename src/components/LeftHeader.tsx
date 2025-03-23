@@ -1,43 +1,39 @@
-import React from 'react';
-import { View, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React from "react";
+import { View, Image, Platform, TouchableOpacity, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import Icon from 'react-native-vector-icons/Ionicons';
 
-const { width, height } = Dimensions.get('window');
-const scaleWidth = width / 375;
-const scaleHeight = height / 812;
 
-interface HeaderProps {
-  onLeft?: () => void;
-}
-
-const LeftHeader: React.FC<HeaderProps> = () => {
+const LeftHeader = () => {
   const navigation = useNavigation();
 
-  const handleLeftPress = () => {
-      navigation.goBack(); 
-  };
-
   return (
-    <View style={styles.header}>
-      <TouchableOpacity onPress={handleLeftPress}>
-        <Image source={require('../assets/left.png')} style={styles.leftIcon} />
+    <View style={styles.headerContainer}>
+      <TouchableOpacity
+        style={styles.leftIconContainer}
+        onPress={() => navigation.goBack()}
+      >
+        <Icon name="chevron-back" size={22} color="#00000" />
       </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
-    top: 50 * scaleHeight,
-    height: 41,
-    width: width,
+  headerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    marginVertical: 15,
+    marginTop: Platform.OS === 'ios' ? 0 : 30, // iOS는 상단 노치 영역 고려
+  },
+  leftIconContainer: {
+    marginLeft: 20,
+    position: "relative"
   },
   leftIcon: {
     width: 24,
     height: 24,
-    position: 'absolute',
-    left: 16 * scaleWidth,
-    top: 4 * scaleHeight,
   },
 });
 

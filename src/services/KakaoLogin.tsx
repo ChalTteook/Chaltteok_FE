@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Alert, Text } from 'react-native';
+import { View, StyleSheet, Alert, Text, TouchableOpacity } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useNavigation } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
@@ -7,10 +7,11 @@ import { sendTokenToBackend } from '../api/KakaoAuth';
 import CookieManager from '@react-native-cookies/cookies';
 import Constants from 'expo-constants';
 import axios from 'axios';
+import LeftHeader from '../components/LeftHeader';
 
 const REST_API_KEY = Constants.expoConfig?.extra?.kakaoRestApiKey;
-const REDIRECT_URI = Constants.expoConfig?.extra?.kakaoRedirectUri;
-const BASE_URL = REDIRECT_URI?.replace(/\/$/, ''); // 끝의 슬래시 제거
+const REDIRECT_URI = Constants.expoConfig?.extra?.kakaoRedirectUri  || 'http://43.201.211.39/';
+// const BASE_URL = REDIRECT_URI?.replace(/\/$/, ''); // 끝의 슬래시 제거
 const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage(window.location.href)`;
 
 type RootStackParamList = {
@@ -24,6 +25,7 @@ const KakaoLogin = () => {
   const [showWebView, setShowWebView] = useState(true);
   const [authUrl, setAuthUrl] = useState<string | null>(null);
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // 웹뷰 쿠키 삭제
@@ -34,7 +36,8 @@ const KakaoLogin = () => {
     // 카카오 인증 URL 요청
     const getKakaoAuthUrl = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/v1/auth/kakao_auth`);
+        console.log('카카오 인증 URL 요청:', `${REDIRECT_URI}api/v1/auth/kakao_auth`);
+        const response = await axios.get(`${REDIRECT_URI}api/v1/auth/kakao_auth`);
         
         const receivedUrl = response.data.data;
         const urlParams = new URLSearchParams(receivedUrl.split('?')[1]);
@@ -85,12 +88,9 @@ const KakaoLogin = () => {
     }
   };
 
+
   if (!authUrl) {
-    return (
-      <View style={styles.container}>
-        <Text>카카오 로그인 준비중...</Text>
-      </View>
-    );
+    return;
   }
 
   return (
@@ -116,6 +116,20 @@ const styles = StyleSheet.create({
     marginTop: 24,
     backgroundColor: '#fff',
   },
+  button: {
+    backgroundColor: '#FEE500',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    width: '100%',
+    maxWidth: 300,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#000000',
+    fontSize: 16,
+    fontWeight: 'bold',
+  }
 });
 
 export default KakaoLogin;

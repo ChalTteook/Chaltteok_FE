@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -10,43 +10,29 @@ import {
 import UserGuide from "../../assets/UserGuide";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
+import { getUserInfo } from "../../api/shops/shopApi";
 
-const photographers = [
-  {
-    id: "1",
-    name: "사진가 이름1",
-    discount: 28,
-    price: 33910,
-    instagram: "chaldduck",
-    rating: 4.6,
-    reviews: 74,
-  },
-  {
-    id: "2",
-    name: "사진가 이름2",
-    discount: 28,
-    price: 33910,
-    instagram: "chaldduck",
-    rating: 4.6,
-    reviews: 74,
-  },
-  {
-    id: "3",
-    name: "사진가 이름3",
-    discount: 28,
-    price: 33910,
-    instagram: "chaldduck",
-    rating: 4.6,
-    reviews: 74,
-  },
-];
-
-const formatPrice = (price: number) => {
-  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-};
+// const formatPrice = (price: number) => {
+//   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+// };
 
 const Photographer = () => {
+  const [photographers, setPhotographers] = useState([]);
   const navigation = useNavigation();
+
+  useEffect(() => {
+    const fetchPhotographers = async () => {
+      try {
+        const response = await getUserInfo();
+        setPhotographers(response.data);
+      } catch (error) {
+        console.error('사진관 정보를 가져오는 데 실패했습니다:', error);
+      }
+    };
+
+    fetchPhotographers();
+  }, []);
+
   return (
     <View style={styles.recentSection}>
       <View style={styles.sectionHeader}>
@@ -67,26 +53,24 @@ const Photographer = () => {
           <TouchableOpacity
             key={photographer.id}
             style={styles.card}
-            onPress={() =>
-              navigation.navigate("StudioPage")
-            }
+            onPress={() => navigation.navigate("StudioPage", { id: photographer.id })}
           >
             <Image
-              source={require("../../assets/photographer.png")}
+              source={{ uri: photographer.img }}
               style={styles.image}
             />
             <View style={styles.cardContent}>
-              <Text style={styles.photographerName}>{photographer.name}</Text>
+              <Text style={styles.photographerName}>{photographer.title}</Text>
               <View style={styles.priceContainer}>
-                <Text style={styles.discount}>{photographer.discount}%</Text>
+                <Text style={styles.discount}>28%</Text>
                 <Text style={styles.price}>
-                  {formatPrice(photographer.price)}
+                  33910원
                 </Text>
               </View>
               <View style={styles.ratingContainer}>
                 <Icon name="star" size={16} color="#202123" />
-                <Text style={styles.rating}>{photographer.rating}</Text>
-                <Text style={styles.reviews}>({photographer.reviews})</Text>
+                <Text style={styles.rating}>4.6</Text>
+                <Text style={styles.reviews}>(74)</Text>
               </View>
             </View>
             <View style={styles.instagramContainer}>
@@ -132,8 +116,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   imageContainer: {
-    alignItems: "center", // 좌우 가운데 정렬
-    marginTop: 20, // 필요에 따라 여백 추가
+    alignItems: "center",
+    marginTop: 20,
     marginBottom: 10,
   },
   cardContent: {
@@ -206,6 +190,12 @@ const styles = StyleSheet.create({
     gap: 8,
     paddingBottom: 16,
   },
+  // description: {
+  // },
+  // address: {
+  // },
+  // phoneNumber: {
+  // },
 });
 
 export default Photographer;

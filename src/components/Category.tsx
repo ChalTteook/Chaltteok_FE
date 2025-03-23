@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
 
 const categories = [
-  { id: 1, title: '중명사진/\n프로필' },
+  { id: 1, title: '중명사진/\n프로필', image: require('../assets/categotyImage/profile.png')},
   { id: 2, title: '커플/우정' },
   { id: 3, title: '가족사진' },
   { id: 4, title: '제품/\n공간사진' },
@@ -14,7 +14,7 @@ const Category = () => {
     <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categoriesContainer}>
       {categories.map((category) => (
         <TouchableOpacity key={category.id} style={styles.categoryItem}>
-          <Image source={require('../assets/category_image.png')} style={styles.categoryImage} />
+          <Image source={category.image} style={styles.categoryImage} />
           <Text style={styles.categoryText}>{category.title}</Text>
         </TouchableOpacity>
       ))}
