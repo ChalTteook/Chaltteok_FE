@@ -250,7 +250,8 @@ export default function StudioDetailScreen({ navigation }) {
             loop={true}
             style={styles.swiper}
           >
-            {images.map((image) => (
+            {/* 사진관 이미지 목록 처리 필요 */}
+            {/* {images.map((image) => (
               <View key={image.id} style={styles.slide}>
                 <Image source={image.source} style={styles.mainImage} />
                 <View style={styles.imageNumberContainer}>
@@ -263,7 +264,40 @@ export default function StudioDetailScreen({ navigation }) {
                   </Text>
                 </View>
               </View>
-            ))}
+            ))} */}
+              {/* 임시 이미지 표시 */}
+              {studios && studios.img ? (
+                // 서버에서 가져온 이미지가 있는 경우
+                <View key="serverImage" style={styles.slide}>
+                  <Image 
+                    source={{ uri: studios.img }} 
+                    style={styles.mainImage}
+                    // 이미지 로드 오류 디버깅을 위한 코드
+                    onError={(e) => console.log('이미지 로드 에러:', e.nativeEvent.error)}
+                  />
+                  <View style={styles.imageNumberContainer}>
+                    <Text style={styles.imageNumber}>
+                      01<Text style={{ opacity: 0.5 }}> | </Text>01
+                    </Text>
+                  </View>
+                </View>
+              ) : (
+                // 기본 이미지 표시
+                defaultMainImages.map((image, idx) => (
+                  <View key={image.id} style={styles.slide}>
+                    <Image source={image.source} style={styles.mainImage} />
+                    <View style={styles.imageNumberContainer}>
+                      <Text style={styles.imageNumber}>
+                        {(idx + 1) < 10 ? `0${idx + 1}` : idx + 1}
+                        <Text style={{ opacity: 0.5 }}> | </Text>
+                        {defaultMainImages.length < 10
+                          ? `0${defaultMainImages.length}`
+                          : defaultMainImages.length}
+                      </Text>
+                    </View>
+                  </View>
+                ))
+              )}
           </Swiper>
           <TouchableOpacity
             style={[styles.arrowButton, styles.leftButton]}
