@@ -53,7 +53,7 @@ const Photographer = () => {
           <TouchableOpacity
             key={photographer.id}
             style={styles.card}
-            onPress={() => navigation.navigate("StudioPage")}
+            onPress={() => navigation.navigate("StudioPage", { id: photographer.id })}
           >
             <Image
               source={{ uri: photographer.img }}
@@ -61,9 +61,17 @@ const Photographer = () => {
             />
             <View style={styles.cardContent}>
               <Text style={styles.photographerName}>{photographer.title}</Text>
-              <Text style={styles.description}>{photographer.description}</Text>
-              <Text style={styles.address}>{photographer.address}</Text>
-              <Text style={styles.phoneNumber}>{photographer.phone_number || '전화번호 없음'}</Text>
+              <View style={styles.priceContainer}>
+                <Text style={styles.discount}>28%</Text>
+                <Text style={styles.price}>
+                  33910원
+                </Text>
+              </View>
+              <View style={styles.ratingContainer}>
+                <Icon name="star" size={16} color="#202123" />
+                <Text style={styles.rating}>4.6</Text>
+                <Text style={styles.reviews}>(74)</Text>
+              </View>
             </View>
             <View style={styles.instagramContainer}>
               <Icon name="logo-instagram" size={16} color="#000000" />
