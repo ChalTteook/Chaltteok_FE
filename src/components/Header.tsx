@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: Platform.OS === 'ios' ? 40 : 30, // iOS는 상단 노치 영역 고려
+    marginTop: Platform.OS === 'ios' ? 40 : 0, // iOS는 상단 노치 영역 고려
   },
   logo: {
     width: 130,

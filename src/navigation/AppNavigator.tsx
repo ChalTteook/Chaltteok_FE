@@ -7,6 +7,7 @@ import ReservationScreen from '../pages/ReservationPage/ReservationScreen';
 import ReservationDetailScreen from '../pages/ReservationPage/ReservationDetailScreen';
 import PaymentScreen from '../pages/ReservationPage/PaymentScreen';
 import PaymentSuccessScreen from '../pages/ReservationPage/PaymentSuccessScreen';
+import AllRecentScreen from '../pages/ProfilePage/RecentStudio';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ const AppNavigator = () => {
       <Stack.Screen name="ReservationDetailPage" component={ReservationDetailScreen} options={{ headerShown: false }} />
       <Stack.Screen name="PaymentScreen" component={PaymentScreen} options={{ headerShown: false }} />
       <Stack.Screen name="PaymentSuccess" component={PaymentSuccessScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="AllRecent" component={AllRecentScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };

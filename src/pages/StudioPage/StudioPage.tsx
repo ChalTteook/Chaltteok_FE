@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   View,
   Text,
@@ -16,13 +16,21 @@ import ActiveLikeIcon from "../../assets/ActiveLikeIcon";
 import FavoriteIcon from "../../assets/FavoriteIcon";
 import LikeIcon from "../../assets/LikeIcon";
 import ShareIcon from "../../assets/ShareIcon";
-import LeftHeader from "../../components/LeftHeader";
+import { useRoute, RouteProp } from "@react-navigation/native";
+import { getStudioInfo } from "../../api/shops/shopDetailApi";
+
+// params 타입 정의
+type StudioPageParams = {
+  StudioPage: {
+    id: string;
+  };
+};
 
 const { width } = Dimensions.get("window");
 
 const tabs = ["소개", "촬영상품", "사진가", "리뷰"];
 
-const mainImages = [
+const defaultMainImages = [
   { id: 1, source: require("../../assets/studio_image.png") },
   { id: 2, source: require("../../assets/studio_image.png") },
   { id: 3, source: require("../../assets/studio_image.png") },
@@ -88,6 +96,13 @@ const ReviewCard = ({ review, onProductPress }) => (
 );
 
 export default function StudioDetailScreen({ navigation }) {
+  const route = useRoute<RouteProp<StudioPageParams, 'StudioPage'>>();
+  const { id } = route.params;
+  const [ images, setImages] = useState([]);
+  const [ isDefault, setIsDefault] = useState(true);
+
+
+  const [studios, setStudios] = useState([]);
   const [activeTab, setActiveTab] = useState("소개");
   const [isLiked, setIsLiked] = useState(false);
   const [isShareModalVisible, setIsShareModalVisible] = useState(false);
@@ -100,6 +115,24 @@ export default function StudioDetailScreen({ navigation }) {
     사진가: useRef(null),
     리뷰: useRef(null),
   };
+
+  useEffect(() => {
+    const fetchPhotographers = async () => {
+      try {
+        const response = await getStudioInfo(id);
+        const { img } = response.data.img;
+        setStudios(response.data);
+        if (img) {
+          setImages([{ id: 0, source: { uri: img } }, ...defaultMainImages]);
+          setIsDefault(false);
+        }
+      } catch (error) {
+        console.error('사진관 상세 정보를 가져오는 데 실패했습니다:', error);
+      }
+    };
+
+    fetchPhotographers();
+  }, []);
 
   const scrollToSection = (tabName) => {
     setActiveTab(tabName);
@@ -177,7 +210,15 @@ export default function StudioDetailScreen({ navigation }) {
   return (
     <View style={styles.container}>
       {/* Header */}
-      <LeftHeader />
+      <View style={styles.header}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Icon name="chevron-back" size={24} color="#000" />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>{studios.title}</Text>
+      </View>
 
       {/* Tabs */}
       <View style={styles.tabContainer}>
@@ -209,16 +250,16 @@ export default function StudioDetailScreen({ navigation }) {
             loop={true}
             style={styles.swiper}
           >
-            {mainImages.map((image, index) => (
+            {images.map((image) => (
               <View key={image.id} style={styles.slide}>
                 <Image source={image.source} style={styles.mainImage} />
                 <View style={styles.imageNumberContainer}>
                   <Text style={styles.imageNumber}>
                     {index + 1 < 10 ? `0${index + 1}` : index + 1}
                     <Text style={{ opacity: 0.5 }}> | </Text>
-                    {mainImages.length < 10
-                      ? `0${mainImages.length}`
-                      : mainImages.length}
+                    {defaultMainImages.length < 10
+                      ? `0${defaultMainImages.length}`
+                      : defaultMainImages.length}
                   </Text>
                 </View>
               </View>
@@ -241,7 +282,7 @@ export default function StudioDetailScreen({ navigation }) {
         {/* Introduction Section */}
         <View ref={sectionRefs.소개} style={styles.section}>
           <View style={styles.studioInfoContainer}>
-            <Text style={styles.studioName}>찰칵 스튜디오 연희점</Text>
+            <Text style={styles.studioName}>{studios.title}</Text>
             <View style={styles.actionButtons}>
               <TouchableOpacity
                 onPress={() => setIsShareModalVisible(true)}
@@ -494,8 +535,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#EEEEEE",
     paddingHorizontal: 16,
-    position: "relative",
-    top: 30
   },
   backButton: {
     padding: 8,

@@ -1,7 +1,7 @@
 package com.chaltteok.chaltteok_FE
+
 import android.app.Application
 import android.content.res.Configuration
-import com.kakao.sdk.common.KakaoSdk
 
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
@@ -42,7 +42,6 @@ class MainApplication : Application(), ReactApplication {
 
   override fun onCreate() {
     super.onCreate()
-    KakaoSdk.init(this, "0f63e2af878567f097dc17fbbd118b25")
     SoLoader.init(this, OpenSourceMergedSoMapping)
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
