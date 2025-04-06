@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -9,6 +9,7 @@ import {
   Image,
   SafeAreaView,
   StatusBar,
+  ActivityIndicator,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
@@ -16,7 +17,8 @@ import {
   Camera,
   NaverMapMarkerOverlay,
 } from "@mj-studio/react-native-naver-map";
-import MarkerIcon from "../../assets/markerIcons/MarkerIcon";
+import { useStudioMarkers, StudioMarker } from '../../services/mapService';
+import { hide } from 'expo-splash-screen';
 
 const Cameras = {
   HongDae: {
@@ -24,25 +26,32 @@ const Cameras = {
     longitude: 126.92359523466598,
     zoom: 16,
   },
-  Gangnam: {
-    latitude: 37.498040483,
-    longitude: 127.02758183,
-    zoom: 16,
-  },
 } satisfies Record<string, Camera>;
 
 const NearbyScreen = ({ navigation }) => {
   const [camera, setCamera] = useState<Camera>(Cameras.HongDae);
-  const [isCardVisible, setIsCardVisible] = useState(true);
+  const [isCardVisible, setIsCardVisible] = useState(false);
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(true);
+  const [selectedStudio, setSelectedStudio] = useState<StudioMarker | null>(null);
 
-  const showCard = () => {
+  const { markers, loading, error } = useStudioMarkers();
+
+  const showCard = (studio: StudioMarker) => {
+    setSelectedStudio(studio);
     setIsCardVisible(true);
-    setIsSearchBarVisible(true);
+
+    setCamera({
+      latitude: studio.latitude,
+      longitude: studio.longitude,
+      zoom: 17,
+    });
+  };
+
+  const hideCard = () => {
+    setIsCardVisible(false);
   };
 
   return (
-
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
 
@@ -57,27 +66,36 @@ const NearbyScreen = ({ navigation }) => {
       </View>
       
       <View style={styles.mapContainer}>
-        <NaverMapView 
-          style={styles.map} 
-          camera={camera} 
-          onMapClick={() => {
-            setIsCardVisible(false);
-            setIsSearchBarVisible(false);
-          }}
-        >
-          <NaverMapMarkerOverlay
-            latitude={37.556854408446654}
-            longitude={126.92359523466598}
-            onTap={() => {
-              console.log(1);
-              showCard();
+        {loading ? (
+          <View style={styles.loadingContainer}>
+            <ActivityIndicator size="large" color="#FF568F" />
+            <Text style={styles.loadingText}>사진관 정보를 불러오는 중...</Text>
+          </View>
+        ) : (
+          <NaverMapView 
+            style={styles.map} 
+            camera={camera} 
+            onMapClick={() => {
+              hideCard();
             }}
-            anchor={{ x: 0.5, y: 1 }}
-            width={55}
-            height={55}
-            image={require('../../assets/markerIcons/markerIcon.png')}
-          />
-        </NaverMapView>
+          >
+            {markers.map((studio) => (
+              <NaverMapMarkerOverlay
+                key={studio.id}
+                latitude={studio.latitude}
+                longitude={studio.longitude}
+                onTap={() => {
+                  console.log(`선택된 사진관: ${studio.title}`);
+                  showCard(studio);
+                }}
+                anchor={{ x: 0.5, y: 1 }}
+                width={55}
+                height={55}
+                image={require('../../assets/markerIcons/markerIcon.png')}
+              />
+            ))}
+          </NaverMapView>
+        )}
       </View>
 
       {/* Search Bar */}
@@ -99,42 +117,45 @@ const NearbyScreen = ({ navigation }) => {
       )}
 
       {/* Studio Card */}
-      {isCardVisible && (
+      {isCardVisible && selectedStudio && (
         <View style={styles.cardContainer}>
           <TouchableOpacity 
             style={styles.studioCard}
-            onPress={() => navigation.navigate('StudioPage')}
+            onPress={() => navigation.navigate('StudioPage', { id: selectedStudio.id })}
           >
             <View style={styles.studioInfo}>
               <View style={styles.titleRow}>
-                <Text style={styles.studioName}>찰칵 스튜디오</Text>
+                <Text style={styles.studioName}>{selectedStudio.title}</Text>
                 <TouchableOpacity style={styles.heartButton}>
                   <Icon name="heart-outline" size={24} color="#000" />
                 </TouchableOpacity>
               </View>
               <Text style={styles.description} numberOfLines={1}>
-                스튜디오 소개 최대 한줄 30글자가 길어지면 말줄임...
+                {selectedStudio.description}
               </Text>
               <View style={styles.ratingContainer}>
-                <Icon name="star" size={16} color="#000" />
-                <Text style={styles.rating}>4.5</Text>
-                <Text style={styles.location}>서울 강남구</Text>
+                <Icon name="star" size={16} color="#FFD700" />
+                <Text style={styles.rating}>{selectedStudio.rating}</Text>
+                <Text style={styles.reviews}>({selectedStudio.reviews})</Text>
               </View>
             </View>
-            <ScrollView 
-              horizontal 
-              showsHorizontalScrollIndicator={false}
-              style={styles.imageScroll}
-            >
-              {[1, 2, 3].map((_, index) => (
-                <View key={index} style={styles.imageContainer}>
-                  <Image
-                    source={{ uri: '/placeholder.svg?height=120&width=120' }}
-                    style={styles.studioImage}
-                  />
-                </View>
-              ))}
-            </ScrollView>
+            
+            {/* 사진관 이미지 */}
+            <View style={styles.imageContainer}>
+              <Image
+                source={{ uri: selectedStudio.img }}
+                style={styles.studioImage}
+                resizeMode="cover"
+              />
+            </View>
+            
+            {/* 가격 및 영업시간 */}
+            <View style={styles.bottomInfo}>
+              {selectedStudio.price && (
+                <Text style={styles.price}>{selectedStudio.price}</Text>
+              )}
+              <Text style={styles.hours}>{selectedStudio.hours}</Text>
+            </View>
           </TouchableOpacity>
         </View>
       )}
@@ -143,7 +164,7 @@ const NearbyScreen = ({ navigation }) => {
       <View style={styles.locationButtons}>
         <TouchableOpacity 
           style={styles.locationButton}
-          onPress={() => setCamera(Cameras.HongDae)}
+          onPress={() => {}}
         >
           <Text style={styles.locationButtonText}>가격</Text>
           <Icon name="chevron-down" size={16} color="#000" />
@@ -158,11 +179,19 @@ const NearbyScreen = ({ navigation }) => {
       </View>
 
       {/* Floating Action Buttons */}
-      <View style={styles.fabContainer}>
+      <View style={[
+        styles.fabContainer,
+        isCardVisible && { bottom: 270 }
+      ]}>
         <TouchableOpacity style={styles.fab}>
           <Icon name="list" size={24} color="#000" />
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.fab, styles.fabLocation]}>
+        <TouchableOpacity 
+          style={[styles.fab, styles.fabLocation]}
+          onPress={() => {
+            setCamera(Cameras.HongDae);
+          }}
+        >
           <Icon name="locate" size={24} color="#000" />
         </TouchableOpacity>
       </View>
@@ -330,7 +359,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 16,
     bottom: 16,
-    // bottom: (props) => (props.isCardVisible ? 270 : 16),
     gap: 8,
   },
   fab: {
@@ -351,6 +379,42 @@ const styles = StyleSheet.create({
   },
   fabLocation: {
     marginTop: 8,
+  },
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginLeft: 24,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingText: {
+    marginTop: 10,
+    fontSize: 16,
+    color: '#666',
+  },
+  reviews: {
+    fontSize: 14,
+    color: '#666',
+    marginLeft: 2,
+  },
+  bottomInfo: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 12,
+  },
+  price: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#FF568F',
+  },
+  hours: {
+    fontSize: 14,
+    color: '#666',
+    textAlign: 'right',
   },
 });
 

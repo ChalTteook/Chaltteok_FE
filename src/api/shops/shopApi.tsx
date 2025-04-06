@@ -3,7 +3,7 @@ import Constants from 'expo-constants';
 
 const BASE_URL = Constants.expoConfig?.extra?.baseURL || 'http://43.201.211.39/';
 
-export const getUserInfo = async () => {
+export const getAllShops = async () => {
   try {
     const response = await axios.get(`${BASE_URL}api/v1/shops`, {
     });

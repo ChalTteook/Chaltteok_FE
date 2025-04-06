@@ -10,7 +10,7 @@ import {
 import UserGuide from "../../assets/UserGuide";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
-import { getUserInfo } from "../../api/shops/shopApi";
+import { getAllShops } from "../../api/shops/shopApi";
 
 // const formatPrice = (price: number) => {
 //   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -23,7 +23,7 @@ const Photographer = () => {
   useEffect(() => {
     const fetchPhotographers = async () => {
       try {
-        const response = await getUserInfo();
+        const response = await getAllShops();
         setPhotographers(response.data);
       } catch (error) {
         console.error('사진관 정보를 가져오는 데 실패했습니다:', error);

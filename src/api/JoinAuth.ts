@@ -1,4 +1,3 @@
-// filepath: /Users/idong-won/Documents/PROJECT/Chaltteok_FE/src/api/JoinAuth.ts
 import axios from 'axios';
 import Constants from 'expo-constants';
 
