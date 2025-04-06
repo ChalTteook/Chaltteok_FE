@@ -8,6 +8,7 @@ import {
   Image,
   SafeAreaView,
   FlatList,
+  Dimensions,
 } from "react-native";
 import UserGuide from "../../assets/UserGuide";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -15,9 +16,8 @@ import { useNavigation } from "@react-navigation/native";
 import { getUserInfo } from "../../api/shops/shopApi";
 import LeftHeader from "../../components/LeftHeader";
 
-// const formatPrice = (price: number) => {
-//   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-// };
+// 화면 너비 가져오기
+const { width } = Dimensions.get('window');
 
 const RecentStudio = () => {
   const [recentViews, setRecentViews] = useState([]);
@@ -44,7 +44,19 @@ const RecentStudio = () => {
       <View style={styles.imageContainer}>
         <Image source={{ uri: item.img }} style={styles.studioImage} />
       </View>
-      <Text style={styles.studioName}>{item.title}</Text>
+      <View style={styles.infoContainer}>
+        <Text style={styles.studioName}>{item.title}</Text>
+        <View style={styles.ratingContainer}>
+            <Text style={styles.starIcon}>★</Text>
+            <Text style={styles.rating}>4.6</Text>
+            <Text style={styles.reviews}>(74)</Text>
+        </View>
+        <Text style={styles.location}>xx역 x번 출구 도보 x분</Text>
+        <View style={styles.bottomRow}>
+          <Text style={styles.price}>45,000원 / 3장</Text>
+          <Text style={styles.hours}>09:00~20:00</Text>
+        </View>
+      </View>
     </TouchableOpacity>
   );
 
@@ -99,6 +111,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5F5F5",
     marginRight: 12,
   },
+  infoContainer: {
+    flex: 1, // 중요: info 컨테이너가 남은 공간을 모두 차지하도록 함
+  },
   studioImage: {
     width: "100%",
     height: "100%",
@@ -108,6 +123,46 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     color: "#202123",
+  },
+  starIcon: {
+    color: "#FFFFF",
+    marginRight: 4,
+  },
+  rating: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#202123",
+  },
+  reviews: {
+    fontSize: 14,
+    color: "#666666",
+    marginLeft: 2,
+  },
+  ratingContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  location: {
+    fontSize: 14,
+    color: "#666666",
+    marginTop: 4,
+  },
+  bottomRow: {
+    flexDirection: "row",
+    justifyContent: "space-between", // 이 설정으로 가격과 영업시간이 양 끝으로 정렬됨
+    alignItems: "center",
+    marginTop: 8,
+    width: '100%', // 전체 너비 사용
+  },
+  price: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#FF568F",
+  },
+  hours: {
+    fontSize: 14,
+    color: "#666666",
+    textAlign: 'right', // 텍스트 오른쪽 정렬
   },
 });
 

@@ -16,6 +16,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       naverRedirectUri: process.env.NAVER_REDIRECT_URI,
       naverRestApiKey: process.env.NAVER_REST_API_KEY,
       baseURL: process.env.BASE_URL,
+      naverMapApiKey: process.env.NAVER_MAP_CLIENT_ID,
+      naverMapClientId: process.env.NAVER_MAP_CLIENT_ID,
+      naverMapClientSecret: process.env.NAVER_MAP_CLIENT_SECRET,
+      naverMapClientSecretKey: process.env.NAVER_MAP_CLIENT_SECRET_KEY,
+    
     },
     production: {
       // Hardcode production values or load from .env.production
@@ -24,6 +29,10 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       naverRedirectUri: process.env.NAVER_REDIRECT_URI,
       naverRestApiKey: process.env.NAVER_REST_API_KEY,
       baseURL: process.env.BASE_URL,
+      naverMapApiKey: process.env.NAVER_MAP_CLIENT_ID,
+      naverMapClientId: process.env.NAVER_MAP_CLIENT_ID,
+      naverMapClientSecret: process.env.NAVER_MAP_CLIENT_SECRET,
+      naverMapClientSecretKey: process.env.NAVER_MAP_CLIENT_SECRET_KEY,
     },
   };
 
@@ -47,6 +56,33 @@ export default ({ config }: ConfigContext): ExpoConfig => {
           imageStyles: {
             width: '100%',  // 화면 너비의 80%
             height: '100%', // 화면 높이의 80%
+          }
+        }
+      ],
+      [
+        "@mj-studio/react-native-naver-map",
+        {
+          client_id: process.env.NAVER_MAP_CLIENT_ID,
+          android: {
+            ACCESS_FINE_LOCATION: true,
+            ACCESS_COARSE_LOCATION: true,
+            ACCESS_BACKGROUND_LOCATION: true
+          },
+          ios: {
+            NSLocationAlwaysAndWhenInUseUsageDescription: "현재 위치를 기반으로 지도 기능을 사용합니다.",
+            NSLocationWhenInUseUsageDescription: "현재 위치를 기반으로 지도 기능을 사용합니다.",
+            NSLocationTemporaryUsageDescriptionDictionary: {
+              purposeKey: "mapUsage",
+              usageDescription: "지도 기반 기능 제공을 위해 위치 접근 권한이 필요합니다."
+            }
+          }
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          android: {
+            extraMavenRepos: ["https://repository.map.naver.com/archive/maven"]
           }
         }
       ]

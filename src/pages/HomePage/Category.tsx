@@ -16,7 +16,8 @@ const Category = () => {
         <TouchableOpacity key={category.id} style={styles.categoryItem}>
           <View style={styles.imageContainer}>
             <Image source={category.image} style={styles.categoryImage} />
-          </View>          <Text style={styles.categoryText}>{category.title}</Text>
+          </View>          
+          <Text style={styles.categoryText}>{category.title}</Text>
         </TouchableOpacity>
       ))}
     </ScrollView>

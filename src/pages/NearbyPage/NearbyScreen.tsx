@@ -42,8 +42,19 @@ const NearbyScreen = ({ navigation }) => {
   };
 
   return (
+
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
+
+      {/* Header */}
+      <View style={styles.header}>
+        <TouchableOpacity 
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Icon name="chevron-back" size={24} color="#000" />
+        </TouchableOpacity>
+      </View>
       
       <View style={styles.mapContainer}>
         <NaverMapView 
@@ -67,16 +78,6 @@ const NearbyScreen = ({ navigation }) => {
             image={require('../../assets/markerIcons/markerIcon.png')}
           />
         </NaverMapView>
-      </View>
-
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity 
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}
-        >
-          <Icon name="chevron-back" size={24} color="#000" />
-        </TouchableOpacity>
       </View>
 
       {/* Search Bar */}
@@ -191,7 +192,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     gap: 8,
     position: 'absolute',
-    top: 56, 
+    top: 120, 
     left: 0,
     right: 0,
     zIndex: 1,
@@ -305,7 +306,7 @@ const styles = StyleSheet.create({
   },
   locationButtons: {
     position: 'absolute',
-    top: 112,
+    top: 180,
     left: 16,
     flexDirection: 'row',
     gap: 8,
@@ -328,7 +329,8 @@ const styles = StyleSheet.create({
   fabContainer: {
     position: 'absolute',
     right: 16,
-    bottom: (props) => (props.isCardVisible ? 270 : 16),
+    bottom: 16,
+    // bottom: (props) => (props.isCardVisible ? 270 : 16),
     gap: 8,
   },
   fab: {
