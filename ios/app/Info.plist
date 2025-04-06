@@ -52,6 +52,22 @@
         </dict>
       </dict>
     </dict>
+
+    <!-- ✅ 추가된 위치 기반 권한 요청 -->
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>이 앱은 백그라운드에서도 위치 정보를 사용합니다.</string>
+    <key>NSLocationTemporaryUsageDescriptionDictionary</key>
+    <dict>
+      <key>LocationPurpose</key>
+      <string>일시적인 위치 정보 접근이 필요합니다.</string>
+    </dict>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>이 앱은 사용 중 위치 정보를 사용합니다.</string>
+
+    <!-- ✅ 추가된 NMFClientId -->
+    <key>NMFClientId</key>
+    <string>sr5m7zsqjo</string>
+
     <key>UILaunchStoryboardName</key>
     <string>SplashScreen</string>
     <key>UIRequiredDeviceCapabilities</key>
