@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "chaltteok_FE",
+    "slug": "chaltteok_FE",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/main_logo.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "assets": [
+      "./src/assets/fonts/"
+    ],
+    "plugins": [
+      ["expo-dev-client"],
+      ["expo-font"]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.chaltteok.chaltteokFE"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.chaltteok.chaltteok_FE"
+    },
+    "web": {
+      "favicon": "./src/assets/favicon.png"
+    }
+  }
+}
