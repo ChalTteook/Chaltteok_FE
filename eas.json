@@ -1,0 +1,46 @@
+{
+  "cli": {
+    "version": ">= 14.2.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {
+      "autoIncrement": true,
+      "env": {
+        "NODE_ENV": "production",
+        "BASE_URL": "https://moovingsloth.github.io/",
+        "KAKAO_REDIRECT_URI": "https://moovingsloth.github.io/",
+        "KAKAO_REST_API_KEY": "fe0e720fbe5b74240985fb33256f2826",
+        "NAVER_REDIRECT_URI": "https://moovingsloth.github.io/",
+        "NAVER_REST_API_KEY": "GK2ORFcjWGkcsqlGPh8M"
+      },
+      "android": {
+        "buildType": "app-bundle"
+      }
+    },
+    "production-apk": {
+      "autoIncrement": true,
+      "env": {
+        "NODE_ENV": "production",
+        "BASE_URL": "https://moovingsloth.github.io/",
+        "KAKAO_REDIRECT_URI": "https://moovingsloth.github.io/",
+        "KAKAO_REST_API_KEY": "fe0e720fbe5b74240985fb33256f2826",
+        "NAVER_REDIRECT_URI": "https://moovingsloth.github.io/",
+        "NAVER_REST_API_KEY": "GK2ORFcjWGkcsqlGPh8M"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
