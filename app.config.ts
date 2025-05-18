@@ -18,11 +18,6 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       naverRedirectUri: process.env.NAVER_REDIRECT_URI,
       naverRestApiKey: process.env.NAVER_REST_API_KEY,
       baseURL: process.env.BASE_URL,
-      naverMapApiKey: process.env.NAVER_MAP_CLIENT_ID,
-      naverMapClientId: process.env.NAVER_MAP_CLIENT_ID,
-      naverMapClientSecret: process.env.NAVER_MAP_CLIENT_SECRET,
-      naverMapClientSecretKey: process.env.NAVER_MAP_CLIENT_SECRET_KEY,
-    
     },
     production: {
       // Hardcode production values or load from .env.production
@@ -31,10 +26,6 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       naverRedirectUri: process.env.NAVER_REDIRECT_URI,
       naverRestApiKey: process.env.NAVER_REST_API_KEY,
       baseURL: process.env.BASE_URL,
-      naverMapApiKey: process.env.NAVER_MAP_CLIENT_ID,
-      naverMapClientId: process.env.NAVER_MAP_CLIENT_ID,
-      naverMapClientSecret: process.env.NAVER_MAP_CLIENT_SECRET,
-      naverMapClientSecretKey: process.env.NAVER_MAP_CLIENT_SECRET_KEY,
     },
   };
 

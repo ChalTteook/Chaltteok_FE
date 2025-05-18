@@ -26,6 +26,7 @@
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="myapp"/>
         <data android:scheme="com.chaltteok.chaltteok_FE"/>
+        <data android:scheme="exp+chaltteokfe"/>
       </intent-filter>
     </activity>
   </application>

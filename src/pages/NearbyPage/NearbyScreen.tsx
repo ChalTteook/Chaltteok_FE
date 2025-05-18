@@ -19,6 +19,17 @@ import Icon from 'react-native-vector-icons/Ionicons';
 // } from "@mj-studio/react-native-naver-map";
 import { useStudioMarkers, StudioMarker } from '../../services/mapService';
 import { hide } from 'expo-splash-screen';
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../navigation/RootNavigator";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../recoil/atoms/userState";
+import { getStoreList } from "../../api/Store/StoreApi";
+import { Store } from "../../types/store";
+import { StoreList } from "../../components/Store/StoreList";
+import { SearchBar } from "../../components/SearchBar";
+import { Loading } from "../../components/Loading";
+import { Error } from "../../components/Error";
 
 // 임시 Camera 타입 정의
 type Camera = {
@@ -82,6 +93,7 @@ const NearbyScreen = ({ navigation }) => {
           // 네이버 맵 대신 임시 UI 표시
           <View style={styles.tempMapContainer}>
             <Text style={styles.tempMapText}>네이버 맵 기능은 현재 비활성화되어 있습니다.</Text>
+            <Text style={styles.tempMapSubText}>React Native 0.78.0 업그레이드 중</Text>
             <ScrollView style={styles.tempListContainer}>
               {markers.map((studio) => (
                 <TouchableOpacity 
@@ -239,151 +251,27 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
+    height: 40,
     marginLeft: 8,
-    fontSize: 14,
+    color: '#000',
   },
   filterButton: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'rgba(255, 255, 255, 0.8)', 
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    height: 40,
     borderWidth: 1,
     borderColor: '#EEEEEE',
-    borderRadius: 20,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    gap: 4,
   },
   filterText: {
-    fontSize: 14,
+    marginRight: 4,
     color: '#000',
   },
   mapContainer: {
     flex: 1,
-  },
-  map: {
-    width: '100%',
-    height: '100%',
-  },
-  cardContainer: {
-    position: 'absolute',
-    bottom: 48,
-    left: 16,
-    right: 16,
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  studioCard: {
-    padding: 16,
-  },
-  studioInfo: {
-    marginBottom: 16,
-  },
-  titleRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
-  studioName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  heartButton: {
-    padding: 4,
-  },
-  description: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 8,
-  },
-  ratingContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  rating: {
-    fontSize: 14,
-    fontWeight: '600',
-    marginLeft: 4,
-  },
-  location: {
-    fontSize: 14,
-    color: '#666',
-    marginLeft: 8,
-  },
-  imageScroll: {
-    flexDirection: 'row',
-  },
-  imageContainer: {
-    width: 120,
-    height: 120,
-    marginRight: 8,
-    borderRadius: 8,
-    overflow: 'hidden',
-  },
-  studioImage: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#F5F5F5',
-  },
-  locationButtons: {
-    position: 'absolute',
-    top: 180,
-    left: 16,
-    flexDirection: 'row',
-    gap: 8,
-  },
-  locationButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: '#EEEEEE',
-  },
-  locationButtonText: {
-    fontSize: 14,
-    color: '#000',
-    marginRight: 4,
-  },
-  fabContainer: {
-    position: 'absolute',
-    right: 16,
-    bottom: 16,
-    gap: 8,
-  },
-  fab: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  fabLocation: {
-    marginTop: 8,
-  },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginLeft: 24,
+    position: 'relative',
   },
   loadingContainer: {
     flex: 1,
@@ -391,56 +279,180 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   loadingText: {
-    marginTop: 10,
+    marginTop: 12,
     fontSize: 16,
     color: '#666',
+  },
+  tempMapContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5F5F5',
+  },
+  tempMapText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 12,
+  },
+  tempMapSubText: {
+    fontSize: 14,
+    color: '#666',
+    marginBottom: 24,
+  },
+  tempListContainer: {
+    width: '90%',
+    maxHeight: 300,
+  },
+  tempStudioItem: {
+    backgroundColor: 'white',
+    padding: 16,
+    borderRadius: 8,
+    marginBottom: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  cardContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    paddingHorizontal: 16,
+    paddingBottom: 24,
+    paddingTop: 8,
+    backgroundColor: 'white',
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: -3,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 5,
+  },
+  studioCard: {
+    width: '100%',
+  },
+  studioInfo: {
+    marginBottom: 10,
+  },
+  titleRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  studioName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  description: {
+    fontSize: 14,
+    color: '#666',
+    marginTop: 4,
+  },
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 6,
+  },
+  rating: {
+    fontSize: 14,
+    color: '#333',
+    marginLeft: 4,
   },
   reviews: {
     fontSize: 14,
     color: '#666',
     marginLeft: 2,
   },
+  imageContainer: {
+    width: '100%',
+    height: 160,
+    borderRadius: 8,
+    overflow: 'hidden',
+    marginBottom: 12,
+  },
+  studioImage: {
+    width: '100%',
+    height: '100%',
+  },
   bottomInfo: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 12,
   },
   price: {
-    fontSize: 14,
-    fontWeight: '600',
+    fontSize: 16,
+    fontWeight: 'bold',
     color: '#FF568F',
   },
   hours: {
     fontSize: 14,
     color: '#666',
-    textAlign: 'right',
   },
-  // 임시 맵 스타일 추가
-  tempMapContainer: {
-    flex: 1,
+  heartButton: {
+    padding: 8,
+  },
+  locationButtons: {
+    position: 'absolute',
+    left: 16,
+    bottom: 180,
+    flexDirection: 'column',
+    gap: 8,
+  },
+  locationButton: {
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  locationButtonText: {
+    marginRight: 4,
+    color: '#000',
+  },
+  fabContainer: {
+    position: 'absolute',
+    right: 16,
+    bottom: 120,
+    flexDirection: 'column',
+    gap: 8,
+  },
+  fab: {
+    backgroundColor: 'white',
+    width: 48,
+    height: 48,
+    borderRadius: 24,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
-    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
   },
-  tempMapText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  tempListContainer: {
-    width: '100%',
-    maxHeight: 400,
-  },
-  tempStudioItem: {
-    backgroundColor: 'white',
-    padding: 15,
-    marginBottom: 10,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#eee',
+  fabLocation: {
+    backgroundColor: '#FF568F',
   },
 });
 

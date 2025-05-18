@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./src/assets/main_logo.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "assets": [
       "./src/assets/fonts/"
     ],
@@ -23,7 +23,8 @@
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.chaltteok.chaltteok_FE"
+      "package": "com.chaltteok.chaltteok_FE",
+      "newArchEnabled": false
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
