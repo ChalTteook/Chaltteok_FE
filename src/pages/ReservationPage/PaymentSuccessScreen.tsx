@@ -7,10 +7,50 @@ import {
   SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+
+type PaymentSuccessRouteParams = {
+  paymentInfo?: {
+    amount?: number;
+    orderId?: string;
+    orderName?: string;
+    customerName?: string;
+    customerEmail?: string;
+    // Toss 결제 응답 필드도 필요시 추가
+    [key: string]: any;
+  };
+};
 
 const PaymentSuccessScreen = () => {
   const navigation = useNavigation();
+  const route = useRoute();
+  const params = (route.params as any) || {};
+
+  // 디버깅용 로그
+  React.useEffect(() => {
+    console.log('PaymentSuccessScreen params:', params);
+  }, [params]);
+
+  const handlePaymentSuccess = (response: any) => {
+    navigation.navigate('PaymentSuccess', {
+      amount: params.amount,
+      payDate: params.payDate,
+      orderId: params.orderId,
+      paymentKey: response.paymentKey,
+      paymentType: response.method,
+      // 기타 필요한 정보
+    });
+  };
+
+  const handlePayment = () => {
+    const now = new Date();
+    const pad = (n) => n.toString().padStart(2, '0');
+    const payDate = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+    navigation.navigate('PaymentScreen', {
+      amount: 50000,
+      payDate, // ← 현재 날짜/시간이 결제일로 전달됨
+    });
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -35,11 +75,15 @@ const PaymentSuccessScreen = () => {
           </View>
           <View style={styles.detailRow}>
             <Text style={styles.detailLabel}>결제 금액</Text>
-            <Text style={styles.detailValue}>7,900원</Text>
+            <Text style={styles.detailValue}>{Number(params.amount)?.toLocaleString()}원</Text>
           </View>
           <View style={styles.detailRow}>
             <Text style={styles.detailLabel}>결제일</Text>
-            <Text style={styles.detailValue}>2024. 00. 00</Text>
+            <Text style={styles.detailValue}>{(() => {
+              const now = new Date();
+              const pad = (n: number) => n.toString().padStart(2, '0');
+              return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+            })()}</Text>
           </View>
         </View>
 
