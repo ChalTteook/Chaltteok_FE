@@ -36,8 +36,8 @@ const KakaoLogin = () => {
     // 카카오 인증 URL 요청
     const getKakaoAuthUrl = async () => {
       try {
-        console.log('카카오 인증 URL 요청:', `${REDIRECT_URI}api/v1/auth/kakao_auth`);
-        const response = await axios.get(`${REDIRECT_URI}api/v1/auth/kakao_auth`);
+        console.log('카카오 인증 URL 요청:', `${REDIRECT_URI}/api/v1/auth/kakao_auth`);
+        const response = await axios.get(`${REDIRECT_URI}/api/v1/auth/kakao_auth`);
         
         const receivedUrl = response.data.data;
         const urlParams = new URLSearchParams(receivedUrl.split('?')[1]);

@@ -163,7 +163,7 @@ const PaymentWidget: React.FC<PaymentWidgetProps> = ({
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <WebView
-          source={{ uri: "https://moovingsloth.github.io/my-toss-payment/" }}
+          source={{ uri: "https://chaltteoktossweb.netlify.app/" }}
           onMessage={handleMessage}
           style={styles.webview}
           javaScriptEnabled={true}
@@ -193,6 +193,23 @@ const PaymentWidget: React.FC<PaymentWidgetProps> = ({
                   if (param.startsWith('scheme=')) scheme = param.replace('scheme=', '');
                   if (param.startsWith('package=')) pkg = param.replace('package=', '');
                 });
+                
+                // BC카드/ISP 등을 위한 특별 처리
+                if (scheme === 'ispmobile' || scheme === 'kftc-bankpay') {
+                  console.log('BC카드/ISP 결제 앱 실행:', scheme);
+                  Linking.openURL(`${scheme}://`).catch((e) => {
+                    console.warn('앱 실행 실패, 마켓으로 이동', e);
+                    if (pkg) {
+                      Linking.openURL(`market://details?id=${pkg}`);
+                    } else if (scheme === 'ispmobile') {
+                      Linking.openURL('market://details?id=kvp.jjy.MispAndroid320');
+                    } else if (scheme === 'kftc-bankpay') {
+                      Linking.openURL('market://details?id=com.kftc.bankpay.android');
+                    }
+                  });
+                  return false;
+                }
+                
                 // 스킴 변환
                 if (scheme === 'v3mobileplusweb') scheme = 'v3mobileplus';
                 console.log('intent:// scheme:', scheme, 'package:', pkg);

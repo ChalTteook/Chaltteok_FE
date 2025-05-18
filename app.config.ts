@@ -3,29 +3,31 @@ import * as dotenv from "dotenv";
 
 export default ({ config }: ConfigContext): ExpoConfig => {
   const env = process.env.APP_ENV || process.env.NODE_ENV || "development";
+  console.log("Current environment:", env);
   
   // EAS 빌드 시에는 .env 파일 로드를 건너뛰기
   if (!process.env.EAS_BUILD) {
-  const envFile = env === "production" ? ".env.production" : ".env.development";
-  dotenv.config({ path: envFile });
+    const envFile = env === "production" ? ".env.production" : ".env.development";
+    console.log(`Loading environment from ${envFile}`);
+    dotenv.config({ path: envFile });
   }
 
   // Create environment-specific configurations
   const envConfigs = {
     development: {
-      kakaoRedirectUri: process.env.KAKAO_REDIRECT_URI,
-      kakaoRestApiKey: process.env.KAKAO_REST_API_KEY,
-      naverRedirectUri: process.env.NAVER_REDIRECT_URI,
-      naverRestApiKey: process.env.NAVER_REST_API_KEY,
-      baseURL: process.env.BASE_URL,
+      kakaoRedirectUri: "http://43.201.211.39/",
+      kakaoRestApiKey: "fe0e720fbe5b74240985fb33256f2826",
+      naverRedirectUri: "http://43.201.211.39/",
+      naverRestApiKey: "GK2ORFcjWGkcsqlGPh8M",
+      baseURL: "http://43.201.211.39/api/v1",
     },
     production: {
-      // Hardcode production values or load from .env.production
-      kakaoRedirectUri: process.env.KAKAO_REDIRECT_URI,
-      kakaoRestApiKey: process.env.KAKAO_REST_API_KEY,
-      naverRedirectUri: process.env.NAVER_REDIRECT_URI,
-      naverRestApiKey: process.env.NAVER_REST_API_KEY,
-      baseURL: process.env.BASE_URL,
+      // Hardcoded production values
+      kakaoRedirectUri: "https://chaltteok.com",
+      kakaoRestApiKey: "fe0e720fbe5b74240985fb33256f2826",
+      naverRedirectUri: "https://chaltteok.com",
+      naverRestApiKey: "GK2ORFcjWGkcsqlGPh8M",
+      baseURL: "https://chaltteok.com/api/v1",
     },
   };
 
@@ -47,8 +49,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
           backgroundColor: "#F71D6A",
           image: "./src/assets/splash_image.png",
           imageStyles: {
-            width: '100%',  // 화면 너비의 80%
-            height: '100%', // 화면 높이의 80%
+            width: '100%',  // 화면 너비의 100%
+            height: '100%', // 화면 높이의 100%
           }
         }
       ]

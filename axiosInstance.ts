@@ -1,8 +1,12 @@
 import axios from 'axios';
 import Constants from 'expo-constants';
 
+// Access baseURL from the expoConfig.extra
+const baseURL = Constants.expoConfig?.extra?.baseURL || 'https://chaltteok.com/api/v1';
+console.log('Using API baseURL:', baseURL);
+
 const axiosInstance = axios.create({
-  baseURL: Constants.manifest?.extra?.apiBaseUrl, // 환경 변수 사용
+  baseURL: baseURL,
 });
 
 axiosInstance.interceptors.request.use(

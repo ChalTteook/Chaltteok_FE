@@ -21,10 +21,25 @@ export interface StudioMarker {
  */
 export const getStudioMarkers = async (): Promise<StudioMarker[]> => {
   try {
+    console.log('사진관 마커 정보 요청 시작');
     const response = await getAllShops();
     
+    console.log('사진관 API 응답 구조:', {
+      status: typeof response.status,
+      hasData: !!response.data,
+      dataType: typeof response.data,
+      isArray: Array.isArray(response.data),
+      dataLength: Array.isArray(response.data) ? response.data.length : 'not an array'
+    });
+    
+    // 응답 데이터가 없거나 배열이 아닌 경우 처리
+    if (!response.data || !Array.isArray(response.data)) {
+      console.error('유효하지 않은 API 응답 데이터:', response.data);
+      return [];
+    }
+    
     // API 응답에서 필요한 데이터만 추출하여 마커 형식으로 변환
-    return response.data.map(shop => ({
+    return response.data.map((shop: any) => ({
       id: shop.id,
       title: shop.title,
       latitude: parseFloat(shop.latitude),
@@ -41,6 +56,25 @@ export const getStudioMarkers = async (): Promise<StudioMarker[]> => {
     }));
   } catch (error) {
     console.error('매장 마커 정보를 가져오는데 실패했습니다:', error);
+    // 임시 데이터 반환 (개발 및 테스트 환경용)
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('테스트용 임시 데이터 사용');
+      return [
+        {
+          id: 1,
+          title: '테스트 사진관',
+          latitude: 37.556854408446654,
+          longitude: 126.92359523466598,
+          img: 'https://via.placeholder.com/150',
+          description: '테스트 설명',
+          price: '30,000원~',
+          hours: '09:00~18:00',
+          rating: 4.5,
+          reviews: 74,
+          is_partner: 1
+        }
+      ];
+    }
     return [];
   }
 };
