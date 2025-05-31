@@ -1,0 +1,57 @@
+--------- beginning of system
+05-31 16:00:19.221   542   727 E ClipboardService: Denying clipboard access to com.android.chrome, application is not in focus nor is it a system service for user 0
+05-31 16:00:19.234   542   728 E ClipboardService: Denying clipboard access to com.android.chrome, application is not in focus nor is it a system service for user 0
+--------- beginning of main
+05-31 16:00:21.751   761   880 E OpenGLRenderer: Unable to match the desired swap behavior.
+05-31 16:00:21.767 32128 32128 E ok.chaltteok_FE: Not starting debugger since process cannot load the jdwp agent.
+05-31 16:00:21.924 32128 32145 E OpenGLRenderer: Unable to match the desired swap behavior.
+05-31 16:00:22.265 32128 32156 E ReactNativeJS: Invariant Violation: "main" has not been registered. This can happen if:
+05-31 16:00:22.265 32128 32156 E ReactNativeJS: * Metro (the local dev server) is run from the wrong folder. Check if Metro is running, stop it and restart it in the current project.
+05-31 16:00:22.265 32128 32156 E ReactNativeJS: * A module failed to load due to an error and `AppRegistry.registerComponent` wasn't called.
+--------- beginning of crash
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: FATAL EXCEPTION: mqt_native_modules
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: Process: com.chaltteok.chaltteok_FE, PID: 32128
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: com.facebook.react.common.JavascriptException: Invariant Violation: "main" has not been registered. This can happen if:
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: * Metro (the local dev server) is run from the wrong folder. Check if Metro is running, stop it and restart it in the current project.
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: * A module failed to load due to an error and `AppRegistry.registerComponent` wasn't called., stack:
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: <unknown>@11:290
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: runApplication@252:1539
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: value@14:3903
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: <unknown>@14:761
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: value@14:2590
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: value@14:732
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: value@-1
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: 
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: 	at com.facebook.react.modules.core.ExceptionsManagerModule.reportException(ExceptionsManagerModule.kt:52)
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: 	at com.facebook.react.bridge.JavaMethodWrapper.invoke(JavaMethodWrapper.java:372)
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: 	at com.facebook.react.bridge.JavaModuleWrapper.invoke(JavaModuleWrapper.java:146)
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: 	at com.facebook.jni.NativeRunnable.run(Native Method)
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: 	at android.os.Handler.handleCallback(Handler.java:958)
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: 	at com.facebook.react.bridge.queue.MessageQueueThreadHandler.dispatchMessage(MessageQueueThreadHandler.java:27)
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:205)
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:294)
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: 	at com.facebook.react.bridge.queue.MessageQueueThreadImpl.lambda$startNewBackgroundThread$2(MessageQueueThreadImpl.java:217)
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: 	at com.facebook.react.bridge.queue.MessageQueueThreadImpl$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+05-31 16:00:22.267 32128 32157 E AndroidRuntime: 	at java.lang.Thread.run(Thread.java:1012)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: Failed to fetch suggestions from AppSearch, fallback to AGA
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: java.util.concurrent.CompletionException: java.util.NoSuchElementException: No value present
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:308)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:323)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:684)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:486)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2138)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at com.google.android.apps.nexuslauncher.allapps.H0.onResult(Unknown Source:59)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at android.app.appsearch.SearchSessionUtil$1.lambda$onResult$0(go/retraceme a16d0ba016d0a960fac510978438a6150cd44e6e14a3b85e957db047c29f073b:144)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at android.app.appsearch.SearchSessionUtil$1.$r8$lambda$CEk3q8sDAQVhU3rQwVueB8FAj_M(go/retraceme a16d0ba016d0a960fac510978438a6150cd44e6e14a3b85e957db047c29f073b:22)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at android.os.Handler.handleCallback(Handler.java:958)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at android.os.Looper.loopOnce(Looper.java:205)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at android.os.Looper.loop(Looper.java:294)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: Caused by: java.util.NoSuchElementException: No value present
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at java.util.Optional.get(Optional.java:143)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	at com.google.android.apps.nexuslauncher.allapps.H0.onResult(Unknown Source:16)
+05-31 16:00:22.285  1053  1648 E OneSearchSuggestProvider: 	... 8 more
+05-31 16:00:56.707   542   727 E ClipboardService: Denying clipboard access to com.android.chrome, application is not in focus nor is it a system service for user 0

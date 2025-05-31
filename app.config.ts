@@ -7,9 +7,9 @@ export default ({ config }: ConfigContext): ExpoConfig => {
   
   // EAS 빌드 시에는 .env 파일 로드를 건너뛰기
   if (!process.env.EAS_BUILD) {
-    const envFile = env === "production" ? ".env.production" : ".env.development";
+  const envFile = env === "production" ? ".env.production" : ".env.development";
     console.log(`Loading environment from ${envFile}`);
-    dotenv.config({ path: envFile });
+  dotenv.config({ path: envFile });
   }
 
   // Create environment-specific configurations

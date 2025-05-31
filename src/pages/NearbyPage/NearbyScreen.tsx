@@ -95,16 +95,16 @@ const NearbyScreen = ({ navigation }) => {
             <Text style={styles.tempMapText}>네이버 맵 기능은 현재 비활성화되어 있습니다.</Text>
             <Text style={styles.tempMapSubText}>React Native 0.78.0 업그레이드 중</Text>
             <ScrollView style={styles.tempListContainer}>
-              {markers.map((studio) => (
+            {markers.map((studio) => (
                 <TouchableOpacity 
-                  key={studio.id} 
+                key={studio.id}
                   style={styles.tempStudioItem}
                   onPress={() => showCard(studio)}
                 >
                   <Text style={styles.studioName}>{studio.title}</Text>
                   <Text style={styles.description} numberOfLines={1}>{studio.description}</Text>
                 </TouchableOpacity>
-              ))}
+            ))}
             </ScrollView>
           </View>
         )}

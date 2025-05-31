@@ -24,10 +24,10 @@ const PaymentWidget: React.FC<PaymentWidgetProps> = ({
   useEffect(() => {
     // Hide the header when the component mounts if navigation is provided
     if (navigation) {
-      navigation.setOptions({ headerShown: false });
+    navigation.setOptions({ headerShown: false });
 
-      // Restore the header when the component unmounts
-      return () => navigation.setOptions({ headerShown: true });
+    // Restore the header when the component unmounts
+    return () => navigation.setOptions({ headerShown: true });
     }
   }, [navigation]);
 
