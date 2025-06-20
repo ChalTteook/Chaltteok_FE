@@ -104,6 +104,14 @@ const KakaoLogin = () => {
           injectedJavaScript={INJECTED_JAVASCRIPT}
           javaScriptEnabled={true}
           onMessage={(event) => KakaoLoginWebView(event.nativeEvent.data)}
+          onError={syntheticEvent => {
+            const { nativeEvent } = syntheticEvent;
+            console.warn('WebView error: ', nativeEvent);
+          }}
+          onHttpError={syntheticEvent => {
+            const { nativeEvent } = syntheticEvent;
+            console.warn('WebView HTTP error: ', nativeEvent);
+          }}
         />
       )}
     </View>

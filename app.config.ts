@@ -23,11 +23,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     },
     production: {
       // Hardcoded production values
-      kakaoRedirectUri: "https://chaltteok.com",
+      kakaoRedirectUri: "https://chaltteok.com/",
       kakaoRestApiKey: "fe0e720fbe5b74240985fb33256f2826",
-      naverRedirectUri: "https://chaltteok.com",
+      naverRedirectUri: "https://chaltteok.com/",
       naverRestApiKey: "GK2ORFcjWGkcsqlGPh8M",
-      baseURL: "https://chaltteok.com/api/v1",
+      baseURL: "https://chaltteok.com/api/v1/",
     },
   };
 

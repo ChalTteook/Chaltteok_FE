@@ -42,3 +42,6 @@ yarn-error.*
 
 # @end expo-cli
 node_modules
+*.keystore
+
+.env

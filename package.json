@@ -16,9 +16,12 @@
     "android:build:release": "cd android && ./gradlew assembleRelease bundleRelease",
     "android:install:release": "adb install -r android/app/build/outputs/apk/release/app-release.apk",
     "android:run:release": "npx expo run:android --variant release",
+    "android:build:release:prod": "cd android && APP_ENV=production NODE_ENV=production ./gradlew assembleRelease bundleRelease",
     "android:run:dev": "npx expo run:android --variant debug",
     "metro:prod": "APP_ENV=production NODE_ENV=production npx expo start --dev-client --no-dev --minify --clear",
-    "ios:prod": "APP_ENV=production NODE_ENV=production EAS_NO_VCS=1 npx expo run:ios"
+    "ios:prod": "APP_ENV=production NODE_ENV=production EAS_NO_VCS=1 npx expo run:ios",
+    "build:android:prod": "NODE_ENV=production cd android && ./gradlew bundleRelease",
+    "build:android:dev": "NODE_ENV=development cd android && ./gradlew bundleRelease"
   },
   "dependencies": {
     "@react-native-community/cli": "latest",
