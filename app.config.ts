@@ -19,7 +19,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       kakaoRestApiKey: "fe0e720fbe5b74240985fb33256f2826",
       naverRedirectUri: "http://43.201.211.39/",
       naverRestApiKey: "GK2ORFcjWGkcsqlGPh8M",
-      baseURL: "http://43.201.211.39/api/v1",
+      baseURL: "http://43.201.211.39",
     },
     production: {
       // Hardcoded production values
@@ -27,7 +27,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       kakaoRestApiKey: "fe0e720fbe5b74240985fb33256f2826",
       naverRedirectUri: "https://chaltteok.com/",
       naverRestApiKey: "GK2ORFcjWGkcsqlGPh8M",
-      baseURL: "https://chaltteok.com/api/v1/",
+      baseURL: "https://chaltteok.com",
     },
   };
 

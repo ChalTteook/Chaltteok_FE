@@ -1,14 +1,15 @@
 import axios from 'axios';
 import Constants from 'expo-constants';
+import axiosInstance from '../../axiosInstance';
 
 const BASE_URL = Constants.expoConfig?.extra?.baseURL;
 
 export const joinAuth = async (email: string, password: string, username: string) => {
   try {
     console.log('회원가입 시도:', { email, password, username });
-    console.log('BASE_URL:', `${BASE_URL}api/v1/auth/register`);
+    console.log('Using axiosInstance with relative path: /auth/register');
     
-    const response = await axios.post(`${BASE_URL}api/v1/auth/register`, {
+    const response = await axiosInstance.post('/auth/register', {
       email,
       password,
       username

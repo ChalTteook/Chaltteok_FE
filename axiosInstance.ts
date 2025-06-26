@@ -1,12 +1,13 @@
 import axios from 'axios';
 import Constants from 'expo-constants';
 
-// Access baseURL from the expoConfig.extra
-const baseURL = Constants.expoConfig?.extra?.baseURL || 'https://chaltteok.com/api/v1';
-console.log('Using API baseURL:', baseURL);
+// Access baseURL from the expoConfig.extra and append /api/v1
+const baseURL = Constants.expoConfig?.extra?.baseURL || 'https://chaltteok.com';
+const fullBaseURL = `${baseURL}/api/v1`;
+console.log('Using API baseURL:', fullBaseURL);
 
 const axiosInstance = axios.create({
-  baseURL: baseURL,
+  baseURL: fullBaseURL,
 });
 
 axiosInstance.interceptors.request.use(
