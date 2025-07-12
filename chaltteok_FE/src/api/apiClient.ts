@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-const BASE_URL = 'https://your-backend-url.com/api';
+import axiosInstance from '../../../axiosInstance';
 
 /**
  * 백엔드에 로그인 데이터 전송
@@ -8,7 +6,7 @@ const BASE_URL = 'https://your-backend-url.com/api';
  */
 export const sendLoginDataToBackend = async (accessToken: string) => {
   try {
-    const response = await axios.post(`${BASE_URL}/login`, {
+    const response = await axiosInstance.post('/login', {
       token: accessToken,
     });
 

@@ -6,11 +6,10 @@ import type { StackNavigationProp } from "@react-navigation/stack";
 import { v4 as uuidv4 } from "uuid";
 import "react-native-get-random-values";
 import { sendTokenToBackend } from "../api/NaverAuth";
-import { NAVER_REDIRECT_URI } from '@env';
 
 const CLIENT_ID = "GK2ORFcjWGkcsqlGPh8M";
 const NAVER_CLIENT_SECRET = "x2PhRQmHb7";
-const REDIRECT_URI = NAVER_REDIRECT_URI;
+const REDIRECT_URI = "https://chaltteok.com/api/auth/naver/callback";
 const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage(window.location.href)`;
 type RootStackParamList = {
   PhoneAuth: undefined;

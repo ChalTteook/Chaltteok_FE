@@ -7,6 +7,7 @@ import { sendTokenToBackend } from '../api/KakaoAuth';
 import CookieManager from '@react-native-cookies/cookies';
 import Constants from 'expo-constants';
 import axios from 'axios';
+import axiosInstance from '../../axiosInstance';
 import LeftHeader from '../components/LeftHeader';
 
 const REST_API_KEY = Constants.expoConfig?.extra?.kakaoRestApiKey;
@@ -36,8 +37,8 @@ const KakaoLogin = () => {
     // 카카오 인증 URL 요청
     const getKakaoAuthUrl = async () => {
       try {
-        console.log('카카오 인증 URL 요청:', `${BASE_URL}/api/v1/auth/kakao_auth`);
-        const response = await axios.get(`${BASE_URL}/api/v1/auth/kakao_auth`);
+        console.log('카카오 인증 URL 요청: /auth/kakao_auth');
+        const response = await axiosInstance.get('/auth/kakao_auth');
         
         const receivedUrl = response.data.data;
         const urlParams = new URLSearchParams(receivedUrl.split('?')[1]);

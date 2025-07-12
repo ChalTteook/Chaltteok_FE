@@ -1,11 +1,8 @@
-import axios from 'axios';
-import Constants from 'expo-constants';
-
-const BASE_URL = Constants.expoConfig?.extra?.baseURL;
+import axiosInstance from '../../../axiosInstance';
 
 export const logoutUser = async (token: string) => {
   try {
-    const response = await axios.post(`${BASE_URL}api/v1/auth/logout`, {}, {
+    const response = await axiosInstance.post('/auth/logout', {}, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

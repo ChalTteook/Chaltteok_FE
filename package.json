@@ -1,6 +1,6 @@
 {
   "name": "chaltteok_fe",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "main": "index.ts",
   "scripts": {
     "start": "expo start --dev-client",
@@ -19,8 +19,15 @@
     "android:run:dev": "npx expo run:android --variant debug",
     "metro:prod": "APP_ENV=production NODE_ENV=production npx expo start --dev-client --no-dev --minify --clear",
     "ios:prod": "APP_ENV=production NODE_ENV=production EAS_NO_VCS=1 npx expo run:ios",
-    "build:android:prod": "NODE_ENV=production cd android && ./gradlew bundleRelease",
-    "build:android:dev": "NODE_ENV=development cd android && ./gradlew bundleRelease"
+    "build:android:prod": "APP_ENV=production NODE_ENV=production cd android && ./gradlew bundleRelease",
+    "build:android:dev": "NODE_ENV=development cd android && ./gradlew bundleRelease",
+    "android:release:local": "APP_ENV=production NODE_ENV=production EAS_NO_VCS=1 npx expo run:android --variant release",
+    "android:playstore:test": "npm run build:android:prod && npm run android:build:release:prod && npm run android:install:release",
+    "android:build:release:local": "APP_ENV=production NODE_ENV=production EAS_NO_VCS=1 npx expo run:android --variant release --no-build-cache",
+    "deploy:android": "APP_ENV=production NODE_ENV=production EAS_NO_VCS=1 npx expo run:android --variant release --no-build-cache",
+    "version:bump": "npm version patch && echo '버전이 업데이트되었습니다. Android 버전도 수동으로 업데이트해주세요.'",
+    "debug:prod": "APP_ENV=production NODE_ENV=production npx expo start --dev-client --clear",
+    "test:network": "APP_ENV=production NODE_ENV=production npx expo run:android --variant release && adb logcat | grep -E '(Axios|Network|Error)'"
   },
   "dependencies": {
     "@react-native-community/cli": "latest",

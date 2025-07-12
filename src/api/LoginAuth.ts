@@ -1,11 +1,8 @@
-import axios from 'axios';
-import Constants from 'expo-constants';
-
-const BASE_URL = Constants.expoConfig?.extra?.baseURL;
+import axiosInstance from '../../axiosInstance';
 
 export const loginUser = async (email: string, password: string) => {
   try {
-    const response = await axios.post(`${BASE_URL}api/v1/auth/login`,
+    const response = await axiosInstance.post('/auth/login',
     {
         "email": email,
         "password": password

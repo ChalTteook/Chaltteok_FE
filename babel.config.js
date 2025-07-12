@@ -1,22 +1,8 @@
 module.exports = function(api) {
-  const isProduction = process.env.NODE_ENV === 'production';
+  const isProduction = process.env.APP_ENV === 'production' || process.env.NODE_ENV === 'production';
   api.cache(true);
-  
-  const plugins = [
-    [
-      "module:react-native-dotenv",
-      {
-        "moduleName": "@env",
-        "path": ".env",
-        "blocklist": null,
-        "allowlist": null,
-        "safe": false,
-        "allowUndefined": true,
-        "verbose": false
-      }
-    ]
-  ];
 
+  const plugins = [];
   // React Refresh를 development에서만 추가
   if (!isProduction) {
     try {
@@ -25,7 +11,7 @@ module.exports = function(api) {
       console.log('React Refresh not available, skipping...');
     }
   }
-  
+
   return {
     presets: ['babel-preset-expo'],
     plugins: plugins

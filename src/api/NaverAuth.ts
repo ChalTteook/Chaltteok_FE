@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Constants from 'expo-constants';
+import axiosInstance from '../../axiosInstance';
 
 const REDIRECT_URI = Constants.expoConfig?.extra?.naverRedirectUri;
 const BASE_URL = REDIRECT_URI?.replace(/\/$/, ''); // 끝의 슬래시 제거
@@ -7,7 +8,7 @@ const BASE_URL = REDIRECT_URI?.replace(/\/$/, ''); // 끝의 슬래시 제거
 export const sendTokenToBackend = async (authorizecode: string) => {
   try {
     const quotedAuthorizeCode = `"${authorizecode}"`;
-    const response = await axios.post(`${BASE_URL}/api/v1/auth/social-login`,
+    const response = await axiosInstance.post('/auth/social-login',
     {
       provider: "naver",
       code: authorizecode

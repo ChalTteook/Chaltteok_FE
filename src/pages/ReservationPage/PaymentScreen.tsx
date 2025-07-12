@@ -2,7 +2,8 @@ import React from "react";
 import { SafeAreaView, View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import TossPaymentWidget from '../../components/PaymentWidget';
-import { BASE_URL } from '@env';
+
+const BASE_URL = "https://chaltteok.com";
 
 const PaymentScreen = ({ navigation }) => {
   const paymentRequest = {

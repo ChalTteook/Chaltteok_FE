@@ -2,7 +2,7 @@
   "expo": {
     "name": "chaltteok_FE",
     "slug": "chaltteok_FE",
-    "version": "1.0.1",
+    "version": "1.0.9",
     "orientation": "portrait",
     "icon": "./src/assets/main_logo.png",
     "userInterfaceStyle": "light",

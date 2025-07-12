@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, Alert } from 'react-native';
 import TossPaymentWidget from '../../components/PaymentWidget';
 import { PaymentRequest } from '../../types/payment';
 import Constants from 'expo-constants';
-import { BASE_URL } from '@env';
+
+const BASE_URL = "https://chaltteok.com";
 
 const PaymentPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);

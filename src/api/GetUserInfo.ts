@@ -1,11 +1,8 @@
-import axios from 'axios';
-import Constants from 'expo-constants';
-
-const BASE_URL = Constants.expoConfig?.extra?.baseURL;
+import axiosInstance from '../../axiosInstance';
 
 export const getUserInfo = async (token: string) => {
   try {
-    const response = await axios.get(`${BASE_URL}api/v1/user/me`, {
+    const response = await axiosInstance.get('/user/me', {
       headers: {
         Authorization: `Bearer ${token}`, // JWT 토큰을 헤더에 추가
       },

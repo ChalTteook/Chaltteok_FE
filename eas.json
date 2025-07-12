@@ -15,10 +15,11 @@
       "autoIncrement": true,
       "env": {
         "NODE_ENV": "production",
-        "BASE_URL": "https://chaltteoktossweb.netlify.app/",
-        "KAKAO_REDIRECT_URI": "https://chaltteoktossweb.netlify.app/",
+        "APP_ENV": "production",
+        "BASE_URL": "https://chaltteok.com/",
+        "KAKAO_REDIRECT_URI": "https://chaltteok.com/",
         "KAKAO_REST_API_KEY": "fe0e720fbe5b74240985fb33256f2826",
-        "NAVER_REDIRECT_URI": "https://chaltteoktossweb.netlify.app/",
+        "NAVER_REDIRECT_URI": "https://chaltteok.com/",
         "NAVER_REST_API_KEY": "GK2ORFcjWGkcsqlGPh8M"
       },
       "android": {
@@ -29,14 +30,15 @@
       "autoIncrement": true,
       "env": {
         "NODE_ENV": "production",
-        "BASE_URL": "https://chaltteoktossweb.netlify.app/",
-        "KAKAO_REDIRECT_URI": "https://chaltteoktossweb.netlify.app/",
+        "APP_ENV": "production",
+        "BASE_URL": "https://chaltteok.com/",
+        "KAKAO_REDIRECT_URI": "https://chaltteok.com/",
         "KAKAO_REST_API_KEY": "fe0e720fbe5b74240985fb33256f2826",
-        "NAVER_REDIRECT_URI": "https://chaltteoktossweb.netlify.app/",
+        "NAVER_REDIRECT_URI": "https://chaltteok.com/",
         "NAVER_REST_API_KEY": "GK2ORFcjWGkcsqlGPh8M"
       },
       "android": {
-        "buildType": "apk"
+        "buildType": "app-bundle"
       }
     }
   },

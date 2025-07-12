@@ -1,11 +1,11 @@
-import axios from 'axios';
+import axiosInstance from '../../axiosInstance';
 import Constants from 'expo-constants';
 
 const BASE_URL = Constants.expoConfig?.extra?.baseURL;
 
 export const sendEmailVerificationCode = async (formattedEmail: string) => {  
   try {
-    const response = await axios.post(`${BASE_URL}api/v1/common/send/email`,
+    const response = await axiosInstance.post('/common/send/email',
     {
         "email": formattedEmail
     });

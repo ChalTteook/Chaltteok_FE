@@ -1,15 +1,11 @@
-import axios from 'axios';
-import Constants from 'expo-constants';
-
-
-const BASE_URL = Constants.expoConfig?.extra?.baseURL;
+import axiosInstance from '../../axiosInstance';
 
 export const updateUserProfile = async (
   token: string,
   profileData: { nickName?: string; name?: string; phone?: string }
 ) => {
   try {
-    const response = await axios.patch(`${BASE_URL}api/v1/user/me/profile`, profileData, {
+    const response = await axiosInstance.patch('/user/me/profile', profileData, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
