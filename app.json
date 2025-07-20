@@ -4,9 +4,14 @@
     "slug": "chaltteok_FE",
     "version": "1.0.9",
     "orientation": "portrait",
-    "icon": "./src/assets/main_logo.png",
+    "icon": "./src/assets/big_logo.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": false,
+    "splash": {
+      "image": "./src/assets/avatar.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "assets": [
       "./src/assets/fonts/"
     ],

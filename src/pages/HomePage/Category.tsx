@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const categories = [
   { id: 1, title: '증명사진/\n프로필', image: require('../../assets/categotyImage/profile.png')},
@@ -10,10 +11,21 @@ const categories = [
 ];
 
 const Category = () => {
+  const navigation = useNavigation();
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categoriesContainer}>
       {categories.map((category) => (
-        <TouchableOpacity key={category.id} style={styles.categoryItem}>
+        <TouchableOpacity
+          key={category.id}
+          style={styles.categoryItem}
+          onPress={() => {
+            // 중첩된 네비게이터에서 상위 네비게이터의 스크린으로 이동
+            navigation.navigate('AllRecent' as never, {
+              categoryTitle: category.title,
+              categoryId: category.id
+            } as never);
+          }}
+        >
           <View style={styles.imageContainer}>
             <Image source={category.image} style={styles.categoryImage} />
           </View>          

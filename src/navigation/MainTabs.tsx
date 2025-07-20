@@ -24,29 +24,38 @@ const MainTabs = () => {
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let IconComponent;
-            // 기본 size를 28로 설정
             let iconSize = 34;
-
             if (route.name === '찰떡홈') {
               IconComponent = focused ? ActiveHomeIcon : HomeIcon;
             } else if (route.name === '주변') {
               IconComponent = focused ? ActiveMapIcon : MapIcon;
             } else if (route.name === '찜') {
               IconComponent = focused ? ActiveFavoriteIcon : FavoriteIcon;
-              iconSize = 32; // '찜' 아이콘을 조금 더 크게 설정
+              iconSize = 32;
             } else if (route.name === '내정보') {
               IconComponent = focused ? ActiveUserIcon : UserIcon;
-              iconSize = 36; // '찜' 아이콘을 조금 더 크게 설정
+              iconSize = 36;
             }
-
             return (
               <View style={styles.iconContainer}>
                 {focused && <View style={styles.activeIndicator} />}
-                <IconComponent width={iconSize} height={iconSize} />
+                {IconComponent ? <IconComponent width={iconSize} height={iconSize} /> : null}
               </View>
             );
           },
-          ...tabBarOptions,
+          tabBarActiveTintColor: '#F71D6A',
+          tabBarInactiveTintColor: '#202123',
+          tabBarStyle: { height: 64 },
+          tabBarLabelStyle: {
+            marginTop: 8,
+            fontSize: 12,
+            fontWeight: '700',
+          },
+          tabBarIconStyle: {
+            marginTop: 5,
+            marginBottom: -5,
+          },
+          headerShown: false,
         })}
       >
         <Tab.Screen name="찰떡홈" component={HomeScreen} />
@@ -85,7 +94,8 @@ const styles = StyleSheet.create({
   activeIndicator: {
     position: 'absolute',
     top: 0,
-    width: '100%',
+    left: '-3%',
+    width: '40%',
     height: 2,
     backgroundColor: '#F71D6A',
   },

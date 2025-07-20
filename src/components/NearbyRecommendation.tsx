@@ -8,6 +8,7 @@ import {
   Image,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
 
 const photographers = [
   {
@@ -44,6 +45,7 @@ const formatPrice = (price: number) => {
 };
 
 const Photographer = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.recentSection}>
       <View style={styles.sectionHeader}>

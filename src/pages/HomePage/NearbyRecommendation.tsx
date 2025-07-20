@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
   View,
   Text,
@@ -9,50 +9,80 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useNavigation } from '@react-navigation/native';
+import { getAllShops } from "../../api/shops/shopApi";
 
-const photographers = [
-  {
-    id: "1",
-    name: "사진가 이름1",
-    discount: 28,
-    price: 33910,
-    instagram: "chaldduck",
-    rating: 4.6,
-    reviews: 74,
-  },
-  {
-    id: "2",
-    name: "사진가 이름2",
-    discount: 28,
-    price: 33910,
-    instagram: "chaldduck",
-    rating: 4.6,
-    reviews: 74,
-  },
-  {
-    id: "3",
-    name: "사진가 이름3",
-    discount: 28,
-    price: 33910,
-    instagram: "chaldduck",
-    rating: 4.6,
-    reviews: 74,
-  },
-];
+
 
 const formatPrice = (price: number) => {
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
 const Photographer = () => {
+  const [studios, setStudios] = useState([]);
   const navigation = useNavigation();
+
+  useEffect(() => {
+    const fetchStudios = async () => {
+      try {
+        const response = await getAllShops();
+        // 랜덤 순서로 섞기
+        const shuffledStudios = [...response.data].sort(() => Math.random() - 0.5);
+        setStudios(shuffledStudios);
+      } catch (error) {
+        console.error('사진관 정보를 가져오는 데 실패했습니다:', error);
+      }
+    };
+
+    fetchStudios();
+  }, []);
+
+  // id 기반 결정적 랜덤 생성 함수들
+  function hashString(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = (hash * 31 + str.charCodeAt(i)) % 10000;
+    }
+    return hash;
+  }
+  function seededRandom(id, salt = 0) {
+    const hash = hashString(id + salt);
+    return (hash % 10000) / 10000;
+  }
+  function getStudioDiscount(id) {
+    return Math.floor(seededRandom(id, 1) * 41) + 10; // 10~50%
+  }
+  function getStudioRating(id) {
+    const r = seededRandom(id, 2) ** 8;
+    const rating = 4.3 + r * 0.65;
+    return rating.toFixed(2);
+  }
+  function getStudioReviews(id) {
+    return Math.floor(seededRandom(id, 3) ** 2 * 100);
+  }
+  function getStudioPrice(id) {
+    const discount = getStudioDiscount(id);
+    const basePrice = 35000;
+    return Math.floor(basePrice * (1 - discount / 100));
+  }
+
+  const randomStudioData = useMemo(() => {
+    return studios.map(studio => {
+      const discount = Math.floor(Math.random() * 41) + 10;
+      const basePrice = 35000;
+      const price = Math.floor(basePrice * (1 - discount / 100));
+      const r = Math.random() ** 8;
+      const rating = (4.3 + r * 0.65).toFixed(2);
+      const reviews = Math.floor(Math.random() ** 2 * 100);
+      return { id: studio.id, discount, price, rating, reviews };
+    });
+  }, [studios]);
 
   return (
     <View style={styles.recentSection}>
       <View style={styles.sectionHeader}>
         <Text style={styles.recentTitle}>지금 가까운 곳으로 추천해드려요!</Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate("StudioPage")}
+          onPress={() => navigation.navigate("AllRecent")}
           style={{ marginLeft: "auto" }}
         >
           <Text style={styles.allRecentStudios}>전체보기</Text>
@@ -63,35 +93,38 @@ const Photographer = () => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        {photographers.map((photographer) => (
-          <TouchableOpacity
-            key={photographer.id}
-            style={styles.card}
-            onPress={() => navigation.navigate('StudioPage')}
-          >
-            <Image
-              source={require("../../assets/photographer.png")}
-              style={styles.image}
-            />
-            <View style={styles.cardContent}>
-              <Text style={styles.photographerName}>{photographer.name}</Text>
-              <View style={styles.priceContainer}>
-                <Text style={styles.discount}>{photographer.discount}%</Text>
-                <Text style={styles.price}>
-                  {formatPrice(photographer.price)}
-                </Text>
+        {studios.map((studio, idx) => {
+          const { discount, price, rating, reviews } = randomStudioData[idx];
+          return (
+            <TouchableOpacity
+              key={studio.id}
+              style={styles.card}
+              onPress={() => navigation.navigate('StudioPage', { id: studio.id })}
+            >
+              <Image
+                source={{ uri: studio.img }}
+                style={styles.image}
+              />
+              <View style={styles.cardContent}>
+                <Text style={styles.photographerName}>{studio.title}</Text>
+                <View style={styles.priceContainer}>
+                  <Text style={styles.discount}>{discount}%</Text>
+                  <Text style={styles.price}>
+                    {formatPrice(price)}원
+                  </Text>
+                </View>
+                <View style={styles.ratingContainer}>
+                  <Icon name="star" size={16} color="#202123" />
+                  <Text style={styles.rating}>{rating}</Text>
+                  <Text style={styles.reviews}>({reviews})</Text>
+                </View>
               </View>
-              <View style={styles.ratingContainer}>
-                <Icon name="star" size={16} color="#202123" />
-                <Text style={styles.rating}>{photographer.rating}</Text>
-                <Text style={styles.reviews}>({photographer.reviews})</Text>
+              <View style={styles.instagramContainer}>
+                <Icon name="logo-instagram" size={16} color="#000000" />
               </View>
-            </View>
-            <View style={styles.instagramContainer}>
-              <Icon name="logo-instagram" size={16} color="#000000" />
-            </View>
-          </TouchableOpacity>
-        ))}
+            </TouchableOpacity>
+          );
+        })}
       </ScrollView>
     </View>
   );

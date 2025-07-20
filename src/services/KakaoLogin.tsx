@@ -9,6 +9,8 @@ import Constants from 'expo-constants';
 import axios from 'axios';
 import axiosInstance from '../../axiosInstance';
 import LeftHeader from '../components/LeftHeader';
+import { useRecoilState } from 'recoil';
+import { authState } from '../state/authState';
 
 const REST_API_KEY = Constants.expoConfig?.extra?.kakaoRestApiKey;
 const REDIRECT_URI = Constants.expoConfig?.extra?.kakaoRedirectUri ;
@@ -27,6 +29,7 @@ const KakaoLogin = () => {
   const [authUrl, setAuthUrl] = useState<string | null>(null);
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [isLoading, setIsLoading] = useState(false);
+  const [auth, setAuth] = useRecoilState(authState);
 
   useEffect(() => {
     // 웹뷰 쿠키 삭제
@@ -67,6 +70,27 @@ const KakaoLogin = () => {
         const response = await sendTokenToBackend(authorize_code);
         if (response) {
           console.log('로그인 성공:', response);
+          console.log('저장할 토큰:', response.token);
+          console.log('저장할 사용자 정보:', response.user);
+          
+          // auth 상태에 JWT 토큰과 사용자 정보를 저장
+          const newAuthState = {
+            userEmail: response.user?.email || null,
+            isLoggedIn: true,
+            token: response.token, // JWT 토큰 저장
+            nickname: response.user?.nickName || null,
+            name: response.user?.name || null,
+            phoneNumber: response.user?.phone || null,
+          };
+          
+          console.log('새로운 auth 상태:', newAuthState);
+          setAuth(newAuthState);
+          
+          // 저장 후 상태 확인
+          setTimeout(() => {
+            console.log('저장 후 auth 상태 확인:', auth);
+          }, 100);
+          
           navigation.navigate('Main');
         } else {
           throw new Error('로그인 실패: 응답이 비어있습니다.');

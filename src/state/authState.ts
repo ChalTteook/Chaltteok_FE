@@ -1,6 +1,15 @@
 import { atom } from 'recoil';
 
-export const authState = atom({
+interface AuthState {
+  userEmail: string | null;
+  isLoggedIn: boolean;
+  token: string | null;
+  nickname: string | null;
+  name: string | null;
+  phoneNumber: string | null;
+}
+
+export const authState = atom<AuthState>({
   key: 'authState',  // 고유한 key 이름 설정
   default: {
     userEmail: null,

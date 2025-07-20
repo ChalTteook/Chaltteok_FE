@@ -15,13 +15,21 @@ const axiosInstance = axios.create({
   },
 });
 
+// 요청 인터셉터 - 로깅 및 향후 토큰 추가 가능
 axiosInstance.interceptors.request.use(
   (config) => {
+    // TODO: 인증 토큰이 필요하면 여기에 추가
+    // const token = await getAuthToken();
+    // if (token) {
+    //   config.headers.Authorization = `Bearer ${token}`;
+    // }
+
     console.log(`[${new Date().toISOString()}] Axios 요청:`, {
       url: config.url,
       method: config.method,
       baseURL: config.baseURL,
       fullURL: `${config.baseURL}${config.url}`,
+      hasAuth: !!config.headers.Authorization,
     });
     return config;
   },
@@ -47,6 +55,13 @@ axiosInstance.interceptors.response.use(
       url: error.config?.url,
       baseURL: error.config?.baseURL,
     });
+
+    // 401 Unauthorized 에러 처리 (토큰 만료 등)
+    if (error.response?.status === 401) {
+      console.log('[Axios] 401 에러 - 토큰 만료 또는 인증 실패');
+      // TODO: 로그아웃 처리나 토큰 갱신 로직을 추가할 수 있습니다
+    }
+
     return Promise.reject(error);
   }
 );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
   View,
   Text,
@@ -33,6 +33,47 @@ const Photographer = () => {
     fetchPhotographers();
   }, []);
 
+  // id 기반 결정적 랜덤 생성 함수들
+  function hashString(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = (hash * 31 + str.charCodeAt(i)) % 10000;
+    }
+    return hash;
+  }
+  function seededRandom(id, salt = 0) {
+    const hash = hashString(id + salt);
+    return (hash % 10000) / 10000;
+  }
+  function getStudioDiscount(id) {
+    return Math.floor(seededRandom(id, 1) * 41) + 10; // 10~50%
+  }
+  function getStudioRating(id) {
+    const r = seededRandom(id, 2) ** 8;
+    const rating = 4.3 + r * 0.65;
+    return rating.toFixed(2);
+  }
+  function getStudioReviews(id) {
+    return Math.floor(seededRandom(id, 3) ** 2 * 100);
+  }
+  function getStudioPrice(id) {
+    const discount = getStudioDiscount(id);
+    const basePrice = 35000;
+    return Math.floor(basePrice * (1 - discount / 100));
+  }
+
+  const randomPhotographerData = useMemo(() => {
+    return photographers.map(photographer => {
+      const discount = Math.floor(Math.random() * 41) + 10;
+      const basePrice = 35000;
+      const price = Math.floor(basePrice * (1 - discount / 100));
+      const r = Math.random() ** 8;
+      const rating = (4.3 + r * 0.65).toFixed(2);
+      const reviews = Math.floor(Math.random() ** 2 * 100);
+      return { id: photographer.id, discount, price, rating, reviews };
+    });
+  }, [photographers]);
+
   return (
     <View style={styles.recentSection}>
       <View style={styles.sectionHeader}>
@@ -49,35 +90,38 @@ const Photographer = () => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        {photographers.map((photographer) => (
-          <TouchableOpacity
-            key={photographer.id}
-            style={styles.card}
-            onPress={() => navigation.navigate("StudioPage", { id: photographer.id })}
-          >
-            <Image
-              source={{ uri: photographer.img }}
-              style={styles.image}
-            />
-            <View style={styles.cardContent}>
-              <Text style={styles.photographerName}>{photographer.title}</Text>
-              <View style={styles.priceContainer}>
-                <Text style={styles.discount}>28%</Text>
-                <Text style={styles.price}>
-                  33910원
-                </Text>
+        {photographers.map((photographer, idx) => {
+          const { discount, price, rating, reviews } = randomPhotographerData[idx];
+          return (
+            <TouchableOpacity
+              key={photographer.id}
+              style={styles.card}
+              onPress={() => navigation.navigate("StudioPage", { id: photographer.id })}
+            >
+              <Image
+                source={{ uri: photographer.img }}
+                style={styles.image}
+              />
+              <View style={styles.cardContent}>
+                <Text style={styles.photographerName}>{photographer.title}</Text>
+                <View style={styles.priceContainer}>
+                  <Text style={styles.discount}>{discount}%</Text>
+                  <Text style={styles.price}>
+                    {price}원
+                  </Text>
+                </View>
+                <View style={styles.ratingContainer}>
+                  <Icon name="star" size={16} color="#202123" />
+                  <Text style={styles.rating}>{rating}</Text>
+                  <Text style={styles.reviews}>({reviews})</Text>
+                </View>
               </View>
-              <View style={styles.ratingContainer}>
-                <Icon name="star" size={16} color="#202123" />
-                <Text style={styles.rating}>4.6</Text>
-                <Text style={styles.reviews}>(74)</Text>
+              <View style={styles.instagramContainer}>
+                <Icon name="logo-instagram" size={16} color="#000000" />
               </View>
-            </View>
-            <View style={styles.instagramContainer}>
-              <Icon name="logo-instagram" size={16} color="#000000" />
-            </View>
-          </TouchableOpacity>
-        ))}
+            </TouchableOpacity>
+          );
+        })}
       </ScrollView>
       {/* 앱 사용 가이드 */}
       <View style={styles.imageContainer}>

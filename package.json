@@ -47,7 +47,7 @@
     "expo-build-properties": "~0.13.2",
     "expo-dev-client": "~5.0.20",
     "expo-modules-core": "~2.2.3",
-    "expo-splash-screen": "~0.29.22",
+    "expo-splash-screen": "~0.29.24",
     "expo-status-bar": "~2.0.0",
     "hoist-non-react-statics": "^3.3.2",
     "is-directory": "^0.3.1",

@@ -6,6 +6,8 @@ import type { StackNavigationProp } from "@react-navigation/stack";
 import { v4 as uuidv4 } from "uuid";
 import "react-native-get-random-values";
 import { sendTokenToBackend } from "../api/NaverAuth";
+import { useRecoilState } from 'recoil';
+import { authState } from '../state/authState';
 
 const CLIENT_ID = "GK2ORFcjWGkcsqlGPh8M";
 const NAVER_CLIENT_SECRET = "x2PhRQmHb7";
@@ -15,12 +17,14 @@ type RootStackParamList = {
   PhoneAuth: undefined;
   WelcomeJoin: undefined;
   SocialLogin: undefined;
+  Main: undefined;
 };
 
 const NaverLoginScreen = () => {
   const [showWebView, setShowWebView] = useState(true);
   const [state] = useState(uuidv4());
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+  const [auth, setAuth] = useRecoilState(authState);
 
   const handleWebViewMessage = async (data: string) => {
     const exp = "code=";
@@ -42,6 +46,16 @@ const NaverLoginScreen = () => {
         // const verified = response.data.verified;
 
         // if (verified === "N") {
+        // auth 상태에 JWT 토큰과 사용자 정보를 저장
+        setAuth({
+          userEmail: response.user?.email || null,
+          isLoggedIn: true,
+          token: response.token, // JWT 토큰 저장
+          nickname: response.user?.nickName || null,
+          name: response.user?.name || null,
+          phoneNumber: response.user?.phone || null,
+        });
+        
         navigation.navigate("Main");
         // } else {
         //   navigation.navigate("WelcomeJoin");

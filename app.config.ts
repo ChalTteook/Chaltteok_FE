@@ -18,13 +18,9 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       [
         "expo-splash-screen",
         {
-          resizeMode: "contain",
-          backgroundColor: "#F71D6A",
-          image: "./src/assets/splash_image.png",
-          imageStyles: {
-            width: '100%',
-            height: '100%',
-          }
+          resizeMode: "cover",
+          backgroundColor: "#F71D6A", 
+          image: "./src/assets/big_logo.png"
         }
       ]
     ],

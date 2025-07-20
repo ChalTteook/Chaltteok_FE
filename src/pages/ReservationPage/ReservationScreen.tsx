@@ -164,7 +164,7 @@ const ReservationScreen = ({ navigation }) => {
         <View style={styles.footerContent}>
           <View style={styles.priceContainer}>
             <Text style={styles.priceLabel}>총 결제 금액</Text>
-            <Text style={styles.price}>50,000원</Text>
+            <Text style={styles.price}>49,000원</Text>
           </View>
           <TouchableOpacity 
             style={[

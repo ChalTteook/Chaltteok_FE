@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
   View,
   Text,
@@ -12,22 +12,44 @@ import {
 } from "react-native";
 import UserGuide from "../../assets/UserGuide";
 import Icon from "react-native-vector-icons/Ionicons";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import { getAllShops } from "../../api/shops/shopApi";
 import LeftHeader from "../../components/LeftHeader";
+import { SafeAreaView as SafeAreaViewRN } from 'react-native-safe-area-context';
 
 // 화면 너비 가져오기
 const { width } = Dimensions.get('window');
 
+// params 타입 정의
+type RecentStudioParams = {
+  AllRecent: {
+    categoryTitle?: string;
+    categoryId?: number;
+  };
+};
+
 const RecentStudio = () => {
-  const [recentViews, setRecentViews] = useState([]);
+  const [recentViews, setRecentViews] = useState<any[]>([]);
   const navigation = useNavigation();
+  const route = useRoute<RouteProp<RecentStudioParams, 'AllRecent'>>();
+  
+  // route params에서 categoryTitle 추출
+  const { categoryTitle } = route.params || {};
+  
+  // categoryTitle이 있으면 줄바꿈 문자 제거
+  const headerTitle = categoryTitle ? categoryTitle.replace(/\n/g, '') : "전체 스튜디오";
 
   useEffect(() => {
     const fetchRecentStudios = async () => {
       try {
         const response = await getAllShops();
-        setRecentViews(response.data);
+        // Fisher-Yates 셔플 알고리즘으로 랜덤 재배치
+        const shuffledData = [...response.data];
+        for (let i = shuffledData.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffledData[i], shuffledData[j]] = [shuffledData[j], shuffledData[i]];
+        }
+        setRecentViews(shuffledData);
       } catch (error) {
         console.error('사진관 정보를 가져오는 데 실패했습니다:', error);
       }
@@ -36,44 +58,59 @@ const RecentStudio = () => {
     fetchRecentStudios();
   }, []);
 
-  const renderStudioItem = ({ item }: { item: any }) => (
-    <TouchableOpacity
-      style={styles.studioItem}
-      onPress={() => navigation.navigate("StudioPage", { id: item.id })}
-    >
-      <View style={styles.imageContainer}>
-        <Image source={{ uri: item.img }} style={styles.studioImage} />
-      </View>
-      <View style={styles.infoContainer}>
-        <Text style={styles.studioName}>{item.title}</Text>
-        <View style={styles.ratingContainer}>
+  // 각 스튜디오별 랜덤값을 useMemo로 캐싱
+  const randomStudioData = useMemo(() => {
+    return recentViews.map((studio: any) => {
+      const discount = Math.floor(Math.random() * 41) + 10;
+      const basePrice = 35000;
+      const price = Math.floor(basePrice * (1 - discount / 100));
+      const r = Math.random() ** 8;
+      const rating = (4.3 + r * 0.65).toFixed(2);
+      const reviews = Math.floor(Math.random() ** 2 * 100);
+      return { id: studio.id, discount, price, rating, reviews };
+    });
+  }, [recentViews]);
+
+  const renderStudioItem = ({ item, index }: { item: any, index: number }) => {
+    const { discount, price, rating, reviews } = randomStudioData[index] || {};
+    return (
+      <TouchableOpacity
+        style={styles.studioItem}
+        onPress={() => navigation.navigate("StudioPage", { id: item.id })}
+      >
+        <View style={styles.imageContainer}>
+          <Image source={{ uri: item.img }} style={styles.studioImage} />
+        </View>
+        <View style={styles.infoContainer}>
+          <Text style={styles.studioName}>{item.title}</Text>
+          <View style={styles.ratingContainer}>
             <Text style={styles.starIcon}>★</Text>
-            <Text style={styles.rating}>4.6</Text>
-            <Text style={styles.reviews}>(74)</Text>
+            <Text style={styles.rating}>{rating}</Text>
+            <Text style={styles.reviews}>({reviews})</Text>
+          </View>
+          <Text style={styles.location}>{item.address}</Text>
+          <View style={styles.bottomRow}>
+            <Text style={styles.price}>{price}원</Text>
+            <Text style={styles.hours}>09:00~20:00</Text>
+          </View>
         </View>
-        <Text style={styles.location}>xx역 x번 출구 도보 x분</Text>
-        <View style={styles.bottomRow}>
-          <Text style={styles.price}>45,000원 / 3장</Text>
-          <Text style={styles.hours}>09:00~20:00</Text>
-        </View>
-      </View>
-    </TouchableOpacity>
-  );
+      </TouchableOpacity>
+    );
+  };
 
   return (
-    <SafeAreaView style={styles.container} edges={["top"]}>
-      <LeftHeader />
+    <SafeAreaViewRN style={styles.container} edges={["top"]}>
+      <LeftHeader title={headerTitle} />
       <View style={styles.content}>
-        <Text style={styles.title}>최근 본 내역</Text>
         <FlatList
           data={recentViews}
           renderItem={renderStudioItem}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item, idx) => item?.id ? item.id.toString() : String(idx)}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.listContainer}
         />
       </View>
-    </SafeAreaView>
+    </SafeAreaViewRN>
   );
 };
 
@@ -84,7 +121,6 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    marginTop: 10,
     paddingHorizontal: 16,
   },
   title: {

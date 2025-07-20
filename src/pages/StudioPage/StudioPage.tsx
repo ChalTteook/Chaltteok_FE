@@ -8,6 +8,8 @@ import {
   Image,
   Dimensions,
   Share,
+  Modal,
+  Alert,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import Swiper from "react-native-swiper";
@@ -16,8 +18,19 @@ import ActiveLikeIcon from "../../assets/ActiveLikeIcon";
 import FavoriteIcon from "../../assets/FavoriteIcon";
 import LikeIcon from "../../assets/LikeIcon";
 import ShareIcon from "../../assets/ShareIcon";
+import ReviewList from "../../components/ReviewList";
+import ReviewForm from "../../components/ReviewForm";
 import { useRoute, RouteProp } from "@react-navigation/native";
 import { getStudioInfo } from "../../api/shops/shopDetailApi";
+import { 
+  getShopReviews, 
+  createShopReview, 
+  updateShopReview, 
+  deleteShopReview,
+  Review,
+  CreateReviewRequest,
+  UpdateReviewRequest
+} from "../../api/reviews/reviewApi";
 
 // params 타입 정의
 type StudioPageParams = {
@@ -53,7 +66,7 @@ const ReviewCard = ({ review, onProductPress }) => (
           <Text style={styles.reviewDate}> | {review.date}</Text>
         </View>
         <TouchableOpacity onPress={() => onProductPress(review.productId)}>
-          <Text style={styles.productTitle}>
+          <Text style={styles.reviewProductTitle}>
             {review.productTitle}{" "}
             <Icon name="chevron-forward" size={16} color="#000" />
           </Text>
@@ -97,7 +110,28 @@ const ReviewCard = ({ review, onProductPress }) => (
 
 export default function StudioDetailScreen({ navigation }) {
   const route = useRoute<RouteProp<StudioPageParams, 'StudioPage'>>();
-  const { id } = route.params;
+  const { id } = route.params || {};
+  
+  // id가 없으면 기본값 설정 또는 에러 처리
+  if (!id) {
+    console.warn('StudioPage: id 파라미터가 없습니다.');
+    return (
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => navigation.goBack()}
+          >
+            <Icon name="chevron-back" size={24} color="#000" />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>스튜디오 정보</Text>
+        </View>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>스튜디오 정보를 불러올 수 없습니다.</Text>
+        </View>
+      </View>
+    );
+  }
   const [ images, setImages] = useState([]);
   const [ isDefault, setIsDefault] = useState(true);
 
@@ -107,6 +141,13 @@ export default function StudioDetailScreen({ navigation }) {
   const [isLiked, setIsLiked] = useState(false);
   const [isShareModalVisible, setIsShareModalVisible] = useState(false);
   const [reviewCount] = useState("0,000");
+  
+  // 리뷰 관련 상태
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [isReviewModalVisible, setIsReviewModalVisible] = useState(false);
+  const [editingReview, setEditingReview] = useState<Review | null>(null);
+  const [isReviewLoading, setIsReviewLoading] = useState(false);
+  const [currentUserId] = useState('user1'); // 실제로는 인증된 사용자 ID를 사용
   const scrollViewRef = useRef(null);
   const swiperRef = useRef(null);
   const sectionRefs = {
@@ -117,10 +158,10 @@ export default function StudioDetailScreen({ navigation }) {
   };
 
   useEffect(() => {
-    const fetchPhotographers = async () => {
+    const fetchStudioData = async () => {
       try {
         const response = await getStudioInfo(id);
-        const { img } = response.data.img;
+        const { img } = response.data;
         setStudios(response.data);
         if (img) {
           setImages([{ id: 0, source: { uri: img } }, ...defaultMainImages]);
@@ -131,8 +172,78 @@ export default function StudioDetailScreen({ navigation }) {
       }
     };
 
-    fetchPhotographers();
-  }, []);
+    const fetchReviews = async () => {
+      try {
+        const reviewsData = await getShopReviews(id);
+        setReviews(reviewsData);
+      } catch (error) {
+        console.error('리뷰를 가져오는 데 실패했습니다:', error);
+      }
+    };
+
+    fetchStudioData();
+    fetchReviews();
+  }, [id]);
+
+  // 리뷰 관련 함수들
+  const handleCreateReview = async (reviewData: CreateReviewRequest) => {
+    setIsReviewLoading(true);
+    try {
+      const newReview = await createShopReview(id, reviewData);
+      setReviews(prev => [newReview, ...prev]);
+      setIsReviewModalVisible(false);
+      Alert.alert('성공', '리뷰가 등록되었습니다.');
+    } catch (error) {
+      console.error('리뷰 등록 실패:', error);
+      Alert.alert('오류', '리뷰 등록에 실패했습니다.');
+    } finally {
+      setIsReviewLoading(false);
+    }
+  };
+
+  const handleUpdateReview = async (reviewData: UpdateReviewRequest) => {
+    if (!editingReview) return;
+    
+    setIsReviewLoading(true);
+    try {
+      const updatedReview = await updateShopReview(id, editingReview.id, reviewData);
+      setReviews(prev => prev.map(review => 
+        review.id === editingReview.id ? updatedReview : review
+      ));
+      setIsReviewModalVisible(false);
+      setEditingReview(null);
+      Alert.alert('성공', '리뷰가 수정되었습니다.');
+    } catch (error) {
+      console.error('리뷰 수정 실패:', error);
+      Alert.alert('오류', '리뷰 수정에 실패했습니다.');
+    } finally {
+      setIsReviewLoading(false);
+    }
+  };
+
+  const handleDeleteReview = async (reviewId: number) => {
+    try {
+      await deleteShopReview(id, reviewId);
+      setReviews(prev => prev.filter(review => review.id !== reviewId));
+      Alert.alert('성공', '리뷰가 삭제되었습니다.');
+    } catch (error) {
+      console.error('리뷰 삭제 실패:', error);
+      Alert.alert('오류', '리뷰 삭제에 실패했습니다.');
+    }
+  };
+
+  const handleEditReview = (review: Review) => {
+    setEditingReview(review);
+    setIsReviewModalVisible(true);
+  };
+
+  const handleReviewSubmit = (data: CreateReviewRequest | UpdateReviewRequest) => {
+    if (editingReview) {
+      handleUpdateReview(data as UpdateReviewRequest);
+    } else {
+      handleCreateReview(data as CreateReviewRequest);
+    }
+  };
 
   const scrollToSection = (tabName) => {
     setActiveTab(tabName);
@@ -163,25 +274,25 @@ export default function StudioDetailScreen({ navigation }) {
   const productData = [
     {
       id: 1,
-      title: "[가이드] 촬영상품명 최대 00글자",
-      price: "99,999원",
+      title: "1인 증명사진 촬영권",
+      price: "49,000원",
       details: [
-        "- 구성품선 텍스트 영역",
-        "- 구성품선 텍스트 영역",
-        "- 구성품선 텍스트 영역",
+        "- 전문가 촬영 + 1컷 보정본 제공",
+        "- 공식 문서(여권·신분증) 사용 가능",
+        "- 자동사진 대비 고차감성 대비",
         "- 이미지 위치 박스, 텍스트 영역만 아래로 열리됨",
       ],
     },
     {
       id: 2,
-      title: "1인 증명사진 촬영권",
-      price: "90,000원",
-      details: ["- 1인 1컷씩 눈정면 1컷", "- 오리지널 영역"],
+      title: "프로필 & 영상 촬영 패키지",
+      price: "139,000원",
+      details: ["-1인 기준 프로필 촬영 + 인터뷰 영상 구성 포함", "- 보정본 2컷 + 전체 원본 제공"],
     },
     {
       id: 3,
       title: "효도사진 패키지",
-      price: "125,000원",
+      price: "119,000원",
       details: ["- 1인 2컷씩 포함된 2컷", "- A4 원목 액자 포함"],
     },
   ];
@@ -189,22 +300,58 @@ export default function StudioDetailScreen({ navigation }) {
   const photographerData = [
     {
       id: 1,
-      title: "[가이드] 000작가(최대 1줄)",
-      detail: "자기소개 최대 000자 최대 2줄 길어지면 말줄임",
+      title: "오늘의 찰떡 작가",
+      detail: "AI가 당신의 취향에 맞는 작가를 매일 새롭게 매칭해드립니다.",
       isBookable: true,
     },
     {
       id: 2,
       title: "허창훈 작가",
-      detail: "자기소개 최대 000자 최대 2줄 길어지면 말줄임",
-      isBookable: false,
+      detail: "인생의 중요한 순간을 묵직하게 기록합니다. 클래식한 톤과 자연광 연출이 강점입니다.",
+      isBookable: true,
     },
     {
       id: 3,
-      title: "류정운 작가",
-      detail: "자기소개 최대 000자 최대 2줄 길어지면 말줄임",
+      title: "류정윤 작가",
+      detail: "부드러운 색감과 편안한 분위기 속 촬영을 지향합니다. SNS 프로필 및 반려사진 전문.",
       isBookable: true,
     },
+  ];
+
+  // 소개 문구 후보 배열
+  const studioDescriptions = [
+    "당신의 소중한 순간을 감각적으로 담아드립니다.",
+    "자연광과 감성, 그리고 프로페셔널한 촬영 경험을 선사합니다.",
+    "특별한 하루, 특별한 사진으로 남겨보세요.",
+    "편안한 분위기에서 최고의 프로필을 완성하세요.",
+    "추억을 예술로, 일상을 작품으로 만들어드립니다.",
+    "가족, 친구, 연인과 함께하는 행복한 촬영 공간.",
+    "트렌디한 감성, 합리적인 가격, 만족스러운 결과!",
+    "사진 한 장에 담긴 당신만의 이야기를 기록합니다.",
+    "전문가의 손길로 완성되는 특별한 순간.",
+    "찰나의 순간도 아름답게, 오직 당신을 위한 스튜디오.",
+  ];
+
+  // 랜덤 소개 문구 선택
+  const randomDescription = studioDescriptions[Math.floor(Math.random() * studioDescriptions.length)];
+
+  // 별점(평점) 랜덤 생성
+  const randomRating = (Math.random() * 0.7 + 4.3).toFixed(2); // 4.3~5.0
+
+  // 상품 이미지 배열 (제목/설명에 맞는 신중한 추천)
+  const productImages = [
+    // 1인 증명사진 촬영권
+    'https://images.unsplash.com/photo-1517841905240-472988babdf9',
+    // 프로필 & 영상 촬영 패키지
+    'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2',
+    // 효도사진 패키지
+    'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91',
+  ];
+  // 사진가 이미지 배열 (차분한 애니메이션 캐릭터)
+  const photographerImages = [
+    'https://api.dicebear.com/7.x/micah/png?seed=photographer1',
+    'https://api.dicebear.com/7.x/micah/png?seed=photographer2',
+    'https://api.dicebear.com/7.x/micah/png?seed=photographer3',
   ];
 
   return (
@@ -333,13 +480,13 @@ export default function StudioDetailScreen({ navigation }) {
             </View>
           </View>
           <Text style={styles.description}>
-            스튜디오 소개 최대 한줄 30글자가 길어지면 말줄임...
+            {randomDescription}
           </Text>
 
           <View style={styles.ratingContainer}>
             <Icon name="star" size={16} color="#000" />
-            <Text style={styles.rating}>4.5</Text>
-            <Text style={styles.location}>서울 강남구</Text>
+            <Text style={styles.rating}>{randomRating}</Text>
+            <Text style={styles.location}>{studios.address || ''}</Text>
           </View>
 
           <View style={styles.detailsContainer}>
@@ -354,20 +501,24 @@ export default function StudioDetailScreen({ navigation }) {
           </View>
         </View>
 
-        <View style={{ height: 3 }} />
-
         {/* Products Section */}
         <View ref={sectionRefs.촬영상품} style={styles.productSection}>
           {productData.map((product, index) => (
-            <View
+            <TouchableOpacity
               key={product.id}
               style={[
                 styles.productCard,
                 index === productData.length - 1 && { borderBottomWidth: 0 },
               ]}
+              onPress={() => navigation.navigate("ReservationPage", {
+                studioId: id,
+                productId: product.id,
+                productTitle: product.title,
+                productPrice: product.price
+              })}
             >
               <Image
-                source={require("../../assets/studio_image.png")}
+                source={{ uri: productImages[index % productImages.length] }}
                 style={styles.productImage}
               />
               <View>
@@ -386,7 +537,7 @@ export default function StudioDetailScreen({ navigation }) {
                   ))}
                 </View>
               </View>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
 
@@ -405,7 +556,7 @@ export default function StudioDetailScreen({ navigation }) {
             >
               <View style={styles.photographerImageContainer}>
                 <Image
-                  source={require("../../assets/studio_image.png")}
+                  source={{ uri: photographerImages[index % photographerImages.length] }}
                   style={styles.photographerImage}
                 />
               </View>
@@ -478,72 +629,15 @@ export default function StudioDetailScreen({ navigation }) {
             ]}
           >
             <View style={styles.reviewStats}>
-              <Text style={styles.reviewTitle}>방문자 리뷰 ★ 4.5</Text>
-              <Text style={styles.reviewCount}>(0,000)</Text>
-            </View>
-            <View style={styles.reviewFilters}>
-              <TouchableOpacity style={styles.filterButton}>
-                <Text style={styles.filterButtonText}>사진가 전체 0,000</Text>
-                <Icon name="chevron-down" size={16} color="#666" />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.filterButton}>
-                <Text style={styles.filterButtonText}>최신순</Text>
-                <Icon name="chevron-down" size={16} color="#666" />
-              </TouchableOpacity>
+              <Text style={styles.reviewTitle}>방문자 리뷰 ★ {randomRating}</Text>
+              <Text style={styles.reviewCount}>({reviews.length})</Text>
             </View>
           </View>
-
-          <ReviewCard
-            review={{
-              rating: 4,
-              name: "닉네임",
-              date: "0000. 00. 00",
-              productId: "1",
-              productTitle: "1인 증명사진 촬영권",
-              photographerName: "김찰떡 사진가",
-              content:
-                "리뷰 내용 리뷰 내용 리뷰 내용 리뷰 내용 리뷰 내용 리뷰 내용 리뷰 내용 리뷰 내용 리뷰 내용 리뷰 내용 리뷰 내용 리뷰 내용",
-              images: [1, 2, 3, 4].map(() =>
-                require("../../assets/studio_image.png")
-              ),
-              isLiked: isLiked,
-              likes: "000",
-              onLikePress: () => setIsLiked(!isLiked),
-            }}
-            onProductPress={(productId) => {
-              sectionRefs["촬영상품"].current?.measureLayout(
-                scrollViewRef.current,
-                (x, y) => {
-                  scrollViewRef.current?.scrollTo({ y: y, animated: true });
-                }
-              );
-            }}
-          />
-          <ReviewCard
-            review={{
-              rating: 5,
-              name: "새로운 리뷰어",
-              date: "0000. 00. 00",
-              productId: "2",
-              productTitle: "커플 촬영 패키지",
-              photographerName: "이찰떡 사진가",
-              content:
-                "새로운 리뷰 내용입니다. 촬영 경험이 정말 좋았습니다. 사진가님의 친절한 설명과 안내 덕분에 편안한 분위기에서 촬영할 수 있었어요.",
-              images: [1, 2].map(() =>
-                require("../../assets/studio_image.png")
-              ),
-              isLiked: false,
-              likes: "015",
-              onLikePress: () => {},
-            }}
-            onProductPress={(productId) => {
-              sectionRefs["촬영상품"].current?.measureLayout(
-                scrollViewRef.current,
-                (x, y) => {
-                  scrollViewRef.current?.scrollTo({ y: y, animated: true });
-                }
-              );
-            }}
+          <ReviewList
+            reviews={reviews}
+            onEditReview={handleEditReview}
+            onDeleteReview={handleDeleteReview}
+            currentUserId={currentUserId}
           />
         </View>
       </ScrollView>
@@ -552,6 +646,24 @@ export default function StudioDetailScreen({ navigation }) {
         isVisible={isShareModalVisible}
         onClose={() => setIsShareModalVisible(false)}
       />
+
+      {/* 리뷰 작성/수정 모달 */}
+      <Modal
+        visible={isReviewModalVisible}
+        animationType="slide"
+        presentationStyle="pageSheet"
+      >
+        <ReviewForm
+          shopId={id}
+          review={editingReview}
+          onSubmit={handleReviewSubmit}
+          onCancel={() => {
+            setIsReviewModalVisible(false);
+            setEditingReview(null);
+          }}
+          isLoading={isReviewLoading}
+        />
+      </Modal>
     </View>
   );
 }
@@ -560,7 +672,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingTop: 50,
+    paddingTop: 0,
   },
   header: {
     flexDirection: "row",
@@ -720,6 +832,8 @@ const styles = StyleSheet.create({
     paddingBottom: 14,
     borderBottomWidth: 1,
     borderBottomColor: "#EEEEEE",
+    borderRadius: 8,
+    backgroundColor: '#fff',
   },
   productImage: {
     width: 100,
@@ -756,6 +870,8 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
     borderBottomWidth: 1,
     borderBottomColor: "#EEEEEE",
+    borderRadius: 8,
+    backgroundColor: '#fff',
   },
   photographerImageContainer: {
     width: 70,
@@ -848,7 +964,9 @@ const styles = StyleSheet.create({
   reviewCard: {
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: "#EEEEEE",
+    borderBottomColor: '#EEEEEE',
+    borderRadius: 8,
+    backgroundColor: '#fff',
     marginBottom: 16,
   },
   reviewerInfo: {
@@ -870,7 +988,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#666",
   },
-  productTitle: {
+  reviewProductTitle: {
     fontSize: 16,
     fontWeight: "600",
     marginBottom: 4,
@@ -980,5 +1098,25 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     backgroundColor: "#F5F5F5",
+  },
+  reviewActions: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  writeReviewButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    backgroundColor: "#F0F8FF",
+    borderWidth: 1,
+    borderColor: "#007AFF",
+    borderRadius: 20,
+  },
+  writeReviewText: {
+    fontSize: 14,
+    color: "#007AFF",
+    marginLeft: 4,
+    fontWeight: "500",
   },
 });

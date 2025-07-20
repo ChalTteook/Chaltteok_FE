@@ -46,8 +46,8 @@ const ProfileScreen = ({ navigation }) => {
           <View style={styles.profileInfo}>
             <CircleLogo style={styles.circleLogo} />
             <View style={styles.profileText}>
-              <Text style={styles.nickname}>{auth.nickname || '사용자'}</Text>
-              <Text style={styles.phoneNumber}>{formatPhoneNumber(auth.phoneNumber || '010-XXXX-XXXX')}</Text>
+              <Text style={styles.nickname}>{auth.nickname || '이름을 설정해주세요!'}</Text>
+              <Text style={styles.phoneNumber}>{formatPhoneNumber(auth.phoneNumber || '휴대폰 인증을 완료해주세요!')}</Text>
             </View>
           </View>
           <Icon name="chevron-forward" size={20} color="#666" />

@@ -40,7 +40,7 @@ class MainActivity : ReactActivity() {
           object : DefaultReactActivityDelegate(
               this,
               mainComponentName,
-              false // Disable Fabric/new architecture
+              fabricEnabled
           ){})
   }
 

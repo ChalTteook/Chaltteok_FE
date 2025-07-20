@@ -1,39 +1,47 @@
 import React from "react";
-import { View, Image, Platform, TouchableOpacity, StyleSheet } from "react-native";
+import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/Ionicons';
 
+interface LeftHeaderProps {
+  title?: string;
+}
 
-const LeftHeader = () => {
+const LeftHeader = ({ title }: LeftHeaderProps) => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.headerContainer}>
+    <View style={styles.header}>
       <TouchableOpacity
-        style={styles.leftIconContainer}
+        style={styles.backButton}
         onPress={() => navigation.goBack()}
       >
-        <Icon name="chevron-back" size={22} color="#00000" />
+        <Icon name="chevron-back" size={24} color="#000" />
       </TouchableOpacity>
+      <Text style={styles.headerTitle}>{title || "스튜디오 정보"}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  headerContainer: {
+  header: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start",
-    marginVertical: 15,
-    marginTop: Platform.OS === 'ios' ? 0 : 30, // iOS는 상단 노치 영역 고려
+    justifyContent: "center",
+    height: 56,
+    borderBottomWidth: 1,
+    borderBottomColor: "#EEEEEE",
+    paddingHorizontal: 16,
   },
-  leftIconContainer: {
-    marginLeft: 20,
-    position: "relative"
+  backButton: {
+    padding: 8,
+    position: "absolute",
+    left: 16,
   },
-  leftIcon: {
-    width: 24,
-    height: 24,
+  headerTitle: {
+    fontSize: 16,
+    fontWeight: "700",
+    textAlign: "center",
   },
 });
 

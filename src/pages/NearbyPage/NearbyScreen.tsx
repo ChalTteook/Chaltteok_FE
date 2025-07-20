@@ -82,7 +82,15 @@ const NearbyScreen = ({ navigation }) => {
           <Icon name="chevron-back" size={24} color="#000" />
         </TouchableOpacity>
       </View>
-      
+
+      {/* 안내 메시지 박스 */}
+      <View style={styles.noticeBox}>
+        <Icon name="map-outline" size={32} color="#FF568F" style={{ marginBottom: 6 }} />
+        <Text style={styles.noticeTitle}>위치 기반 추천 서비스는 준비 중입니다</Text>
+        <Text style={styles.noticeSub}>네이버 맵 기능은 현재 비활성화되어 있습니다. (React Native 0.78.0 업그레이드 중)</Text>
+      </View>
+
+      {/* 나머지 기존 UI (리스트/카드/기능 등) */}
       <View style={styles.mapContainer}>
         {loading ? (
           <View style={styles.loadingContainer}>
@@ -90,11 +98,11 @@ const NearbyScreen = ({ navigation }) => {
             <Text style={styles.loadingText}>사진관 정보를 불러오는 중...</Text>
           </View>
         ) : (
-          // 네이버 맵 대신 임시 UI 표시
           <View style={styles.tempMapContainer}>
-            <Text style={styles.tempMapText}>네이버 맵 기능은 현재 비활성화되어 있습니다.</Text>
-            <Text style={styles.tempMapSubText}>React Native 0.78.0 업그레이드 중</Text>
-            <ScrollView style={styles.tempListContainer}>
+            <ScrollView
+              style={styles.tempListContainer}
+              contentContainerStyle={{ paddingTop: 4, paddingBottom: 8 }}
+            >
             {markers.map((studio) => (
                 <TouchableOpacity 
                 key={studio.id}
@@ -109,24 +117,6 @@ const NearbyScreen = ({ navigation }) => {
           </View>
         )}
       </View>
-
-      {/* Search Bar */}
-      {isSearchBarVisible && (
-        <View style={styles.searchContainer}>
-          <View style={styles.searchBar}>
-            <Icon name="search-outline" size={20} color="#666" />
-            <TextInput
-              style={styles.searchInput}
-              placeholder="장소/지명으로도 검색해보세요"
-              placeholderTextColor="#666"
-            />
-          </View>
-          <TouchableOpacity style={styles.filterButton}>
-            <Text style={styles.filterText}>가격</Text>
-            <Icon name="chevron-down" size={16} color="#000" />
-          </TouchableOpacity>
-        </View>
-      )}
 
       {/* Studio Card */}
       {isCardVisible && selectedStudio && (
@@ -151,8 +141,6 @@ const NearbyScreen = ({ navigation }) => {
                 <Text style={styles.reviews}>({selectedStudio.reviews})</Text>
               </View>
             </View>
-            
-            {/* 사진관 이미지 */}
             <View style={styles.imageContainer}>
               <Image
                 source={{ uri: selectedStudio.img }}
@@ -160,8 +148,6 @@ const NearbyScreen = ({ navigation }) => {
                 resizeMode="cover"
               />
             </View>
-            
-            {/* 가격 및 영업시간 */}
             <View style={styles.bottomInfo}>
               {selectedStudio.price && (
                 <Text style={styles.price}>{selectedStudio.price}</Text>
@@ -171,42 +157,6 @@ const NearbyScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       )}
-
-      {/* Location Buttons */}
-      <View style={styles.locationButtons}>
-        <TouchableOpacity 
-          style={styles.locationButton}
-          onPress={() => {}}
-        >
-          <Text style={styles.locationButtonText}>가격</Text>
-          <Icon name="chevron-down" size={16} color="#000" />
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={styles.locationButton}
-          onPress={() => {}}
-        >
-          <Text style={styles.locationButtonText}>지역</Text>
-          <Icon name="chevron-down" size={16} color="#000" />
-        </TouchableOpacity>
-      </View>
-
-      {/* Floating Action Buttons */}
-      <View style={[
-        styles.fabContainer,
-        isCardVisible && { bottom: 270 }
-      ]}>
-        <TouchableOpacity style={styles.fab}>
-          <Icon name="list" size={24} color="#000" />
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={[styles.fab, styles.fabLocation]}
-          onPress={() => {
-            setCamera(Cameras.HongDae);
-          }}
-        >
-          <Icon name="locate" size={24} color="#000" />
-        </TouchableOpacity>
-      </View>
     </SafeAreaView>
   );
 };
@@ -284,10 +234,7 @@ const styles = StyleSheet.create({
     color: '#666',
   },
   tempMapContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#fff',
   },
   tempMapText: {
     fontSize: 18,
@@ -301,22 +248,24 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   tempListContainer: {
-    width: '90%',
-    maxHeight: 300,
+    width: '100%',
+    backgroundColor: '#fff',
   },
   tempStudioItem: {
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 12,
     marginBottom: 10,
+    // 그림자 (iOS)
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    // 그림자 (Android)
     elevation: 3,
+    // 경계선
+    borderWidth: 1.5,
+    borderColor: '#E0E0E0',
   },
   cardContainer: {
     position: 'absolute',
@@ -453,6 +402,29 @@ const styles = StyleSheet.create({
   },
   fabLocation: {
     backgroundColor: '#FF568F',
+  },
+  noticeBox: {
+    width: '100%',
+    backgroundColor: '#FFF0F6',
+    borderBottomWidth: 1,
+    borderBottomColor: '#FFE0EC',
+    alignItems: 'center',
+    paddingVertical: 18,
+    paddingHorizontal: 12,
+    flexDirection: 'column',
+    marginBottom: 8,
+  },
+  noticeTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#FF568F',
+    marginBottom: 2,
+    textAlign: 'center',
+  },
+  noticeSub: {
+    fontSize: 13,
+    color: '#888',
+    textAlign: 'center',
   },
 });
 
