@@ -8,7 +8,7 @@ import {
   Dimensions,
   TextInput,
 } from "react-native";
-import Header from "../../components/LeftHeader";
+import LeftHeader from "../../components/LeftHeader";
 import { useNavigation } from "@react-navigation/native";
 import { loginUser } from "../../api/LoginAuth";
 import { useRecoilState } from "recoil";
@@ -65,7 +65,7 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.screenContainer}>
-      <Header style={styles.headerContainer} />
+      <LeftHeader title="로그인 및 회원가입" />
       <View style={styles.container}>
         <TextInput
           style={[styles.inputId, { paddingLeft: 16 }]}

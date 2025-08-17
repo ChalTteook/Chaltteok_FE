@@ -50,6 +50,7 @@ export default function PhoneVerificationScreen() {
 
     if (response.data.success) {
       setServerCode(response.data.message.code);
+      setVerificationCode(response.data.message.code); // 테스트 단계: 인증번호 자동 입력
       console.log('인증번호 발송 성공:', response.data.message.code);
       Alert.alert('인증번호 발송 성공', '인증번호가 발송되었습니다.');
     } else {
@@ -86,7 +87,7 @@ export default function PhoneVerificationScreen() {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <View style={styles.screenContainer}>
-        <Header style={styles.headerContainer} />
+        <Header title="휴대폰 인증" />
         <View style={styles.container}>
           <Text style={styles.title}>휴대폰 번호를 인증해 주세요.</Text>
           <View style={styles.inputRow}>
@@ -130,6 +131,14 @@ export default function PhoneVerificationScreen() {
 }
 
 const styles = StyleSheet.create({
+  errorText: {
+    color: '#FF4438',
+    fontFamily: 'PretendardJP-Regular',
+    fontSize: 12,
+    lineHeight: 16,
+    marginTop: 4 * scaleHeight,
+    alignSelf: 'flex-start',
+  },
   screenContainer: {
     flex: 1,
     backgroundColor: '#fff',
@@ -192,7 +201,7 @@ const styles = StyleSheet.create({
   retryText: {
     marginTop: 16 * scaleHeight,
     fontFamily: 'PretendardJP-Regular',
-    color: '#000000',
+    color: '#FF4438',
     fontSize: 12,
     lineHeight: 16,
     fontWeight: '400',

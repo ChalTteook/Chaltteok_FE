@@ -50,6 +50,33 @@
       <false/>
       <key>NSAllowsLocalNetworking</key>
       <true/>
+      <!-- 예시: 카카오, 개발 서버 등 http 허용이 필요한 경우 아래에 추가 -->
+      <key>NSExceptionDomains</key>
+      <dict>
+        <key>kakao.com</key>
+        <dict>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key>
+          <true/>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+        <key>43.201.211.39</key>
+        <dict>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key>
+          <true/>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+        <!-- 필요하다면 추가 도메인 예시
+        <key>your-dev-server.com</key>
+        <dict>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key>
+          <true/>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+        -->
+      </dict>
     </dict>
     <key>UILaunchStoryboardName</key>
     <string>SplashScreen</string>

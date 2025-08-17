@@ -22,7 +22,7 @@ export default function WelcomeScreen() {
     return (
 
       <View style={styles.screenContainer}>
-      <Header style={styles.headerContainer} />
+      <Header title=" " />
       <View style={styles.container}>
 
         <Text style={styles.headerText}>{username}님의{'\n'}찰떡스러운 세계가 시작됩니다.</Text>

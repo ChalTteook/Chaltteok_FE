@@ -8,6 +8,7 @@ const BASE_URL = REDIRECT_URI?.replace(/\/$/, ''); // 끝의 슬래시 제거
 export const sendTokenToBackend = async (authorizecode: string) => {
   try {
     const quotedAuthorizeCode = `"${authorizecode}"`;
+    console.log("네이버 Auth code: ", quotedAuthorizeCode)
     const response = await axiosInstance.post('/auth/social-login',
     {
       provider: "naver",

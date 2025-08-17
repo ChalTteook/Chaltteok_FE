@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, StyleSheet, Alert, Text, Dimensions, TextInput } from 'react-native';
+import { View, StyleSheet, Alert, Text, Dimensions, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import Header from '../../components/LeftHeader';
 import BottomButton from '../../components/BottomButton';
 import { joinAuth } from '../../api/JoinAuth';
@@ -62,10 +62,14 @@ export default function SignUpScreen() {
     return (
       
       <View style={styles.screenContainer}>
-      <Header style={styles.headerContainer} />
-      <View style={styles.container}>
+        <Header title="회원가입" />
+        <KeyboardAvoidingView
+          style={{ flex: 1 }}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 80 : 0}
+        >
+          <View style={styles.container}>
             <Text style={styles.headerText}>회원 가입</Text>
-
             <Text style={styles.emailText}>이메일 주소</Text>
             <TextInput
                 style={[styles.inputEmail, emailError ? styles.inputError : null, { paddingLeft: 16 }]}
@@ -79,7 +83,7 @@ export default function SignUpScreen() {
             <Text style={styles.passText}>비밀번호</Text>
             <TextInput
                 style={[styles.inputPass, passwordError ? styles.inputError : null, { paddingLeft: 16 }]}
-                placeholder="비밀번호"
+                placeholder="영어, 숫자, 특문 포함 8자리 이상"
                 placeholderTextColor='#D5D5D5'
                 value={password}
                 onChangeText={setPassword}
@@ -96,16 +100,32 @@ export default function SignUpScreen() {
                 onChangeText={setConfirmPassword}
                 secureTextEntry
             />
-            {confirmPasswordError ? <Text style={[styles.errorMsg, { marginTop: 4 * scaleHeight }]}>{confirmPasswordError}</Text> : null}
+            {confirmPasswordError ? (
+              <Text style={[styles.errorMsg, { marginTop: 4 * scaleHeight }]}>{confirmPasswordError}</Text>
+            ) : null}
+            {confirmPassword.length > 0 && password === confirmPassword && !confirmPasswordError ? (
+              <Text style={[styles.successMsg, { marginTop: 4 * scaleHeight }]}>비밀번호가 일치합니다</Text>
+            ) : null}
 
             <BottomButton onPress={handleSignUp} text="다음" />
-            </View>
-            </View>
-            );
+          </View>
+        </KeyboardAvoidingView>
+      </View>
+    );
             }
   
   
 const styles = StyleSheet.create({
+  inputError: {
+    borderColor: '#FF4438',
+    borderWidth: 1,
+  },
+  successMsg: {
+    fontFamily: 'PretendardJP-Regular',
+    color: '#1DA1F2',
+    fontSize: 12,
+    lineHeight: 16,
+  },
   screenContainer: {
     flex: 1,
     backgroundColor: '#fff',

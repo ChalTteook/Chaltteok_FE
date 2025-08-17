@@ -94,36 +94,61 @@ const PaymentWidget: React.FC<PaymentWidgetProps> = ({
                 // BC카드/ISP 앱 실행 (TID 포함)
                 if (scheme === 'ispmobile') {
                   console.log('BC카드/ISP 결제 앱 실행:', scheme, 'TID:', tidParam);
-                  // BC카드/ISP는 URL 형식이 다름 - TID 파라미터는 URL에 직접 넣지 않고 다른 방식으로 처리해야 함
-                  console.log('실행 URL: ispmobile://');
                   
                   // 다양한 URL 형식으로 시도 (BC카드/ISP는 기기마다 다를 수 있음)
                   const ispmobileUrls = [
                     'ispmobile://',                   // 기본 형식
                     `ispmobile://TID=${tidParam}`,    // TID를 쿼리 파라미터로
                     `ispmobile://tid=${tidParam}`,    // 소문자 tid
-                    `ispmobile://${tidParam}`         // 직접 경로에
+                    `ispmobile://${tidParam}`,        // 직접 경로에
+                    `ispmobile://payment?tid=${tidParam}`, // payment 경로에 tid
+                    `ispmobile://start?TID=${tidParam}`    // start 경로에 TID
                   ];
                   
                   let urlIndex = 0;
+                  let hasSucceeded = false;
                   
                   // 여러 URL 형식으로 순차적으로 시도하는 함수
                   const tryNextUrl = () => {
+                    if (hasSucceeded) return; // 이미 성공한 경우 중단
+                    
                     if (urlIndex >= ispmobileUrls.length) {
                       console.warn('모든 ispmobile URL 시도 실패, 마켓으로 이동');
-                      Linking.openURL('market://details?id=kvp.jjy.MispAndroid320');
+                      // 앱이 설치되지 않은 경우 마켓으로 이동
+                      Linking.openURL('market://details?id=kvp.jjy.MispAndroid320').catch((marketErr) => {
+                        console.error('마켓 열기 실패:', marketErr);
+                        // 마켓도 실패하면 웹 스토어로 이동
+                        Linking.openURL('https://play.google.com/store/apps/details?id=kvp.jjy.MispAndroid320');
+                      });
                       return;
                     }
                     
                     const currentUrl = ispmobileUrls[urlIndex];
                     console.log(`BC카드/ISP 시도 (${urlIndex+1}/${ispmobileUrls.length}):`, currentUrl);
                     
-                    Linking.openURL(currentUrl).catch((e) => {
-                      console.warn(`ispmobile URL ${currentUrl} 실행 실패:`, e);
-                      urlIndex++;
-                      // 짧은 딜레이 후 다음 URL 시도
-                      setTimeout(tryNextUrl, 100);
-                    });
+                    // URL 실행 시도
+                    Linking.openURL(currentUrl)
+                      .then(() => {
+                        console.log(`BC카드/ISP 앱 실행 성공: ${currentUrl}`);
+                        hasSucceeded = true;
+                      })
+                      .catch((e) => {
+                        console.warn(`ispmobile URL ${currentUrl} 실행 실패:`, e.message || e);
+                        urlIndex++;
+                        
+                        // 200ms 딜레이 후 다음 URL 시도 (너무 빠른 연속 시도 방지)
+                        if (urlIndex < ispmobileUrls.length) {
+                          setTimeout(tryNextUrl, 200);
+                        } else {
+                          // 모든 URL 실패 시 마켓으로 이동
+                          setTimeout(() => {
+                            console.warn('모든 URL 시도 실패, 1초 후 마켓으로 이동');
+                            Linking.openURL('market://details?id=kvp.jjy.MispAndroid320').catch((marketErr) => {
+                              console.error('마켓 열기 실패:', marketErr);
+                            });
+                          }, 1000);
+                        }
+                      });
                   };
                   
                   // 첫 번째 URL 시도
@@ -137,31 +162,54 @@ const PaymentWidget: React.FC<PaymentWidgetProps> = ({
                   
                   // 다양한 URL 형식으로 시도 (뱅크페이도 기기마다 다를 수 있음)
                   const bankpayUrls = [
-                    'kftc-bankpay://',                  // 기본 형식
-                    `kftc-bankpay://call?a=${tidParam}`, // a 파라미터로
-                    `kftc-bankpay://call?b=${tidParam}`, // b 파라미터로
-                    `kftc-bankpay://${tidParam}`        // 직접 경로에
+                    'kftc-bankpay://',                    // 기본 형식
+                    `kftc-bankpay://pay?tid=${tidParam}`, // pay 경로에 tid
+                    `kftc-bankpay://call?a=${tidParam}`,  // a 파라미터로
+                    `kftc-bankpay://call?b=${tidParam}`,  // b 파라미터로
+                    `kftc-bankpay://${tidParam}`,         // 직접 경로에
+                    `kftc-bankpay://start?TID=${tidParam}` // start 경로에 TID
                   ];
                   
                   let urlIndex = 0;
+                  let hasSucceeded = false;
                   
                   // 여러 URL 형식으로 순차적으로 시도하는 함수
                   const tryNextUrl = () => {
+                    if (hasSucceeded) return; // 이미 성공한 경우 중단
+                    
                     if (urlIndex >= bankpayUrls.length) {
                       console.warn('모든 뱅크페이 URL 시도 실패, 마켓으로 이동');
-                      Linking.openURL('market://details?id=com.kftc.bankpay.android');
+                      Linking.openURL('market://details?id=com.kftc.bankpay.android').catch((marketErr) => {
+                        console.error('마켓 열기 실패:', marketErr);
+                        Linking.openURL('https://play.google.com/store/apps/details?id=com.kftc.bankpay.android');
+                      });
                       return;
                     }
                     
                     const currentUrl = bankpayUrls[urlIndex];
                     console.log(`뱅크페이 시도 (${urlIndex+1}/${bankpayUrls.length}):`, currentUrl);
                     
-                    Linking.openURL(currentUrl).catch((e) => {
-                      console.warn(`뱅크페이 URL ${currentUrl} 실행 실패:`, e);
-                      urlIndex++;
-                      // 짧은 딜레이 후 다음 URL 시도
-                      setTimeout(tryNextUrl, 100);
-                    });
+                    Linking.openURL(currentUrl)
+                      .then(() => {
+                        console.log(`뱅크페이 앱 실행 성공: ${currentUrl}`);
+                        hasSucceeded = true;
+                      })
+                      .catch((e) => {
+                        console.warn(`뱅크페이 URL ${currentUrl} 실행 실패:`, e.message || e);
+                        urlIndex++;
+                        
+                        // 200ms 딜레이 후 다음 URL 시도
+                        if (urlIndex < bankpayUrls.length) {
+                          setTimeout(tryNextUrl, 200);
+                        } else {
+                          setTimeout(() => {
+                            console.warn('모든 뱅크페이 URL 시도 실패, 1초 후 마켓으로 이동');
+                            Linking.openURL('market://details?id=com.kftc.bankpay.android').catch((marketErr) => {
+                              console.error('마켓 열기 실패:', marketErr);
+                            });
+                          }, 1000);
+                        }
+                      });
                   };
                   
                   // 첫 번째 URL 시도
@@ -178,10 +226,22 @@ const PaymentWidget: React.FC<PaymentWidgetProps> = ({
                 if (scheme && pkg) {
                   // 결제 앱 실행
                   console.log(`결제 앱 실행: ${scheme}://`);
-                  Linking.openURL(`${scheme}://`).catch((e) => {
-                    console.warn('앱 실행 실패, 마켓으로 이동', e);
-                    Linking.openURL(`market://details?id=${pkg}`);
-                  });
+                  Linking.openURL(`${scheme}://`)
+                    .then(() => {
+                      console.log(`${scheme} 앱 실행 성공`);
+                    })
+                    .catch((e) => {
+                      console.warn(`${scheme} 앱 실행 실패, 마켓으로 이동:`, e.message || e);
+                      
+                      // 1초 딜레이 후 마켓으로 이동 (사용자 경험 개선)
+                      setTimeout(() => {
+                        Linking.openURL(`market://details?id=${pkg}`).catch((marketErr) => {
+                          console.error('마켓 열기 실패:', marketErr);
+                          // 마켓도 실패하면 웹 스토어로 이동
+                          Linking.openURL(`https://play.google.com/store/apps/details?id=${pkg}`);
+                        });
+                      }, 1000);
+                    });
                   return false;
                 }
               } catch (e) {
@@ -227,14 +287,16 @@ const PaymentWidget: React.FC<PaymentWidgetProps> = ({
                     console.log(`${app.scheme} 앱 실행 성공`);
                   })
                   .catch((err) => {
-                    console.warn(`${app.scheme} 앱 열기 실패, 마켓으로 이동:`, err);
+                    console.warn(`${app.scheme} 앱 열기 실패, 마켓으로 이동:`, err.message || err);
                     
-                    // 5초 딜레이 후 앱스토어 실행 (사용자 경험 개선)
+                    // 1초 딜레이 후 앱스토어 실행 (사용자 경험 개선)
                     setTimeout(() => {
                       Linking.openURL(storeUrl).catch(storeErr => {
                         console.error(`앱스토어 열기 실패:`, storeErr);
+                        // 마켓도 실패하면 웹 스토어로 이동
+                        Linking.openURL(`https://play.google.com/store/apps/details?id=${app.package}`);
                       });
-                    }, 500);
+                    }, 1000);
                   });
                 
                 return false; // WebView에서 열지 않음

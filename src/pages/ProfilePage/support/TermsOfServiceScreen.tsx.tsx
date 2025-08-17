@@ -834,7 +834,7 @@ export default function TermsOfServiceScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <LeftHeader />
+      <LeftHeader title="서비스 이용약관" />
       <View style={styles.header}>
 
         <Text style={styles.headerTitle}>서비스 이용약관</Text>

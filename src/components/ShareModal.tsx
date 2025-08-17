@@ -10,6 +10,10 @@ const ShareModal = ({ isVisible, onClose }) => {
     { name: '기타', icon: 'ellipsis-horizontal-outline' },
   ];
 
+  const handleEtcPress = () => {
+    alert('아직 준비중입니다.');
+  };
+
   return (
     <Modal
       animationType="slide"
@@ -21,7 +25,11 @@ const ShareModal = ({ isVisible, onClose }) => {
         <View style={styles.modalContent}>
           <View style={styles.shareOptions}>
             {shareOptions.map((option, index) => (
-              <TouchableOpacity key={index} style={styles.shareOption}>
+              <TouchableOpacity
+                key={index}
+                style={styles.shareOption}
+                onPress={option.name === '기타' ? handleEtcPress : undefined}
+              >
                 <View style={[
                   styles.iconContainer,
                   option.name === '기타' && styles.etcIconContainer

@@ -81,16 +81,16 @@ export default function PhoneVerificationScreen() {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <View style={styles.screenContainer}>
-        <Header style={styles.headerContainer} />
+        <Header title=" "/>
         <View style={styles.container}>
-          <Text style={styles.title}>이메일로 찾기</Text>
+          <Text style={styles.title}>이메일 찾기</Text>
           <View style={styles.inputRow}>
             <TextInput
               style={[styles.inputnum, { paddingLeft: 16 }]}
               value={email}
               onChangeText={formatEmail}
               keyboardType="numeric"
-              placeholder="이메일을 입력해주세요"
+              placeholder="010-0000-0000"
               placeholderTextColor="#D5D5D5"
               maxLength={320}
             />

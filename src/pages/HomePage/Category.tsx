@@ -27,7 +27,14 @@ const Category = () => {
           }}
         >
           <View style={styles.imageContainer}>
-            <Image source={category.image} style={styles.categoryImage} />
+            <Image
+              source={category.image}
+              style={
+                category.id === 4 || category.id === 5
+                  ? [styles.categoryImage, { width: 18, height: 18 }]
+                  : styles.categoryImage
+              }
+            />
           </View>          
           <Text style={styles.categoryText}>{category.title}</Text>
         </TouchableOpacity>

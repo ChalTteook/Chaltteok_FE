@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { View, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../pages/HomePage/HomeScreen';
@@ -18,6 +19,7 @@ import Header from '../components/Header';
 const Tab = createBottomTabNavigator();
 
 const MainTabs = () => {
+  const insets = useSafeAreaInsets();
   return (
     <>
       <Tab.Navigator
@@ -45,7 +47,7 @@ const MainTabs = () => {
           },
           tabBarActiveTintColor: '#F71D6A',
           tabBarInactiveTintColor: '#202123',
-          tabBarStyle: { height: 64 },
+          tabBarStyle: { height: 89, paddingBottom: insets.bottom },
           tabBarLabelStyle: {
             marginTop: 8,
             fontSize: 12,

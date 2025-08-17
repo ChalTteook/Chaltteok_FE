@@ -114,7 +114,11 @@ const KakaoLogin = () => {
   };
 
 
-  if (!authUrl) {
+
+  // 실제 WebView에 전달되는 URL 로그
+  if (authUrl) {
+    console.log('[KakaoLogin] WebView source uri:', authUrl);
+  } else {
     return;
   }
 

@@ -14,6 +14,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     ...config,
     name: "찰칵의 덕후",
     slug: config.slug || "defaultSlug",
+    icon: "./src/assets/big_logo.png",
     plugins: [
       [
         "expo-splash-screen",
@@ -24,13 +25,23 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         }
       ]
     ],
+    android: {
+      adaptiveIcon: {
+        foregroundImage: "./src/assets/big_logo.png",
+        backgroundColor: "#FFFFFF"
+      },
+      package: "com.chaltteok.chaltteok_FE"
+    },
+    ios: {
+      bundleIdentifier: "com.chaltteok.chaltteokFE"
+    },
     extra: {
       ...envConfig,
       eas: {
         projectId: "267ee49b-7fdb-4c66-aa1b-f3397b8716d5"
       }
     },
-    version: "1.1.2",
+    version: "1.1.3",
     scheme: "myapp"
   };
 

@@ -10,7 +10,6 @@ import { useRecoilState } from 'recoil';
 import { authState } from '../state/authState';
 
 const CLIENT_ID = "GK2ORFcjWGkcsqlGPh8M";
-const NAVER_CLIENT_SECRET = "x2PhRQmHb7";
 const REDIRECT_URI = "https://chaltteok.com/api/auth/naver/callback";
 const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage(window.location.href)`;
 type RootStackParamList = {

@@ -7,10 +7,10 @@ import {
   Dimensions,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Header from "../../components/CloseHeader";
+import SimpleHeader from "../../components/SimpleHeader";
 
 const { width, height } = Dimensions.get("window");
-const scaleHeight = height / 812;
+const scaleHeight = height / 1024;
 
 export default function LoginScreen() {
   const navigation = useNavigation();
@@ -33,7 +33,7 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.container}>
-      <Header title="로그인 및 회원가입" />
+      <SimpleHeader title="로그인 및 회원가입" />
 
       <TouchableOpacity style={styles.kakaoButton} onPress={handleKakaoLogin}>
         <Image
@@ -50,7 +50,10 @@ export default function LoginScreen() {
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.emailButton} onPress={handleEmailLogin}>
-        <Text style={styles.buttonText}>이메일로 로그인</Text>
+                <Image
+          source={require("../../assets/socialLoginIcons/email.png")}
+          style={styles.buttonImage}
+        />
       </TouchableOpacity>
 
       <Text style={styles.signupText}>

@@ -332,11 +332,13 @@ export default function StudioDetailScreen({ navigation }) {
     "찰나의 순간도 아름답게, 오직 당신을 위한 스튜디오.",
   ];
 
-  // 랜덤 소개 문구 선택
-  const randomDescription = studioDescriptions[Math.floor(Math.random() * studioDescriptions.length)];
-
-  // 별점(평점) 랜덤 생성
-  const randomRating = (Math.random() * 0.7 + 4.3).toFixed(2); // 4.3~5.0
+  // 랜덤 소개 문구와 별점은 최초 렌더링 시 한 번만 생성
+  const [randomDescription] = useState(
+    studioDescriptions[Math.floor(Math.random() * studioDescriptions.length)]
+  );
+  const [randomRating] = useState(
+    (Math.random() * 0.7 + 4.3).toFixed(2)
+  );
 
   // 상품 이미지 배열 (제목/설명에 맞는 신중한 추천)
   const productImages = [
@@ -616,29 +618,62 @@ export default function StudioDetailScreen({ navigation }) {
         {/* Reviews Section */}
         <View
           ref={sectionRefs.리뷰}
-          style={[styles.section, { borderTopWidth: 0 }]}
+          style={[styles.section, { borderTopWidth: 0, backgroundColor: '#fff', paddingTop: 24, paddingBottom: 0 }]}
         >
-          <View
-            style={[
-              styles.reviewHeader,
-              {
-                borderBottomWidth: 1,
-                borderBottomColor: "#EEEEEE",
-                paddingBottom: 16,
-              },
-            ]}
-          >
-            <View style={styles.reviewStats}>
-              <Text style={styles.reviewTitle}>방문자 리뷰 ★ {randomRating}</Text>
-              <Text style={styles.reviewCount}>({reviews.length})</Text>
+          {/* 리뷰 헤더 */}
+          <View style={{ marginBottom: 0 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
+              <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#222' }}>방문자 리뷰</Text>
+              <Icon name="star" size={16} color="#222" style={{ marginLeft: 6, marginRight: 2 }} />
+              <Text style={{ fontSize: 15, fontWeight: '600', color: '#222' }}>{randomRating}</Text>
+              <Text style={{ fontSize: 15, color: '#666', marginLeft: 6 }}>({reviews.length.toLocaleString()})</Text>
+            </View>
+            <View style={{ flexDirection: 'row', gap: 8, marginBottom: 16 }}>
+              <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderColor: '#EEEEEE', borderRadius: 20, paddingVertical: 6, paddingHorizontal: 12, backgroundColor: '#fff' }}>
+                <Text style={{ fontSize: 14, color: '#222', fontWeight: '500' }}>사진가 전체</Text>
+                <Icon name="chevron-down" size={16} color="#888" style={{ marginLeft: 2 }} />
+              </TouchableOpacity>
+              <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderColor: '#EEEEEE', borderRadius: 20, paddingVertical: 6, paddingHorizontal: 12, backgroundColor: '#fff' }}>
+                <Text style={{ fontSize: 14, color: '#222', fontWeight: '500' }}>최신순</Text>
+                <Icon name="chevron-down" size={16} color="#888" style={{ marginLeft: 2 }} />
+              </TouchableOpacity>
             </View>
           </View>
-          <ReviewList
-            reviews={reviews}
-            onEditReview={handleEditReview}
-            onDeleteReview={handleDeleteReview}
-            currentUserId={currentUserId}
-          />
+          {/* 리뷰 카드 리스트 */}
+          <View>
+            {reviews.map((review, idx) => (
+              <View key={review.id || idx} style={{ marginBottom: 24, paddingHorizontal: 0, paddingVertical: 0 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
+                  {[1,2,3,4,5].map(star => (
+                    <Icon key={star} name={star <= review.rating ? 'star' : 'star-outline'} size={16} color="#222" />
+                  ))}
+                  <Text style={{ fontSize: 14, color: '#222', fontWeight: 'bold', marginLeft: 6 }}>{review.nickname || '닉네임'}</Text>
+                  <Text style={{ fontSize: 13, color: '#888', marginLeft: 6 }}>{review.date || '0000.00.00'}</Text>
+                  <TouchableOpacity style={{ marginLeft: 'auto' }}>
+                    <Text style={{ fontSize: 13, color: '#888' }}>신고하기</Text>
+                  </TouchableOpacity>
+                </View>
+                <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 2 }}>
+                  <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#222' }}>{review.productTitle || '1인 증명사진 촬영권'}</Text>
+                  <Icon name="chevron-forward" size={16} color="#222" style={{ marginLeft: 2 }} />
+                </TouchableOpacity>
+                <Text style={{ fontSize: 13, color: '#888', marginBottom: 8 }}>{review.photographerName || '김찰떡 사진가'}</Text>
+                <Text style={{ fontSize: 14, color: '#222', marginBottom: 12, lineHeight: 20 }}>{review.content || '리뷰 내용'}</Text>
+                <View style={{ flexDirection: 'row', gap: 8, marginBottom: 12 }}>
+                  {(review.images && review.images.length > 0 ? review.images : [null, null, null, null]).map((img, i) => (
+                    <View key={i} style={{ width: 70, height: 70, borderRadius: 8, backgroundColor: '#F5F5F5', marginRight: 8, alignItems: 'center', justifyContent: 'center' }}>
+                      {img ? <Image source={img} style={{ width: '100%', height: '100%', borderRadius: 8 }} /> : <Icon name="image-outline" size={32} color="#CCC" />}
+                    </View>
+                  ))}
+                </View>
+                <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderColor: '#EEEEEE', borderRadius: 20, paddingVertical: 8, paddingHorizontal: 14, backgroundColor: '#fff', alignSelf: 'flex-start' }} onPress={review.onLikePress}>
+                  <Icon name={review.isLiked ? 'heart' : 'heart-outline'} size={20} color={review.isLiked ? '#FF4081' : '#222'} />
+                  <Text style={{ fontSize: 14, color: review.isLiked ? '#FF4081' : '#222', marginLeft: 4 }}>{review.likes ? `${review.likes}+` : '000+'}</Text>
+                  <Text style={{ fontSize: 14, color: '#222', marginLeft: 4 }}>좋아요</Text>
+                </TouchableOpacity>
+              </View>
+            ))}
+          </View>
         </View>
       </ScrollView>
 

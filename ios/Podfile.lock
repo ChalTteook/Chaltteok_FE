@@ -6,7 +6,7 @@ PODS:
   - EXJSONUtils (0.14.0)
   - EXManifests (0.15.8):
     - ExpoModulesCore
-  - Expo (52.0.46):
+  - Expo (52.0.47):
     - ExpoModulesCore
   - expo-dev-client (5.0.20):
     - EXManifests
@@ -1509,54 +1509,11 @@ PODS:
     - React-Core
   - react-native-get-random-values (1.11.0):
     - React-Core
-  - react-native-maps (1.23.8):
-    - react-native-maps/Maps (= 1.23.8)
-  - react-native-maps/Generated (1.23.8):
-    - DoubleConversion
-    - glog
-    - RCT-Folly (= 2024.10.14.00)
-    - RCTRequired
-    - RCTTypeSafety
+  - react-native-maps (1.19.1):
     - React-Core
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-jsi
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - Yoga
-  - react-native-maps/Maps (1.23.8):
-    - DoubleConversion
-    - glog
-    - RCT-Folly (= 2024.10.14.00)
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-jsi
-    - react-native-maps/Generated
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - Yoga
   - react-native-safe-area-context (4.14.1):
     - React-Core
-  - react-native-webview (13.13.5):
+  - react-native-webview (13.15.0):
     - DoubleConversion
     - glog
     - RCT-Folly (= 2024.10.14.00)
@@ -1832,7 +1789,7 @@ PODS:
     - React-logger
     - React-perflogger
     - React-utils (= 0.76.9)
-  - RNDateTimePicker (8.4.1):
+  - RNDateTimePicker (8.4.3):
     - React-Core
   - RNGestureHandler (2.18.1):
     - DoubleConversion
@@ -1855,7 +1812,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (4.11.1):
+  - RNScreens (4.13.1):
     - DoubleConversion
     - glog
     - RCT-Folly (= 2024.10.14.00)
@@ -1877,9 +1834,9 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNSVG (15.12.0):
+  - RNSVG (15.12.1):
     - React-Core
-  - RNVectorIcons (10.2.0):
+  - RNVectorIcons (10.3.0):
     - DoubleConversion
     - glog
     - RCT-Folly (= 2024.10.14.00)
@@ -2180,7 +2137,7 @@ SPEC CHECKSUMS:
   EXConstants: a1f35b9aabbb3c6791f8e67722579b1ffcdd3f18
   EXJSONUtils: 01fc7492b66c234e395dcffdd5f53439c5c29c93
   EXManifests: 77e77c283c4c53a50b9bddebed25abe93f0b48f1
-  Expo: 3e53243e3281214a7d613f8a875c0b732d7512c2
+  Expo: 3ddf0d76db6b3eef5d1d9f869676d3b69d95305f
   expo-dev-client: ca3ebc270cb0d3f26e6d9c3e1da19957ef4fcac1
   expo-dev-launcher: dc10eb092609fe1b994aa20d897109d1aec1d04f
   expo-dev-menu: 2216a29c4d797547148e2d2a1679b285c0cd9c14
@@ -2227,9 +2184,9 @@ SPEC CHECKSUMS:
   React-microtasksnativemodule: 8397e5a18ee77b898541ad729a1e687f394073ce
   react-native-cookies: f54fcded06bb0cda05c11d86788020b43528a26c
   react-native-get-random-values: 21325b2244dfa6b58878f51f9aa42821e7ba3d06
-  react-native-maps: 7941422b5548c70035df80fc92cff5df2bdafece
+  react-native-maps: 69d9410471692128796da4f335de2f96a43d8fc6
   react-native-safe-area-context: 141eca0fd4e4191288dfc8b96a7c7e1c2983447a
-  react-native-webview: a6b5ab13d335119affd2d995bacc16a18f4e85e2
+  react-native-webview: d5252164ae8572a9be9eed7d94808cf116012c32
   React-nativeconfig: 8efdb1ef1e9158c77098a93085438f7e7b463678
   React-NativeModulesApple: cc37e2f0e36a8df145be2e0d6060bb67ca2cecd9
   React-perflogger: 9b4f13c0afe56bc7b4a0e93ec74b1150421ee22d
@@ -2256,11 +2213,11 @@ SPEC CHECKSUMS:
   React-utils: 89ba727b63197066ababec10e085bc40518d0ce2
   ReactCodegen: 8e599b7dcde404943186d0df6af7c42e0c5b3404
   ReactCommon: aec34c524343e2a38bb7944da6737f0103b8b5a9
-  RNDateTimePicker: 279bad2682d9ebdd4151cb71d88f3b460f818fc8
+  RNDateTimePicker: 8c60b2f550a5c6375a3bcfb606be4b602b3cbe6b
   RNGestureHandler: 41c4ca8505c852e4ab6122e9287819be52447ee6
-  RNScreens: b461dda4753378f12351aa37e22fff3a3a5320c6
-  RNSVG: 7405fdc69d4ff5387c91a2c9789256a4f6adb750
-  RNVectorIcons: 390c7b811fcdc3334d24d06982567de03a0f955b
+  RNScreens: 8288f1b1e0f68c739ff22f21bbf80a71bc388fbd
+  RNSVG: 61b5de449d8daa7b75da111990fee37baeb4a6f2
+  RNVectorIcons: 6833452ea5aa6c0350992a391e83101c5a4b0c4d
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: feb4910aba9742cfedc059e2b2902e22ffe9954a
 

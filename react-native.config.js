@@ -1,8 +1,11 @@
 module.exports = {
-    assets: ['./src/assets/fonts'], 
-    project: {
-      android: {
-        packageName: 'com.chaltteok.chaltteok_FE'
-      }
-    }
-  };
+  dependencies: {
+    'react-native-maps': {
+      platforms: {
+        ios: {
+          fabric: false,
+        },
+      },
+    },
+  },
+};
